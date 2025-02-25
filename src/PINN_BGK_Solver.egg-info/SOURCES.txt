@@ -1,0 +1,7 @@
+setup.py
+src/PINN_BGK_Solver.egg-info/PKG-INFO
+src/PINN_BGK_Solver.egg-info/SOURCES.txt
+src/PINN_BGK_Solver.egg-info/dependency_links.txt
+src/PINN_BGK_Solver.egg-info/entry_points.txt
+src/PINN_BGK_Solver.egg-info/requires.txt
+src/PINN_BGK_Solver.egg-info/top_level.txt

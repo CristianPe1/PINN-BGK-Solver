@@ -1,0 +1,1501 @@
+2025-02-19 22:43:47,528 - INFO - Usando PINN_V1.
+2025-02-19 22:43:47,530 - INFO - Arquitectura de la red (v1):
+PINN_V1(
+  (activation): Tanh()
+  (linears): ModuleList(
+    (0): Linear(in_features=2, out_features=50, bias=True)
+    (1-3): 3 x Linear(in_features=50, out_features=50, bias=True)
+    (4): Linear(in_features=50, out_features=1, bias=True)
+  )
+)
+2025-02-19 22:43:47,531 - INFO - Iniciando entrenamiento...
+2025-02-19 22:43:47,538 - INFO - CPU Memory: Total=17.11 GB, Available=3.88 GB, Used=13.23 GB
+2025-02-19 22:43:48,160 - INFO - Epoch 0: Loss: 1.036744, Acc: -12232849.218750, ETC: 15.44m, w_data: 0.08, w_pde: 0.80, w_bc: 0.11
+2025-02-19 22:43:48,161 - INFO - Mejora detectada: nuevo valor 1.0367. Reiniciando contador.
+2025-02-19 22:43:48,807 - INFO - Epoch 1: Loss: 0.868646, Acc: -1648043.359375, ETC: 16.10m, w_data: 0.04, w_pde: 0.92, w_bc: 0.04
+2025-02-19 22:43:48,808 - INFO - Mejora detectada: nuevo valor 0.8686. Reiniciando contador.
+2025-02-19 22:43:49,499 - INFO - Epoch 2: Loss: 0.769631, Acc: -9570288.281250, ETC: 17.20m, w_data: 0.01, w_pde: 0.98, w_bc: 0.01
+2025-02-19 22:43:49,499 - INFO - Mejora detectada: nuevo valor 0.7696. Reiniciando contador.
+2025-02-19 22:43:50,197 - INFO - Epoch 3: Loss: 0.716425, Acc: -19711279.687500, ETC: 17.37m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:43:50,198 - INFO - Mejora detectada: nuevo valor 0.7164. Reiniciando contador.
+2025-02-19 22:43:50,825 - INFO - Epoch 4: Loss: 0.696024, Acc: -28631484.375000, ETC: 15.62m, w_data: 0.00, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:43:50,825 - INFO - Mejora detectada: nuevo valor 0.6960. Reiniciando contador.
+2025-02-19 22:43:51,533 - INFO - Epoch 5: Loss: 0.701878, Acc: -35289437.500000, ETC: 17.61m, w_data: 0.02, w_pde: 0.97, w_bc: 0.01
+2025-02-19 22:43:51,534 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:43:52,157 - INFO - Epoch 6: Loss: 0.722754, Acc: -38883084.375000, ETC: 15.47m, w_data: 0.05, w_pde: 0.92, w_bc: 0.03
+2025-02-19 22:43:52,158 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:43:52,812 - INFO - Epoch 7: Loss: 0.740738, Acc: -39638187.500000, ETC: 16.25m, w_data: 0.08, w_pde: 0.89, w_bc: 0.04
+2025-02-19 22:43:52,813 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:43:53,599 - INFO - Epoch 8: Loss: 0.745291, Acc: -38287368.750000, ETC: 19.53m, w_data: 0.08, w_pde: 0.87, w_bc: 0.04
+2025-02-19 22:43:53,600 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:43:54,238 - INFO - Epoch 9: Loss: 0.737736, Acc: -35563471.875000, ETC: 15.82m, w_data: 0.08, w_pde: 0.88, w_bc: 0.04
+2025-02-19 22:43:54,238 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:43:54,859 - INFO - Epoch 10: Loss: 0.724289, Acc: -32075612.500000, ETC: 15.37m, w_data: 0.06, w_pde: 0.90, w_bc: 0.03
+2025-02-19 22:43:54,860 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:43:55,517 - INFO - Epoch 11: Loss: 0.710629, Acc: -28310093.750000, ETC: 16.28m, w_data: 0.05, w_pde: 0.93, w_bc: 0.03
+2025-02-19 22:43:55,518 - INFO - Sin mejora significativa: contador 7/100.
+2025-02-19 22:43:56,170 - INFO - Epoch 12: Loss: 0.700089, Acc: -24641006.250000, ETC: 16.17m, w_data: 0.03, w_pde: 0.95, w_bc: 0.02
+2025-02-19 22:43:56,171 - INFO - Sin mejora significativa: contador 8/100.
+2025-02-19 22:43:56,835 - INFO - Epoch 13: Loss: 0.693751, Acc: -21334348.437500, ETC: 16.43m, w_data: 0.02, w_pde: 0.97, w_bc: 0.01
+2025-02-19 22:43:56,836 - INFO - Mejora detectada: nuevo valor 0.6938. Reiniciando contador.
+2025-02-19 22:43:57,484 - INFO - Epoch 14: Loss: 0.691226, Acc: -18555079.687500, ETC: 16.00m, w_data: 0.01, w_pde: 0.98, w_bc: 0.01
+2025-02-19 22:43:57,485 - INFO - Mejora detectada: nuevo valor 0.6912. Reiniciando contador.
+2025-02-19 22:43:58,138 - INFO - Epoch 15: Loss: 0.691484, Acc: -16382695.312500, ETC: 16.11m, w_data: 0.00, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:43:58,141 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:43:58,872 - INFO - Epoch 16: Loss: 0.693390, Acc: -14831654.687500, ETC: 18.05m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:43:58,874 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:43:59,503 - INFO - Epoch 17: Loss: 0.695937, Acc: -13871337.500000, ETC: 15.53m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:43:59,504 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:44:00,131 - INFO - Epoch 18: Loss: 0.698299, Acc: -13443201.562500, ETC: 15.47m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:44:00,132 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:44:00,808 - INFO - Epoch 19: Loss: 0.699867, Acc: -13474985.937500, ETC: 16.65m, w_data: 0.00, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:00,809 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:44:01,433 - INFO - Epoch 20: Loss: 0.700289, Acc: -13891592.187500, ETC: 15.40m, w_data: 0.01, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:01,434 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:44:02,031 - INFO - Epoch 21: Loss: 0.699514, Acc: -14621601.562500, ETC: 14.72m, w_data: 0.01, w_pde: 0.99, w_bc: 0.01
+2025-02-19 22:44:02,032 - INFO - Sin mejora significativa: contador 7/100.
+2025-02-19 22:44:02,731 - INFO - Epoch 22: Loss: 0.697755, Acc: -15599628.125000, ETC: 17.20m, w_data: 0.01, w_pde: 0.99, w_bc: 0.01
+2025-02-19 22:44:02,732 - INFO - Sin mejora significativa: contador 8/100.
+2025-02-19 22:44:03,850 - INFO - Epoch 23: Loss: 0.695391, Acc: -16765660.937500, ETC: 27.47m, w_data: 0.01, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:03,852 - INFO - Sin mejora significativa: contador 9/100.
+2025-02-19 22:44:04,667 - INFO - Epoch 24: Loss: 0.692842, Acc: -18062828.125000, ETC: 20.02m, w_data: 0.01, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:04,667 - INFO - Sin mejora significativa: contador 10/100.
+2025-02-19 22:44:05,361 - INFO - Epoch 25: Loss: 0.690471, Acc: -19434559.375000, ETC: 17.02m, w_data: 0.00, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:05,362 - INFO - Sin mejora significativa: contador 11/100.
+2025-02-19 22:44:06,005 - INFO - Epoch 26: Loss: 0.688536, Acc: -20822065.625000, ETC: 15.78m, w_data: 0.00, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:06,006 - INFO - Mejora detectada: nuevo valor 0.6885. Reiniciando contador.
+2025-02-19 22:44:06,617 - INFO - Epoch 27: Loss: 0.687178, Acc: -22163195.312500, ETC: 14.95m, w_data: 0.00, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:06,618 - INFO - Mejora detectada: nuevo valor 0.6872. Reiniciando contador.
+2025-02-19 22:44:07,246 - INFO - Epoch 28: Loss: 0.686425, Acc: -23393504.687500, ETC: 15.37m, w_data: 0.00, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:07,248 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:07,958 - INFO - Epoch 29: Loss: 0.686217, Acc: -24449945.312500, ETC: 17.39m, w_data: 0.01, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:07,959 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:44:08,590 - INFO - Epoch 30: Loss: 0.686416, Acc: -25276700.000000, ETC: 15.43m, w_data: 0.01, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:08,591 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:44:09,220 - INFO - Epoch 31: Loss: 0.686827, Acc: -25831907.812500, ETC: 15.38m, w_data: 0.01, w_pde: 0.99, w_bc: 0.01
+2025-02-19 22:44:09,221 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:44:09,961 - INFO - Epoch 32: Loss: 0.687227, Acc: -26093765.625000, ETC: 18.08m, w_data: 0.01, w_pde: 0.98, w_bc: 0.01
+2025-02-19 22:44:09,962 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:44:10,572 - INFO - Epoch 33: Loss: 0.687420, Acc: -26064262.500000, ETC: 14.86m, w_data: 0.01, w_pde: 0.98, w_bc: 0.01
+2025-02-19 22:44:10,572 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:44:11,173 - INFO - Epoch 34: Loss: 0.687278, Acc: -25769543.750000, ETC: 14.63m, w_data: 0.01, w_pde: 0.98, w_bc: 0.01
+2025-02-19 22:44:11,174 - INFO - Sin mejora significativa: contador 7/100.
+2025-02-19 22:44:11,823 - INFO - Epoch 35: Loss: 0.686775, Acc: -25256812.500000, ETC: 15.83m, w_data: 0.01, w_pde: 0.98, w_bc: 0.01
+2025-02-19 22:44:11,824 - INFO - Sin mejora significativa: contador 8/100.
+2025-02-19 22:44:12,494 - INFO - Epoch 36: Loss: 0.685987, Acc: -24588385.937500, ETC: 16.35m, w_data: 0.01, w_pde: 0.99, w_bc: 0.01
+2025-02-19 22:44:12,495 - INFO - Mejora detectada: nuevo valor 0.6860. Reiniciando contador.
+2025-02-19 22:44:13,117 - INFO - Epoch 37: Loss: 0.685050, Acc: -23834148.437500, ETC: 15.13m, w_data: 0.01, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:13,118 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:13,756 - INFO - Epoch 38: Loss: 0.684110, Acc: -23063507.812500, ETC: 15.51m, w_data: 0.01, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:13,758 - INFO - Mejora detectada: nuevo valor 0.6841. Reiniciando contador.
+2025-02-19 22:44:14,417 - INFO - Epoch 39: Loss: 0.683283, Acc: -22338148.437500, ETC: 16.01m, w_data: 0.00, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:14,418 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:15,046 - INFO - Epoch 40: Loss: 0.682633, Acc: -21706450.000000, ETC: 15.26m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:44:15,047 - INFO - Mejora detectada: nuevo valor 0.6826. Reiniciando contador.
+2025-02-19 22:44:15,681 - INFO - Epoch 41: Loss: 0.682172, Acc: -21200395.312500, ETC: 15.42m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:44:15,682 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:16,307 - INFO - Epoch 42: Loss: 0.681872, Acc: -20835151.562500, ETC: 15.19m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:44:16,308 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:44:16,952 - INFO - Epoch 43: Loss: 0.681679, Acc: -20611059.375000, ETC: 15.61m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:44:16,953 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:44:17,584 - INFO - Epoch 44: Loss: 0.681527, Acc: -20517434.375000, ETC: 15.28m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:44:17,584 - INFO - Mejora detectada: nuevo valor 0.6815. Reiniciando contador.
+2025-02-19 22:44:18,180 - INFO - Epoch 45: Loss: 0.681343, Acc: -20537168.750000, ETC: 14.42m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:44:18,180 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:18,818 - INFO - Epoch 46: Loss: 0.681067, Acc: -20651121.875000, ETC: 15.44m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:44:18,820 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:44:19,542 - INFO - Epoch 47: Loss: 0.680667, Acc: -20841350.000000, ETC: 17.43m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:44:19,543 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:44:20,183 - INFO - Epoch 48: Loss: 0.680139, Acc: -21092520.312500, ETC: 15.48m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:44:20,184 - INFO - Mejora detectada: nuevo valor 0.6801. Reiniciando contador.
+2025-02-19 22:44:20,819 - INFO - Epoch 49: Loss: 0.679516, Acc: -21391571.875000, ETC: 15.33m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:44:20,820 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:21,490 - INFO - Epoch 50: Loss: 0.678842, Acc: -21725959.375000, ETC: 16.17m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:44:21,491 - INFO - Mejora detectada: nuevo valor 0.6788. Reiniciando contador.
+2025-02-19 22:44:22,098 - INFO - Epoch 51: Loss: 0.678166, Acc: -22081376.562500, ETC: 14.63m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:44:22,099 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:22,702 - INFO - Epoch 52: Loss: 0.677523, Acc: -22439821.875000, ETC: 14.56m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:44:22,703 - INFO - Mejora detectada: nuevo valor 0.6775. Reiniciando contador.
+2025-02-19 22:44:23,511 - INFO - Epoch 53: Loss: 0.676932, Acc: -22779129.687500, ETC: 19.45m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:44:23,512 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:24,122 - INFO - Epoch 54: Loss: 0.676392, Acc: -23074364.062500, ETC: 14.65m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:44:24,123 - INFO - Mejora detectada: nuevo valor 0.6764. Reiniciando contador.
+2025-02-19 22:44:24,731 - INFO - Epoch 55: Loss: 0.675889, Acc: -23301118.750000, ETC: 14.63m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:44:24,732 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:25,418 - INFO - Epoch 56: Loss: 0.675397, Acc: -23439935.937500, ETC: 16.48m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:44:25,419 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:44:26,030 - INFO - Epoch 57: Loss: 0.674881, Acc: -23480585.937500, ETC: 14.66m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:44:26,031 - INFO - Mejora detectada: nuevo valor 0.6749. Reiniciando contador.
+2025-02-19 22:44:26,652 - INFO - Epoch 58: Loss: 0.674316, Acc: -23424904.687500, ETC: 14.92m, w_data: 0.00, w_pde: 1.00, w_bc: 0.00
+2025-02-19 22:44:26,652 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:27,275 - INFO - Epoch 59: Loss: 0.673690, Acc: -23287084.375000, ETC: 14.94m, w_data: 0.00, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:27,276 - INFO - Mejora detectada: nuevo valor 0.6737. Reiniciando contador.
+2025-02-19 22:44:27,925 - INFO - Epoch 60: Loss: 0.673010, Acc: -23091179.687500, ETC: 15.52m, w_data: 0.00, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:27,926 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:28,665 - INFO - Epoch 61: Loss: 0.672294, Acc: -22866256.250000, ETC: 17.66m, w_data: 0.00, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:28,666 - INFO - Mejora detectada: nuevo valor 0.6723. Reiniciando contador.
+2025-02-19 22:44:29,356 - INFO - Epoch 62: Loss: 0.671566, Acc: -22640457.812500, ETC: 16.55m, w_data: 0.00, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:29,357 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:29,963 - INFO - Epoch 63: Loss: 0.670841, Acc: -22435643.750000, ETC: 14.45m, w_data: 0.01, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:29,964 - INFO - Mejora detectada: nuevo valor 0.6708. Reiniciando contador.
+2025-02-19 22:44:30,721 - INFO - Epoch 64: Loss: 0.670132, Acc: -22264171.875000, ETC: 18.14m, w_data: 0.01, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:30,723 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:31,441 - INFO - Epoch 65: Loss: 0.669438, Acc: -22128709.375000, ETC: 17.13m, w_data: 0.01, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:31,442 - INFO - Mejora detectada: nuevo valor 0.6694. Reiniciando contador.
+2025-02-19 22:44:32,117 - INFO - Epoch 66: Loss: 0.668753, Acc: -22024904.687500, ETC: 16.11m, w_data: 0.01, w_pde: 0.99, w_bc: 0.00
+2025-02-19 22:44:32,118 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:32,997 - INFO - Epoch 67: Loss: 0.668066, Acc: -21945631.250000, ETC: 20.94m, w_data: 0.01, w_pde: 0.99, w_bc: 0.01
+2025-02-19 22:44:32,997 - INFO - Mejora detectada: nuevo valor 0.6681. Reiniciando contador.
+2025-02-19 22:44:33,755 - INFO - Epoch 68: Loss: 0.667361, Acc: -21885040.625000, ETC: 18.03m, w_data: 0.01, w_pde: 0.98, w_bc: 0.01
+2025-02-19 22:44:33,756 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:34,422 - INFO - Epoch 69: Loss: 0.666626, Acc: -21840701.562500, ETC: 15.86m, w_data: 0.01, w_pde: 0.98, w_bc: 0.01
+2025-02-19 22:44:34,423 - INFO - Mejora detectada: nuevo valor 0.6666. Reiniciando contador.
+2025-02-19 22:44:35,168 - INFO - Epoch 70: Loss: 0.665859, Acc: -21812984.375000, ETC: 17.70m, w_data: 0.01, w_pde: 0.98, w_bc: 0.01
+2025-02-19 22:44:35,169 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:35,832 - INFO - Epoch 71: Loss: 0.665062, Acc: -21802121.875000, ETC: 15.77m, w_data: 0.01, w_pde: 0.98, w_bc: 0.01
+2025-02-19 22:44:35,833 - INFO - Mejora detectada: nuevo valor 0.6651. Reiniciando contador.
+2025-02-19 22:44:36,425 - INFO - Epoch 72: Loss: 0.664245, Acc: -21804348.437500, ETC: 14.05m, w_data: 0.01, w_pde: 0.98, w_bc: 0.01
+2025-02-19 22:44:36,426 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:37,028 - INFO - Epoch 73: Loss: 0.663413, Acc: -21809237.500000, ETC: 14.29m, w_data: 0.02, w_pde: 0.97, w_bc: 0.01
+2025-02-19 22:44:37,029 - INFO - Mejora detectada: nuevo valor 0.6634. Reiniciando contador.
+2025-02-19 22:44:37,736 - INFO - Epoch 74: Loss: 0.662574, Acc: -21799779.687500, ETC: 16.77m, w_data: 0.02, w_pde: 0.97, w_bc: 0.01
+2025-02-19 22:44:37,737 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:38,378 - INFO - Epoch 75: Loss: 0.661729, Acc: -21755718.750000, ETC: 15.21m, w_data: 0.02, w_pde: 0.97, w_bc: 0.01
+2025-02-19 22:44:38,379 - INFO - Mejora detectada: nuevo valor 0.6617. Reiniciando contador.
+2025-02-19 22:44:39,008 - INFO - Epoch 76: Loss: 0.660875, Acc: -21658995.312500, ETC: 14.89m, w_data: 0.02, w_pde: 0.97, w_bc: 0.01
+2025-02-19 22:44:39,009 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:39,682 - INFO - Epoch 77: Loss: 0.660006, Acc: -21499228.125000, ETC: 15.94m, w_data: 0.02, w_pde: 0.97, w_bc: 0.01
+2025-02-19 22:44:39,683 - INFO - Mejora detectada: nuevo valor 0.6600. Reiniciando contador.
+2025-02-19 22:44:40,332 - INFO - Epoch 78: Loss: 0.659113, Acc: -21276818.750000, ETC: 15.34m, w_data: 0.02, w_pde: 0.96, w_bc: 0.01
+2025-02-19 22:44:40,333 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:40,943 - INFO - Epoch 79: Loss: 0.658190, Acc: -21002412.500000, ETC: 14.42m, w_data: 0.02, w_pde: 0.96, w_bc: 0.01
+2025-02-19 22:44:40,943 - INFO - Mejora detectada: nuevo valor 0.6582. Reiniciando contador.
+2025-02-19 22:44:41,673 - INFO - Epoch 80: Loss: 0.657233, Acc: -20692800.000000, ETC: 17.26m, w_data: 0.02, w_pde: 0.96, w_bc: 0.01
+2025-02-19 22:44:41,674 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:44:42,319 - INFO - Epoch 81: Loss: 0.656243, Acc: -20365014.062500, ETC: 15.24m, w_data: 0.03, w_pde: 0.96, w_bc: 0.02
+2025-02-19 22:44:42,320 - INFO - Mejora detectada: nuevo valor 0.6562. Reiniciando contador.
+2025-02-19 22:44:42,916 - INFO - Epoch 82: Loss: 0.655222, Acc: -20031165.625000, ETC: 14.05m, w_data: 0.03, w_pde: 0.96, w_bc: 0.02
+2025-02-19 22:44:42,917 - INFO - Mejora detectada: nuevo valor 0.6552. Reiniciando contador.
+2025-02-19 22:44:43,609 - INFO - Epoch 83: Loss: 0.654170, Acc: -19696040.625000, ETC: 16.33m, w_data: 0.03, w_pde: 0.95, w_bc: 0.02
+2025-02-19 22:44:43,610 - INFO - Mejora detectada: nuevo valor 0.6542. Reiniciando contador.
+2025-02-19 22:44:44,218 - INFO - Epoch 84: Loss: 0.653092, Acc: -19358098.437500, ETC: 14.32m, w_data: 0.03, w_pde: 0.95, w_bc: 0.02
+2025-02-19 22:44:44,219 - INFO - Mejora detectada: nuevo valor 0.6531. Reiniciando contador.
+2025-02-19 22:44:44,868 - INFO - Epoch 85: Loss: 0.651987, Acc: -19013009.375000, ETC: 15.31m, w_data: 0.03, w_pde: 0.95, w_bc: 0.02
+2025-02-19 22:44:44,869 - INFO - Mejora detectada: nuevo valor 0.6520. Reiniciando contador.
+2025-02-19 22:44:45,516 - INFO - Epoch 86: Loss: 0.650854, Acc: -18657568.750000, ETC: 15.22m, w_data: 0.03, w_pde: 0.95, w_bc: 0.02
+2025-02-19 22:44:45,517 - INFO - Mejora detectada: nuevo valor 0.6509. Reiniciando contador.
+2025-02-19 22:44:46,118 - INFO - Epoch 87: Loss: 0.649692, Acc: -18292100.000000, ETC: 14.12m, w_data: 0.03, w_pde: 0.95, w_bc: 0.02
+2025-02-19 22:44:46,119 - INFO - Mejora detectada: nuevo valor 0.6497. Reiniciando contador.
+2025-02-19 22:44:46,802 - INFO - Epoch 88: Loss: 0.648498, Acc: -17920220.312500, ETC: 16.06m, w_data: 0.04, w_pde: 0.95, w_bc: 0.02
+2025-02-19 22:44:46,803 - INFO - Mejora detectada: nuevo valor 0.6485. Reiniciando contador.
+2025-02-19 22:44:47,408 - INFO - Epoch 89: Loss: 0.647273, Acc: -17546404.687500, ETC: 14.20m, w_data: 0.04, w_pde: 0.94, w_bc: 0.02
+2025-02-19 22:44:47,409 - INFO - Mejora detectada: nuevo valor 0.6473. Reiniciando contador.
+2025-02-19 22:44:48,011 - INFO - Epoch 90: Loss: 0.646018, Acc: -17172856.250000, ETC: 14.12m, w_data: 0.04, w_pde: 0.94, w_bc: 0.02
+2025-02-19 22:44:48,011 - INFO - Mejora detectada: nuevo valor 0.6460. Reiniciando contador.
+2025-02-19 22:44:48,633 - INFO - Epoch 91: Loss: 0.644737, Acc: -16797590.625000, ETC: 14.55m, w_data: 0.04, w_pde: 0.94, w_bc: 0.02
+2025-02-19 22:44:48,634 - INFO - Mejora detectada: nuevo valor 0.6447. Reiniciando contador.
+2025-02-19 22:44:49,263 - INFO - Epoch 92: Loss: 0.643434, Acc: -16414815.625000, ETC: 14.75m, w_data: 0.04, w_pde: 0.94, w_bc: 0.02
+2025-02-19 22:44:49,264 - INFO - Mejora detectada: nuevo valor 0.6434. Reiniciando contador.
+2025-02-19 22:44:49,863 - INFO - Epoch 93: Loss: 0.642113, Acc: -16017595.312500, ETC: 14.05m, w_data: 0.04, w_pde: 0.94, w_bc: 0.02
+2025-02-19 22:44:49,864 - INFO - Mejora detectada: nuevo valor 0.6421. Reiniciando contador.
+2025-02-19 22:44:50,480 - INFO - Epoch 94: Loss: 0.640779, Acc: -15601450.000000, ETC: 14.42m, w_data: 0.04, w_pde: 0.94, w_bc: 0.02
+2025-02-19 22:44:50,481 - INFO - Mejora detectada: nuevo valor 0.6408. Reiniciando contador.
+2025-02-19 22:44:51,081 - INFO - Epoch 95: Loss: 0.639435, Acc: -15167001.562500, ETC: 14.03m, w_data: 0.04, w_pde: 0.94, w_bc: 0.02
+2025-02-19 22:44:51,082 - INFO - Mejora detectada: nuevo valor 0.6394. Reiniciando contador.
+2025-02-19 22:44:51,706 - INFO - Epoch 96: Loss: 0.638085, Acc: -14720251.562500, ETC: 14.62m, w_data: 0.04, w_pde: 0.94, w_bc: 0.02
+2025-02-19 22:44:51,707 - INFO - Mejora detectada: nuevo valor 0.6381. Reiniciando contador.
+2025-02-19 22:44:52,314 - INFO - Epoch 97: Loss: 0.636732, Acc: -14270109.375000, ETC: 14.16m, w_data: 0.04, w_pde: 0.94, w_bc: 0.02
+2025-02-19 22:44:52,315 - INFO - Mejora detectada: nuevo valor 0.6367. Reiniciando contador.
+2025-02-19 22:44:52,920 - INFO - Epoch 98: Loss: 0.635378, Acc: -13824392.187500, ETC: 14.15m, w_data: 0.04, w_pde: 0.94, w_bc: 0.02
+2025-02-19 22:44:52,921 - INFO - Mejora detectada: nuevo valor 0.6354. Reiniciando contador.
+2025-02-19 22:44:53,585 - INFO - Epoch 99: Loss: 0.634028, Acc: -13386262.500000, ETC: 15.46m, w_data: 0.04, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:44:53,586 - INFO - Mejora detectada: nuevo valor 0.6340. Reiniciando contador.
+2025-02-19 22:44:54,183 - INFO - Epoch 100: Loss: 0.632687, Acc: -12953099.218750, ETC: 13.92m, w_data: 0.04, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:44:54,184 - INFO - Mejora detectada: nuevo valor 0.6327. Reiniciando contador.
+2025-02-19 22:44:54,791 - INFO - Epoch 101: Loss: 0.631359, Acc: -12518442.968750, ETC: 14.14m, w_data: 0.04, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:44:54,792 - INFO - Mejora detectada: nuevo valor 0.6314. Reiniciando contador.
+2025-02-19 22:44:55,400 - INFO - Epoch 102: Loss: 0.630051, Acc: -12076185.937500, ETC: 14.14m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:44:55,401 - INFO - Mejora detectada: nuevo valor 0.6301. Reiniciando contador.
+2025-02-19 22:44:56,028 - INFO - Epoch 103: Loss: 0.628768, Acc: -11624711.718750, ETC: 14.58m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:44:56,028 - INFO - Mejora detectada: nuevo valor 0.6288. Reiniciando contador.
+2025-02-19 22:44:56,653 - INFO - Epoch 104: Loss: 0.627513, Acc: -11168578.906250, ETC: 14.51m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:44:56,654 - INFO - Mejora detectada: nuevo valor 0.6275. Reiniciando contador.
+2025-02-19 22:44:57,246 - INFO - Epoch 105: Loss: 0.626292, Acc: -10716628.906250, ETC: 13.74m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:44:57,247 - INFO - Mejora detectada: nuevo valor 0.6263. Reiniciando contador.
+2025-02-19 22:44:57,845 - INFO - Epoch 106: Loss: 0.625107, Acc: -10277402.343750, ETC: 13.88m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:44:57,846 - INFO - Mejora detectada: nuevo valor 0.6251. Reiniciando contador.
+2025-02-19 22:44:58,625 - INFO - Epoch 107: Loss: 0.623962, Acc: -9854564.843750, ETC: 18.06m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:44:58,626 - INFO - Mejora detectada: nuevo valor 0.6240. Reiniciando contador.
+2025-02-19 22:44:59,278 - INFO - Epoch 108: Loss: 0.622860, Acc: -9445197.656250, ETC: 15.10m, w_data: 0.05, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:44:59,279 - INFO - Mejora detectada: nuevo valor 0.6229. Reiniciando contador.
+2025-02-19 22:44:59,901 - INFO - Epoch 109: Loss: 0.621806, Acc: -9042264.843750, ETC: 14.42m, w_data: 0.05, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:44:59,902 - INFO - Mejora detectada: nuevo valor 0.6218. Reiniciando contador.
+2025-02-19 22:45:00,596 - INFO - Epoch 110: Loss: 0.620801, Acc: -8639793.750000, ETC: 16.03m, w_data: 0.05, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:00,597 - INFO - Mejora detectada: nuevo valor 0.6208. Reiniciando contador.
+2025-02-19 22:45:01,220 - INFO - Epoch 111: Loss: 0.619849, Acc: -8237427.343750, ETC: 14.41m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:01,221 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:45:01,850 - INFO - Epoch 112: Loss: 0.618952, Acc: -7841038.281250, ETC: 14.54m, w_data: 0.06, w_pde: 0.92, w_bc: 0.03
+2025-02-19 22:45:01,851 - INFO - Mejora detectada: nuevo valor 0.6190. Reiniciando contador.
+2025-02-19 22:45:02,472 - INFO - Epoch 113: Loss: 0.618112, Acc: -7458909.375000, ETC: 14.35m, w_data: 0.06, w_pde: 0.92, w_bc: 0.03
+2025-02-19 22:45:02,473 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:45:03,105 - INFO - Epoch 114: Loss: 0.617328, Acc: -7096150.000000, ETC: 14.57m, w_data: 0.06, w_pde: 0.91, w_bc: 0.03
+2025-02-19 22:45:03,106 - INFO - Mejora detectada: nuevo valor 0.6173. Reiniciando contador.
+2025-02-19 22:45:03,721 - INFO - Epoch 115: Loss: 0.616603, Acc: -6751743.750000, ETC: 14.16m, w_data: 0.06, w_pde: 0.91, w_bc: 0.03
+2025-02-19 22:45:03,722 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:45:04,336 - INFO - Epoch 116: Loss: 0.615934, Acc: -6420669.921875, ETC: 14.17m, w_data: 0.06, w_pde: 0.91, w_bc: 0.03
+2025-02-19 22:45:04,337 - INFO - Mejora detectada: nuevo valor 0.6159. Reiniciando contador.
+2025-02-19 22:45:04,937 - INFO - Epoch 117: Loss: 0.615320, Acc: -6099555.859375, ETC: 13.78m, w_data: 0.06, w_pde: 0.91, w_bc: 0.03
+2025-02-19 22:45:04,938 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:45:05,576 - INFO - Epoch 118: Loss: 0.614760, Acc: -5791137.109375, ETC: 14.68m, w_data: 0.07, w_pde: 0.91, w_bc: 0.03
+2025-02-19 22:45:05,577 - INFO - Mejora detectada: nuevo valor 0.6148. Reiniciando contador.
+2025-02-19 22:45:06,181 - INFO - Epoch 119: Loss: 0.614252, Acc: -5503530.078125, ETC: 13.88m, w_data: 0.07, w_pde: 0.91, w_bc: 0.03
+2025-02-19 22:45:06,182 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:45:06,764 - INFO - Epoch 120: Loss: 0.613791, Acc: -5244655.859375, ETC: 13.34m, w_data: 0.07, w_pde: 0.90, w_bc: 0.03
+2025-02-19 22:45:06,765 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:45:07,380 - INFO - Epoch 121: Loss: 0.613374, Acc: -5016639.453125, ETC: 14.10m, w_data: 0.07, w_pde: 0.90, w_bc: 0.03
+2025-02-19 22:45:07,381 - INFO - Mejora detectada: nuevo valor 0.6134. Reiniciando contador.
+2025-02-19 22:45:07,978 - INFO - Epoch 122: Loss: 0.612997, Acc: -4815436.328125, ETC: 13.69m, w_data: 0.07, w_pde: 0.90, w_bc: 0.03
+2025-02-19 22:45:07,979 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:45:08,594 - INFO - Epoch 123: Loss: 0.612655, Acc: -4636062.109375, ETC: 14.09m, w_data: 0.07, w_pde: 0.90, w_bc: 0.03
+2025-02-19 22:45:08,595 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:45:09,198 - INFO - Epoch 124: Loss: 0.612342, Acc: -4478537.109375, ETC: 13.78m, w_data: 0.07, w_pde: 0.90, w_bc: 0.03
+2025-02-19 22:45:09,199 - INFO - Mejora detectada: nuevo valor 0.6123. Reiniciando contador.
+2025-02-19 22:45:09,828 - INFO - Epoch 125: Loss: 0.612054, Acc: -4348589.843750, ETC: 14.42m, w_data: 0.07, w_pde: 0.90, w_bc: 0.03
+2025-02-19 22:45:09,829 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:45:10,453 - INFO - Epoch 126: Loss: 0.611786, Acc: -4252419.921875, ETC: 14.25m, w_data: 0.07, w_pde: 0.90, w_bc: 0.03
+2025-02-19 22:45:10,454 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:45:11,106 - INFO - Epoch 127: Loss: 0.611534, Acc: -4190739.843750, ETC: 14.89m, w_data: 0.07, w_pde: 0.90, w_bc: 0.03
+2025-02-19 22:45:11,107 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:45:11,755 - INFO - Epoch 128: Loss: 0.611293, Acc: -4158144.531250, ETC: 14.79m, w_data: 0.07, w_pde: 0.90, w_bc: 0.03
+2025-02-19 22:45:11,756 - INFO - Mejora detectada: nuevo valor 0.6113. Reiniciando contador.
+2025-02-19 22:45:12,504 - INFO - Epoch 129: Loss: 0.611062, Acc: -4148351.953125, ETC: 17.06m, w_data: 0.07, w_pde: 0.90, w_bc: 0.03
+2025-02-19 22:45:12,505 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:45:13,292 - INFO - Epoch 130: Loss: 0.610836, Acc: -4159667.968750, ETC: 17.92m, w_data: 0.07, w_pde: 0.90, w_bc: 0.03
+2025-02-19 22:45:13,293 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:45:14,163 - INFO - Epoch 131: Loss: 0.610615, Acc: -4194914.453125, ETC: 19.82m, w_data: 0.07, w_pde: 0.90, w_bc: 0.03
+2025-02-19 22:45:14,165 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:45:15,065 - INFO - Epoch 132: Loss: 0.610397, Acc: -4256224.609375, ETC: 20.51m, w_data: 0.07, w_pde: 0.90, w_bc: 0.03
+2025-02-19 22:45:15,067 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:45:15,855 - INFO - Epoch 133: Loss: 0.610182, Acc: -4340569.921875, ETC: 17.93m, w_data: 0.07, w_pde: 0.90, w_bc: 0.03
+2025-02-19 22:45:15,856 - INFO - Mejora detectada: nuevo valor 0.6102. Reiniciando contador.
+2025-02-19 22:45:16,542 - INFO - Epoch 134: Loss: 0.609970, Acc: -4440975.000000, ETC: 15.59m, w_data: 0.07, w_pde: 0.90, w_bc: 0.03
+2025-02-19 22:45:16,543 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:45:17,171 - INFO - Epoch 135: Loss: 0.609761, Acc: -4551833.984375, ETC: 14.27m, w_data: 0.07, w_pde: 0.90, w_bc: 0.03
+2025-02-19 22:45:17,172 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:45:17,813 - INFO - Epoch 136: Loss: 0.609556, Acc: -4672341.406250, ETC: 14.55m, w_data: 0.07, w_pde: 0.90, w_bc: 0.03
+2025-02-19 22:45:17,814 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:45:18,439 - INFO - Epoch 137: Loss: 0.609355, Acc: -4804386.328125, ETC: 14.17m, w_data: 0.07, w_pde: 0.90, w_bc: 0.03
+2025-02-19 22:45:18,439 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:45:19,072 - INFO - Epoch 138: Loss: 0.609160, Acc: -4947653.515625, ETC: 14.34m, w_data: 0.07, w_pde: 0.91, w_bc: 0.03
+2025-02-19 22:45:19,073 - INFO - Mejora detectada: nuevo valor 0.6092. Reiniciando contador.
+2025-02-19 22:45:19,709 - INFO - Epoch 139: Loss: 0.608970, Acc: -5097522.656250, ETC: 14.42m, w_data: 0.07, w_pde: 0.91, w_bc: 0.03
+2025-02-19 22:45:19,710 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:45:20,340 - INFO - Epoch 140: Loss: 0.608786, Acc: -5248030.859375, ETC: 14.26m, w_data: 0.07, w_pde: 0.91, w_bc: 0.03
+2025-02-19 22:45:20,341 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:45:20,945 - INFO - Epoch 141: Loss: 0.608609, Acc: -5396222.656250, ETC: 13.63m, w_data: 0.06, w_pde: 0.91, w_bc: 0.02
+2025-02-19 22:45:20,946 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:45:21,607 - INFO - Epoch 142: Loss: 0.608438, Acc: -5542951.562500, ETC: 14.97m, w_data: 0.06, w_pde: 0.91, w_bc: 0.02
+2025-02-19 22:45:21,608 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:45:22,195 - INFO - Epoch 143: Loss: 0.608273, Acc: -5689437.500000, ETC: 13.22m, w_data: 0.06, w_pde: 0.91, w_bc: 0.02
+2025-02-19 22:45:22,195 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:45:22,802 - INFO - Epoch 144: Loss: 0.608114, Acc: -5833867.187500, ETC: 13.67m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:22,803 - INFO - Mejora detectada: nuevo valor 0.6081. Reiniciando contador.
+2025-02-19 22:45:23,434 - INFO - Epoch 145: Loss: 0.607960, Acc: -5971996.484375, ETC: 14.26m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:23,435 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:45:24,046 - INFO - Epoch 146: Loss: 0.607810, Acc: -6100825.000000, ETC: 13.74m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:24,047 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:45:24,653 - INFO - Epoch 147: Loss: 0.607664, Acc: -6220775.000000, ETC: 13.67m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:24,655 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:45:25,239 - INFO - Epoch 148: Loss: 0.607521, Acc: -6333984.375000, ETC: 13.14m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:25,240 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:45:25,868 - INFO - Epoch 149: Loss: 0.607381, Acc: -6440844.921875, ETC: 14.10m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:25,869 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:45:26,502 - INFO - Epoch 150: Loss: 0.607242, Acc: -6539202.343750, ETC: 14.22m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:26,503 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:45:27,119 - INFO - Epoch 151: Loss: 0.607104, Acc: -6626848.437500, ETC: 13.81m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:27,120 - INFO - Mejora detectada: nuevo valor 0.6071. Reiniciando contador.
+2025-02-19 22:45:27,763 - INFO - Epoch 152: Loss: 0.606967, Acc: -6704190.625000, ETC: 14.43m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:27,764 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:45:28,435 - INFO - Epoch 153: Loss: 0.606830, Acc: -6773724.218750, ETC: 15.04m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:28,436 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:45:29,037 - INFO - Epoch 154: Loss: 0.606693, Acc: -6837173.437500, ETC: 13.46m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:29,038 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:45:29,656 - INFO - Epoch 155: Loss: 0.606556, Acc: -6893990.625000, ETC: 13.83m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:29,657 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:45:30,280 - INFO - Epoch 156: Loss: 0.606419, Acc: -6942922.656250, ETC: 13.92m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:30,281 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:45:30,899 - INFO - Epoch 157: Loss: 0.606282, Acc: -6984550.000000, ETC: 13.82m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:30,900 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:45:31,562 - INFO - Epoch 158: Loss: 0.606146, Acc: -7021357.812500, ETC: 14.78m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:31,563 - INFO - Sin mejora significativa: contador 7/100.
+2025-02-19 22:45:32,178 - INFO - Epoch 159: Loss: 0.606010, Acc: -7055478.906250, ETC: 13.72m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:32,179 - INFO - Mejora detectada: nuevo valor 0.6060. Reiniciando contador.
+2025-02-19 22:45:32,853 - INFO - Epoch 160: Loss: 0.605874, Acc: -7087036.718750, ETC: 15.02m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:32,854 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:45:33,484 - INFO - Epoch 161: Loss: 0.605739, Acc: -7115267.187500, ETC: 14.04m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:33,485 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:45:34,148 - INFO - Epoch 162: Loss: 0.605604, Acc: -7140689.062500, ETC: 14.75m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:34,149 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:45:35,011 - INFO - Epoch 163: Loss: 0.605471, Acc: -7165459.375000, ETC: 19.16m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:35,012 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:45:35,644 - INFO - Epoch 164: Loss: 0.605338, Acc: -7191434.375000, ETC: 14.03m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:35,645 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:45:36,253 - INFO - Epoch 165: Loss: 0.605206, Acc: -7218739.062500, ETC: 13.51m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:36,254 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:45:36,861 - INFO - Epoch 166: Loss: 0.605075, Acc: -7246690.625000, ETC: 13.50m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:36,862 - INFO - Sin mejora significativa: contador 7/100.
+2025-02-19 22:45:37,561 - INFO - Epoch 167: Loss: 0.604945, Acc: -7275646.875000, ETC: 15.52m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:37,562 - INFO - Mejora detectada: nuevo valor 0.6049. Reiniciando contador.
+2025-02-19 22:45:38,140 - INFO - Epoch 168: Loss: 0.604815, Acc: -7307197.656250, ETC: 12.79m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:38,141 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:45:38,787 - INFO - Epoch 169: Loss: 0.604686, Acc: -7342485.156250, ETC: 14.32m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:38,788 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:45:39,385 - INFO - Epoch 170: Loss: 0.604557, Acc: -7381100.781250, ETC: 13.21m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:39,386 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:45:40,016 - INFO - Epoch 171: Loss: 0.604428, Acc: -7422086.718750, ETC: 13.94m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:40,017 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:45:40,661 - INFO - Epoch 172: Loss: 0.604299, Acc: -7465457.812500, ETC: 14.23m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:40,662 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:45:41,265 - INFO - Epoch 173: Loss: 0.604171, Acc: -7512100.000000, ETC: 13.31m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:41,266 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:45:41,895 - INFO - Epoch 174: Loss: 0.604042, Acc: -7562259.375000, ETC: 13.86m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:41,896 - INFO - Sin mejora significativa: contador 7/100.
+2025-02-19 22:45:42,553 - INFO - Epoch 175: Loss: 0.603913, Acc: -7614896.875000, ETC: 14.49m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:42,554 - INFO - Mejora detectada: nuevo valor 0.6039. Reiniciando contador.
+2025-02-19 22:45:43,133 - INFO - Epoch 176: Loss: 0.603784, Acc: -7668857.812500, ETC: 12.78m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:43,135 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:45:43,830 - INFO - Epoch 177: Loss: 0.603654, Acc: -7723992.968750, ETC: 15.33m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:43,831 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:45:44,491 - INFO - Epoch 178: Loss: 0.603525, Acc: -7780631.250000, ETC: 14.52m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:44,492 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:45:45,100 - INFO - Epoch 179: Loss: 0.603394, Acc: -7838289.843750, ETC: 13.36m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:45,101 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:45:45,765 - INFO - Epoch 180: Loss: 0.603264, Acc: -7895657.812500, ETC: 14.57m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:45,766 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:45:46,399 - INFO - Epoch 181: Loss: 0.603133, Acc: -7951791.406250, ETC: 13.89m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:46,400 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:45:47,029 - INFO - Epoch 182: Loss: 0.603002, Acc: -8006694.531250, ETC: 13.81m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:47,030 - INFO - Sin mejora significativa: contador 7/100.
+2025-02-19 22:45:47,671 - INFO - Epoch 183: Loss: 0.602870, Acc: -8060415.625000, ETC: 14.06m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:47,671 - INFO - Mejora detectada: nuevo valor 0.6029. Reiniciando contador.
+2025-02-19 22:45:48,255 - INFO - Epoch 184: Loss: 0.602738, Acc: -8112217.968750, ETC: 12.76m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:48,256 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:45:48,912 - INFO - Epoch 185: Loss: 0.602605, Acc: -8161098.437500, ETC: 14.34m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:48,913 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:45:49,542 - INFO - Epoch 186: Loss: 0.602471, Acc: -8206778.125000, ETC: 13.77m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:49,543 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:45:50,117 - INFO - Epoch 187: Loss: 0.602336, Acc: -8249539.843750, ETC: 12.53m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:50,118 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:45:50,737 - INFO - Epoch 188: Loss: 0.602201, Acc: -8289386.718750, ETC: 13.49m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:50,737 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:45:51,411 - INFO - Epoch 189: Loss: 0.602065, Acc: -8325725.781250, ETC: 14.69m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:51,412 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:45:52,008 - INFO - Epoch 190: Loss: 0.601927, Acc: -8358182.812500, ETC: 12.98m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:52,009 - INFO - Sin mejora significativa: contador 7/100.
+2025-02-19 22:45:52,629 - INFO - Epoch 191: Loss: 0.601789, Acc: -8387154.687500, ETC: 13.50m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:52,630 - INFO - Mejora detectada: nuevo valor 0.6018. Reiniciando contador.
+2025-02-19 22:45:53,203 - INFO - Epoch 192: Loss: 0.601649, Acc: -8413117.187500, ETC: 12.49m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:53,204 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:45:53,820 - INFO - Epoch 193: Loss: 0.601508, Acc: -8435985.937500, ETC: 13.41m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:53,821 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:45:54,435 - INFO - Epoch 194: Loss: 0.601366, Acc: -8455574.218750, ETC: 13.34m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:54,436 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:45:55,044 - INFO - Epoch 195: Loss: 0.601222, Acc: -8472217.187500, ETC: 13.21m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:55,045 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:45:55,723 - INFO - Epoch 196: Loss: 0.601077, Acc: -8486571.093750, ETC: 14.73m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:55,724 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:45:56,321 - INFO - Epoch 197: Loss: 0.600930, Acc: -8498935.156250, ETC: 12.95m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:56,322 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:45:56,918 - INFO - Epoch 198: Loss: 0.600782, Acc: -8509234.375000, ETC: 12.89m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:56,919 - INFO - Mejora detectada: nuevo valor 0.6008. Reiniciando contador.
+2025-02-19 22:45:57,534 - INFO - Epoch 199: Loss: 0.600632, Acc: -8517643.750000, ETC: 13.30m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:57,535 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:45:58,174 - INFO - Epoch 200: Loss: 0.600480, Acc: -8524757.812500, ETC: 13.85m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:58,175 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:45:58,880 - INFO - Epoch 201: Loss: 0.600327, Acc: -8530956.250000, ETC: 15.25m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:58,881 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:45:59,497 - INFO - Epoch 202: Loss: 0.600172, Acc: -8536150.000000, ETC: 13.32m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:45:59,498 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:46:00,096 - INFO - Epoch 203: Loss: 0.600015, Acc: -8540297.656250, ETC: 12.89m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:00,097 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:46:00,831 - INFO - Epoch 204: Loss: 0.599856, Acc: -8543735.937500, ETC: 15.81m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:00,832 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:46:01,440 - INFO - Epoch 205: Loss: 0.599695, Acc: -8546702.343750, ETC: 13.11m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:01,441 - INFO - Mejora detectada: nuevo valor 0.5997. Reiniciando contador.
+2025-02-19 22:46:02,038 - INFO - Epoch 206: Loss: 0.599532, Acc: -8549015.625000, ETC: 12.85m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:02,039 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:46:02,698 - INFO - Epoch 207: Loss: 0.599366, Acc: -8550385.937500, ETC: 14.17m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:02,699 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:46:03,306 - INFO - Epoch 208: Loss: 0.599199, Acc: -8550879.687500, ETC: 13.05m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:03,307 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:46:03,987 - INFO - Epoch 209: Loss: 0.599029, Acc: -8550560.156250, ETC: 14.63m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:03,988 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:46:04,673 - INFO - Epoch 210: Loss: 0.598857, Acc: -8549150.000000, ETC: 14.70m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:04,675 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:46:05,507 - INFO - Epoch 211: Loss: 0.598683, Acc: -8546253.125000, ETC: 17.89m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:05,509 - INFO - Mejora detectada: nuevo valor 0.5987. Reiniciando contador.
+2025-02-19 22:46:06,167 - INFO - Epoch 212: Loss: 0.598506, Acc: -8541803.125000, ETC: 14.10m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:06,168 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:46:06,941 - INFO - Epoch 213: Loss: 0.598326, Acc: -8535846.875000, ETC: 16.55m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:06,942 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:46:07,766 - INFO - Epoch 214: Loss: 0.598144, Acc: -8528085.156250, ETC: 17.62m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:07,767 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:46:08,533 - INFO - Epoch 215: Loss: 0.597960, Acc: -8518164.843750, ETC: 16.39m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:08,534 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:46:09,322 - INFO - Epoch 216: Loss: 0.597773, Acc: -8506142.187500, ETC: 16.86m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:09,324 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:46:10,045 - INFO - Epoch 217: Loss: 0.597583, Acc: -8492064.843750, ETC: 15.35m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:10,046 - INFO - Mejora detectada: nuevo valor 0.5976. Reiniciando contador.
+2025-02-19 22:46:10,690 - INFO - Epoch 218: Loss: 0.597391, Acc: -8475781.250000, ETC: 13.72m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:10,691 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:46:11,484 - INFO - Epoch 219: Loss: 0.597196, Acc: -8457163.281250, ETC: 16.92m, w_data: 0.06, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:11,485 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:46:12,171 - INFO - Epoch 220: Loss: 0.596998, Acc: -8436357.031250, ETC: 14.57m, w_data: 0.06, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:12,172 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:46:12,851 - INFO - Epoch 221: Loss: 0.596797, Acc: -8413557.812500, ETC: 14.44m, w_data: 0.06, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:12,851 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:46:13,485 - INFO - Epoch 222: Loss: 0.596593, Acc: -8388750.000000, ETC: 13.48m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:13,486 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:46:14,175 - INFO - Epoch 223: Loss: 0.596387, Acc: -8361992.187500, ETC: 14.62m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:14,176 - INFO - Mejora detectada: nuevo valor 0.5964. Reiniciando contador.
+2025-02-19 22:46:14,944 - INFO - Epoch 224: Loss: 0.596178, Acc: -8333541.406250, ETC: 16.28m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:14,945 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:46:15,655 - INFO - Epoch 225: Loss: 0.595966, Acc: -8303650.000000, ETC: 15.10m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:15,656 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:46:16,306 - INFO - Epoch 226: Loss: 0.595751, Acc: -8272355.468750, ETC: 13.76m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:16,307 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:46:17,105 - INFO - Epoch 227: Loss: 0.595533, Acc: -8239778.125000, ETC: 16.91m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:17,106 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:46:17,723 - INFO - Epoch 228: Loss: 0.595312, Acc: -8206200.781250, ETC: 13.07m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:17,724 - INFO - Mejora detectada: nuevo valor 0.5953. Reiniciando contador.
+2025-02-19 22:46:18,336 - INFO - Epoch 229: Loss: 0.595089, Acc: -8171814.843750, ETC: 12.93m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:18,337 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:46:19,008 - INFO - Epoch 230: Loss: 0.594862, Acc: -8136575.000000, ETC: 14.17m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:19,009 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:46:19,665 - INFO - Epoch 231: Loss: 0.594633, Acc: -8100560.937500, ETC: 13.82m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:19,666 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:46:20,273 - INFO - Epoch 232: Loss: 0.594400, Acc: -8064022.656250, ETC: 12.82m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:20,274 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:46:20,970 - INFO - Epoch 233: Loss: 0.594165, Acc: -8026914.062500, ETC: 14.67m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:20,971 - INFO - Mejora detectada: nuevo valor 0.5942. Reiniciando contador.
+2025-02-19 22:46:21,671 - INFO - Epoch 234: Loss: 0.593926, Acc: -7989117.968750, ETC: 14.75m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:21,672 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:46:22,294 - INFO - Epoch 235: Loss: 0.593685, Acc: -7950746.875000, ETC: 13.11m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:22,295 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:46:22,923 - INFO - Epoch 236: Loss: 0.593441, Acc: -7911879.687500, ETC: 13.20m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:22,924 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:46:23,581 - INFO - Epoch 237: Loss: 0.593193, Acc: -7872321.875000, ETC: 13.83m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:23,585 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:46:24,208 - INFO - Epoch 238: Loss: 0.592943, Acc: -7832047.656250, ETC: 13.08m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:24,208 - INFO - Mejora detectada: nuevo valor 0.5929. Reiniciando contador.
+2025-02-19 22:46:24,838 - INFO - Epoch 239: Loss: 0.592691, Acc: -7791188.281250, ETC: 13.19m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:24,839 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:46:25,491 - INFO - Epoch 240: Loss: 0.592435, Acc: -7749675.781250, ETC: 13.67m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:25,493 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:46:26,134 - INFO - Epoch 241: Loss: 0.592176, Acc: -7707416.406250, ETC: 13.45m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:26,135 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:46:26,777 - INFO - Epoch 242: Loss: 0.591915, Acc: -7664565.625000, ETC: 13.46m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:26,778 - INFO - Mejora detectada: nuevo valor 0.5919. Reiniciando contador.
+2025-02-19 22:46:27,405 - INFO - Epoch 243: Loss: 0.591651, Acc: -7621212.500000, ETC: 13.11m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:27,406 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:46:28,058 - INFO - Epoch 244: Loss: 0.591384, Acc: -7577317.187500, ETC: 13.64m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:28,059 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:46:28,765 - INFO - Epoch 245: Loss: 0.591114, Acc: -7533014.843750, ETC: 14.75m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:28,766 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:46:29,400 - INFO - Epoch 246: Loss: 0.590842, Acc: -7488475.000000, ETC: 13.22m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:29,401 - INFO - Mejora detectada: nuevo valor 0.5908. Reiniciando contador.
+2025-02-19 22:46:30,013 - INFO - Epoch 247: Loss: 0.590567, Acc: -7443800.000000, ETC: 12.77m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:30,014 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:46:30,699 - INFO - Epoch 248: Loss: 0.590290, Acc: -7399070.312500, ETC: 14.27m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:30,700 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:46:31,305 - INFO - Epoch 249: Loss: 0.590011, Acc: -7354453.906250, ETC: 12.59m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:31,306 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:46:31,949 - INFO - Epoch 250: Loss: 0.589729, Acc: -7310134.375000, ETC: 13.38m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:31,950 - INFO - Mejora detectada: nuevo valor 0.5897. Reiniciando contador.
+2025-02-19 22:46:32,589 - INFO - Epoch 251: Loss: 0.589445, Acc: -7266128.125000, ETC: 13.26m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:32,590 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:46:33,233 - INFO - Epoch 252: Loss: 0.589158, Acc: -7222563.281250, ETC: 13.34m, w_data: 0.05, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:33,233 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:46:33,978 - INFO - Epoch 253: Loss: 0.588870, Acc: -7179572.656250, ETC: 15.44m, w_data: 0.06, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:33,979 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:46:34,626 - INFO - Epoch 254: Loss: 0.588580, Acc: -7137154.687500, ETC: 13.42m, w_data: 0.06, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:34,627 - INFO - Mejora detectada: nuevo valor 0.5886. Reiniciando contador.
+2025-02-19 22:46:35,258 - INFO - Epoch 255: Loss: 0.588288, Acc: -7095351.562500, ETC: 13.06m, w_data: 0.06, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:35,259 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:46:35,899 - INFO - Epoch 256: Loss: 0.587995, Acc: -7054233.593750, ETC: 13.26m, w_data: 0.06, w_pde: 0.93, w_bc: 0.02
+2025-02-19 22:46:35,900 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:46:36,531 - INFO - Epoch 257: Loss: 0.587700, Acc: -7013732.812500, ETC: 13.08m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:36,532 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:46:37,136 - INFO - Epoch 258: Loss: 0.587405, Acc: -6973847.656250, ETC: 12.44m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:37,137 - INFO - Mejora detectada: nuevo valor 0.5874. Reiniciando contador.
+2025-02-19 22:46:37,863 - INFO - Epoch 259: Loss: 0.587108, Acc: -6934602.343750, ETC: 15.03m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:37,864 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:46:38,477 - INFO - Epoch 260: Loss: 0.586811, Acc: -6895903.125000, ETC: 12.63m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:38,478 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:46:39,064 - INFO - Epoch 261: Loss: 0.586514, Acc: -6857707.812500, ETC: 12.10m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:39,065 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:46:39,777 - INFO - Epoch 262: Loss: 0.586217, Acc: -6820058.593750, ETC: 14.67m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:39,778 - INFO - Mejora detectada: nuevo valor 0.5862. Reiniciando contador.
+2025-02-19 22:46:40,376 - INFO - Epoch 263: Loss: 0.585920, Acc: -6782829.687500, ETC: 12.27m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:40,377 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:46:40,995 - INFO - Epoch 264: Loss: 0.585625, Acc: -6746048.437500, ETC: 12.70m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:40,996 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:46:41,636 - INFO - Epoch 265: Loss: 0.585331, Acc: -6709674.218750, ETC: 13.18m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:41,637 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:46:42,289 - INFO - Epoch 266: Loss: 0.585038, Acc: -6673617.187500, ETC: 13.39m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:42,290 - INFO - Mejora detectada: nuevo valor 0.5850. Reiniciando contador.
+2025-02-19 22:46:42,920 - INFO - Epoch 267: Loss: 0.584749, Acc: -6637915.625000, ETC: 12.91m, w_data: 0.06, w_pde: 0.92, w_bc: 0.02
+2025-02-19 22:46:42,921 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:46:43,615 - INFO - Epoch 268: Loss: 0.584462, Acc: -6602470.312500, ETC: 14.26m, w_data: 0.06, w_pde: 0.91, w_bc: 0.02
+2025-02-19 22:46:43,616 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:46:44,238 - INFO - Epoch 269: Loss: 0.584178, Acc: -6567234.375000, ETC: 12.75m, w_data: 0.07, w_pde: 0.91, w_bc: 0.02
+2025-02-19 22:46:44,239 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:46:44,935 - INFO - Epoch 270: Loss: 0.583898, Acc: -6532131.640625, ETC: 14.23m, w_data: 0.07, w_pde: 0.91, w_bc: 0.02
+2025-02-19 22:46:44,935 - INFO - Mejora detectada: nuevo valor 0.5839. Reiniciando contador.
+2025-02-19 22:46:45,579 - INFO - Epoch 271: Loss: 0.583624, Acc: -6497053.125000, ETC: 13.15m, w_data: 0.07, w_pde: 0.91, w_bc: 0.02
+2025-02-19 22:46:45,580 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:46:46,197 - INFO - Epoch 272: Loss: 0.583354, Acc: -6461917.187500, ETC: 12.63m, w_data: 0.07, w_pde: 0.91, w_bc: 0.02
+2025-02-19 22:46:46,198 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:46:46,974 - INFO - Epoch 273: Loss: 0.583090, Acc: -6426569.921875, ETC: 15.83m, w_data: 0.07, w_pde: 0.91, w_bc: 0.02
+2025-02-19 22:46:46,975 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:46:47,615 - INFO - Epoch 274: Loss: 0.582832, Acc: -6390849.609375, ETC: 13.06m, w_data: 0.07, w_pde: 0.90, w_bc: 0.02
+2025-02-19 22:46:47,616 - INFO - Mejora detectada: nuevo valor 0.5828. Reiniciando contador.
+2025-02-19 22:46:48,246 - INFO - Epoch 275: Loss: 0.582581, Acc: -6354653.125000, ETC: 12.83m, w_data: 0.07, w_pde: 0.90, w_bc: 0.02
+2025-02-19 22:46:48,248 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:46:49,029 - INFO - Epoch 276: Loss: 0.582337, Acc: -6317753.906250, ETC: 15.93m, w_data: 0.08, w_pde: 0.90, w_bc: 0.02
+2025-02-19 22:46:49,031 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:46:49,723 - INFO - Epoch 277: Loss: 0.582101, Acc: -6280020.312500, ETC: 14.09m, w_data: 0.08, w_pde: 0.90, w_bc: 0.02
+2025-02-19 22:46:49,724 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:46:50,350 - INFO - Epoch 278: Loss: 0.581873, Acc: -6241333.984375, ETC: 12.72m, w_data: 0.08, w_pde: 0.90, w_bc: 0.02
+2025-02-19 22:46:50,351 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:46:51,014 - INFO - Epoch 279: Loss: 0.581653, Acc: -6201455.078125, ETC: 13.50m, w_data: 0.08, w_pde: 0.90, w_bc: 0.02
+2025-02-19 22:46:51,015 - INFO - Mejora detectada: nuevo valor 0.5817. Reiniciando contador.
+2025-02-19 22:46:51,741 - INFO - Epoch 280: Loss: 0.581441, Acc: -6160390.625000, ETC: 14.73m, w_data: 0.08, w_pde: 0.89, w_bc: 0.02
+2025-02-19 22:46:51,742 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:46:52,380 - INFO - Epoch 281: Loss: 0.581238, Acc: -6117976.953125, ETC: 12.94m, w_data: 0.08, w_pde: 0.89, w_bc: 0.03
+2025-02-19 22:46:52,381 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:46:53,025 - INFO - Epoch 282: Loss: 0.581043, Acc: -6074135.937500, ETC: 13.04m, w_data: 0.09, w_pde: 0.89, w_bc: 0.03
+2025-02-19 22:46:53,026 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:46:53,732 - INFO - Epoch 283: Loss: 0.580857, Acc: -6028925.390625, ETC: 14.30m, w_data: 0.09, w_pde: 0.89, w_bc: 0.03
+2025-02-19 22:46:53,733 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:46:54,385 - INFO - Epoch 284: Loss: 0.580679, Acc: -5982244.921875, ETC: 13.21m, w_data: 0.09, w_pde: 0.88, w_bc: 0.03
+2025-02-19 22:46:54,386 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:46:55,052 - INFO - Epoch 285: Loss: 0.580509, Acc: -5934176.953125, ETC: 13.47m, w_data: 0.09, w_pde: 0.88, w_bc: 0.03
+2025-02-19 22:46:55,053 - INFO - Mejora detectada: nuevo valor 0.5805. Reiniciando contador.
+2025-02-19 22:46:55,949 - INFO - Epoch 286: Loss: 0.580346, Acc: -5884841.015625, ETC: 18.09m, w_data: 0.09, w_pde: 0.88, w_bc: 0.03
+2025-02-19 22:46:55,950 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:46:57,041 - INFO - Epoch 287: Loss: 0.580191, Acc: -5834214.843750, ETC: 22.04m, w_data: 0.09, w_pde: 0.88, w_bc: 0.03
+2025-02-19 22:46:57,042 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:46:57,910 - INFO - Epoch 288: Loss: 0.580043, Acc: -5782526.171875, ETC: 17.49m, w_data: 0.10, w_pde: 0.88, w_bc: 0.03
+2025-02-19 22:46:57,911 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:46:58,927 - INFO - Epoch 289: Loss: 0.579902, Acc: -5729873.046875, ETC: 20.48m, w_data: 0.10, w_pde: 0.87, w_bc: 0.03
+2025-02-19 22:46:58,928 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:46:59,659 - INFO - Epoch 290: Loss: 0.579766, Acc: -5676410.156250, ETC: 14.70m, w_data: 0.10, w_pde: 0.87, w_bc: 0.03
+2025-02-19 22:46:59,660 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:47:00,319 - INFO - Epoch 291: Loss: 0.579637, Acc: -5622344.140625, ETC: 13.26m, w_data: 0.10, w_pde: 0.87, w_bc: 0.03
+2025-02-19 22:47:00,320 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:47:00,988 - INFO - Epoch 292: Loss: 0.579513, Acc: -5567902.343750, ETC: 13.44m, w_data: 0.10, w_pde: 0.87, w_bc: 0.03
+2025-02-19 22:47:00,989 - INFO - Sin mejora significativa: contador 7/100.
+2025-02-19 22:47:01,644 - INFO - Epoch 293: Loss: 0.579395, Acc: -5513209.375000, ETC: 13.17m, w_data: 0.10, w_pde: 0.87, w_bc: 0.03
+2025-02-19 22:47:01,645 - INFO - Mejora detectada: nuevo valor 0.5794. Reiniciando contador.
+2025-02-19 22:47:02,283 - INFO - Epoch 294: Loss: 0.579281, Acc: -5458623.437500, ETC: 12.78m, w_data: 0.10, w_pde: 0.87, w_bc: 0.03
+2025-02-19 22:47:02,284 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:47:02,896 - INFO - Epoch 295: Loss: 0.579172, Acc: -5404287.500000, ETC: 12.30m, w_data: 0.10, w_pde: 0.87, w_bc: 0.03
+2025-02-19 22:47:02,897 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:47:03,559 - INFO - Epoch 296: Loss: 0.579068, Acc: -5350477.343750, ETC: 13.24m, w_data: 0.11, w_pde: 0.86, w_bc: 0.03
+2025-02-19 22:47:03,560 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:47:04,165 - INFO - Epoch 297: Loss: 0.578969, Acc: -5297489.453125, ETC: 12.13m, w_data: 0.11, w_pde: 0.86, w_bc: 0.03
+2025-02-19 22:47:04,166 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:47:04,811 - INFO - Epoch 298: Loss: 0.578873, Acc: -5245487.109375, ETC: 12.90m, w_data: 0.11, w_pde: 0.86, w_bc: 0.03
+2025-02-19 22:47:04,812 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:47:05,423 - INFO - Epoch 299: Loss: 0.578782, Acc: -5194812.109375, ETC: 12.19m, w_data: 0.11, w_pde: 0.86, w_bc: 0.03
+2025-02-19 22:47:05,424 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:47:06,101 - INFO - Epoch 300: Loss: 0.578696, Acc: -5145612.500000, ETC: 13.51m, w_data: 0.11, w_pde: 0.86, w_bc: 0.03
+2025-02-19 22:47:06,101 - INFO - Sin mejora significativa: contador 7/100.
+2025-02-19 22:47:06,744 - INFO - Epoch 301: Loss: 0.578613, Acc: -5098126.562500, ETC: 12.81m, w_data: 0.11, w_pde: 0.86, w_bc: 0.03
+2025-02-19 22:47:06,745 - INFO - Sin mejora significativa: contador 8/100.
+2025-02-19 22:47:07,368 - INFO - Epoch 302: Loss: 0.578534, Acc: -5052562.500000, ETC: 12.42m, w_data: 0.11, w_pde: 0.86, w_bc: 0.03
+2025-02-19 22:47:07,369 - INFO - Sin mejora significativa: contador 9/100.
+2025-02-19 22:47:08,006 - INFO - Epoch 303: Loss: 0.578459, Acc: -5008969.531250, ETC: 12.70m, w_data: 0.11, w_pde: 0.86, w_bc: 0.03
+2025-02-19 22:47:08,007 - INFO - Sin mejora significativa: contador 10/100.
+2025-02-19 22:47:08,676 - INFO - Epoch 304: Loss: 0.578388, Acc: -4967628.515625, ETC: 13.32m, w_data: 0.11, w_pde: 0.86, w_bc: 0.03
+2025-02-19 22:47:08,677 - INFO - Mejora detectada: nuevo valor 0.5784. Reiniciando contador.
+2025-02-19 22:47:09,344 - INFO - Epoch 305: Loss: 0.578320, Acc: -4928375.000000, ETC: 13.28m, w_data: 0.11, w_pde: 0.86, w_bc: 0.03
+2025-02-19 22:47:09,345 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:47:09,992 - INFO - Epoch 306: Loss: 0.578255, Acc: -4891526.171875, ETC: 12.83m, w_data: 0.11, w_pde: 0.86, w_bc: 0.03
+2025-02-19 22:47:09,993 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:47:10,690 - INFO - Epoch 307: Loss: 0.578193, Acc: -4856813.671875, ETC: 13.84m, w_data: 0.11, w_pde: 0.86, w_bc: 0.03
+2025-02-19 22:47:10,691 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:47:11,305 - INFO - Epoch 308: Loss: 0.578135, Acc: -4824378.125000, ETC: 12.17m, w_data: 0.11, w_pde: 0.86, w_bc: 0.03
+2025-02-19 22:47:11,306 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:47:11,921 - INFO - Epoch 309: Loss: 0.578079, Acc: -4794114.062500, ETC: 12.19m, w_data: 0.11, w_pde: 0.86, w_bc: 0.03
+2025-02-19 22:47:11,922 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:47:12,616 - INFO - Epoch 310: Loss: 0.578025, Acc: -4765832.421875, ETC: 13.74m, w_data: 0.11, w_pde: 0.86, w_bc: 0.03
+2025-02-19 22:47:12,618 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:47:13,223 - INFO - Epoch 311: Loss: 0.577973, Acc: -4739617.968750, ETC: 11.97m, w_data: 0.11, w_pde: 0.86, w_bc: 0.03
+2025-02-19 22:47:13,224 - INFO - Sin mejora significativa: contador 7/100.
+2025-02-19 22:47:13,954 - INFO - Epoch 312: Loss: 0.577924, Acc: -4715082.031250, ETC: 14.44m, w_data: 0.11, w_pde: 0.86, w_bc: 0.03
+2025-02-19 22:47:13,955 - INFO - Sin mejora significativa: contador 8/100.
+2025-02-19 22:47:14,618 - INFO - Epoch 313: Loss: 0.577877, Acc: -4692374.609375, ETC: 13.06m, w_data: 0.11, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:14,619 - INFO - Sin mejora significativa: contador 9/100.
+2025-02-19 22:47:15,319 - INFO - Epoch 314: Loss: 0.577831, Acc: -4671060.937500, ETC: 13.80m, w_data: 0.11, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:15,320 - INFO - Sin mejora significativa: contador 10/100.
+2025-02-19 22:47:15,983 - INFO - Epoch 315: Loss: 0.577787, Acc: -4651250.000000, ETC: 13.07m, w_data: 0.11, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:15,984 - INFO - Sin mejora significativa: contador 11/100.
+2025-02-19 22:47:16,661 - INFO - Epoch 316: Loss: 0.577744, Acc: -4632578.906250, ETC: 13.36m, w_data: 0.11, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:16,662 - INFO - Sin mejora significativa: contador 12/100.
+2025-02-19 22:47:17,325 - INFO - Epoch 317: Loss: 0.577702, Acc: -4615060.156250, ETC: 13.06m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:17,326 - INFO - Sin mejora significativa: contador 13/100.
+2025-02-19 22:47:17,958 - INFO - Epoch 318: Loss: 0.577662, Acc: -4598465.625000, ETC: 12.42m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:17,958 - INFO - Sin mejora significativa: contador 14/100.
+2025-02-19 22:47:18,602 - INFO - Epoch 319: Loss: 0.577623, Acc: -4582680.468750, ETC: 12.64m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:18,603 - INFO - Sin mejora significativa: contador 15/100.
+2025-02-19 22:47:19,198 - INFO - Epoch 320: Loss: 0.577585, Acc: -4567632.421875, ETC: 11.66m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:19,198 - INFO - Sin mejora significativa: contador 16/100.
+2025-02-19 22:47:19,853 - INFO - Epoch 321: Loss: 0.577548, Acc: -4553107.031250, ETC: 12.85m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:19,854 - INFO - Sin mejora significativa: contador 17/100.
+2025-02-19 22:47:20,614 - INFO - Epoch 322: Loss: 0.577512, Acc: -4539196.093750, ETC: 14.91m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:20,616 - INFO - Sin mejora significativa: contador 18/100.
+2025-02-19 22:47:21,257 - INFO - Epoch 323: Loss: 0.577477, Acc: -4525505.859375, ETC: 12.55m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:21,258 - INFO - Sin mejora significativa: contador 19/100.
+2025-02-19 22:47:21,993 - INFO - Epoch 324: Loss: 0.577442, Acc: -4512414.843750, ETC: 14.40m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:21,994 - INFO - Sin mejora significativa: contador 20/100.
+2025-02-19 22:47:22,644 - INFO - Epoch 325: Loss: 0.577409, Acc: -4499285.156250, ETC: 12.67m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:22,645 - INFO - Sin mejora significativa: contador 21/100.
+2025-02-19 22:47:23,269 - INFO - Epoch 326: Loss: 0.577377, Acc: -4486741.015625, ETC: 12.22m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:23,270 - INFO - Mejora detectada: nuevo valor 0.5774. Reiniciando contador.
+2025-02-19 22:47:23,920 - INFO - Epoch 327: Loss: 0.577345, Acc: -4473935.937500, ETC: 12.68m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:23,921 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:47:24,646 - INFO - Epoch 328: Loss: 0.577314, Acc: -4461781.640625, ETC: 14.15m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:24,647 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:47:25,248 - INFO - Epoch 329: Loss: 0.577284, Acc: -4449146.093750, ETC: 11.69m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:25,249 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:47:25,886 - INFO - Epoch 330: Loss: 0.577255, Acc: -4437248.828125, ETC: 12.42m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:25,887 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:47:26,596 - INFO - Epoch 331: Loss: 0.577226, Acc: -4424621.875000, ETC: 13.80m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:26,597 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:47:27,226 - INFO - Epoch 332: Loss: 0.577198, Acc: -4412930.078125, ETC: 12.25m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:27,227 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:47:27,878 - INFO - Epoch 333: Loss: 0.577170, Acc: -4400098.046875, ETC: 12.44m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:27,880 - INFO - Sin mejora significativa: contador 7/100.
+2025-02-19 22:47:28,652 - INFO - Epoch 334: Loss: 0.577143, Acc: -4388664.453125, ETC: 14.99m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:28,653 - INFO - Sin mejora significativa: contador 8/100.
+2025-02-19 22:47:29,464 - INFO - Epoch 335: Loss: 0.577117, Acc: -4375336.328125, ETC: 15.69m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:29,465 - INFO - Sin mejora significativa: contador 9/100.
+2025-02-19 22:47:30,189 - INFO - Epoch 336: Loss: 0.577091, Acc: -4364295.312500, ETC: 14.04m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:30,191 - INFO - Sin mejora significativa: contador 10/100.
+2025-02-19 22:47:31,099 - INFO - Epoch 337: Loss: 0.577066, Acc: -4350089.062500, ETC: 17.59m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:31,100 - INFO - Sin mejora significativa: contador 11/100.
+2025-02-19 22:47:31,830 - INFO - Epoch 338: Loss: 0.577041, Acc: -4339785.937500, ETC: 14.11m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:31,831 - INFO - Sin mejora significativa: contador 12/100.
+2025-02-19 22:47:32,563 - INFO - Epoch 339: Loss: 0.577017, Acc: -4324044.921875, ETC: 14.12m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:32,564 - INFO - Sin mejora significativa: contador 13/100.
+2025-02-19 22:47:33,381 - INFO - Epoch 340: Loss: 0.576993, Acc: -4315317.578125, ETC: 15.78m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:33,382 - INFO - Sin mejora significativa: contador 14/100.
+2025-02-19 22:47:34,063 - INFO - Epoch 341: Loss: 0.576969, Acc: -4296726.171875, ETC: 13.11m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:34,064 - INFO - Sin mejora significativa: contador 15/100.
+2025-02-19 22:47:34,736 - INFO - Epoch 342: Loss: 0.576946, Acc: -4291458.593750, ETC: 12.93m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:34,736 - INFO - Sin mejora significativa: contador 16/100.
+2025-02-19 22:47:35,453 - INFO - Epoch 343: Loss: 0.576923, Acc: -4267269.531250, ETC: 13.81m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:35,455 - INFO - Sin mejora significativa: contador 17/100.
+2025-02-19 22:47:36,162 - INFO - Epoch 344: Loss: 0.576901, Acc: -4269485.937500, ETC: 13.60m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:36,163 - INFO - Sin mejora significativa: contador 18/100.
+2025-02-19 22:47:36,921 - INFO - Epoch 345: Loss: 0.576879, Acc: -4233763.671875, ETC: 14.58m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:36,922 - INFO - Sin mejora significativa: contador 19/100.
+2025-02-19 22:47:37,653 - INFO - Epoch 346: Loss: 0.576857, Acc: -4252420.312500, ETC: 14.05m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:37,655 - INFO - Sin mejora significativa: contador 20/100.
+2025-02-19 22:47:38,685 - INFO - Epoch 347: Loss: 0.576836, Acc: -4191747.656250, ETC: 19.77m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:38,686 - INFO - Sin mejora significativa: contador 21/100.
+2025-02-19 22:47:39,377 - INFO - Epoch 348: Loss: 0.576815, Acc: -4247275.000000, ETC: 13.24m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:39,378 - INFO - Sin mejora significativa: contador 22/100.
+2025-02-19 22:47:40,171 - INFO - Epoch 349: Loss: 0.576794, Acc: -4130671.093750, ETC: 15.17m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:40,172 - INFO - Sin mejora significativa: contador 23/100.
+2025-02-19 22:47:40,913 - INFO - Epoch 350: Loss: 0.576774, Acc: -4270583.593750, ETC: 14.18m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:40,914 - INFO - Sin mejora significativa: contador 24/100.
+2025-02-19 22:47:41,594 - INFO - Epoch 351: Loss: 0.576754, Acc: -4025231.250000, ETC: 13.01m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:41,595 - INFO - Sin mejora significativa: contador 25/100.
+2025-02-19 22:47:42,227 - INFO - Epoch 352: Loss: 0.576737, Acc: -4360997.656250, ETC: 12.08m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:42,229 - INFO - Sin mejora significativa: contador 26/100.
+2025-02-19 22:47:42,926 - INFO - Epoch 353: Loss: 0.576723, Acc: -3819547.656250, ETC: 13.31m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:42,927 - INFO - Sin mejora significativa: contador 27/100.
+2025-02-19 22:47:43,687 - INFO - Epoch 354: Loss: 0.576717, Acc: -4591067.968750, ETC: 14.47m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:43,688 - INFO - Sin mejora significativa: contador 28/100.
+2025-02-19 22:47:44,408 - INFO - Epoch 355: Loss: 0.576726, Acc: -3445392.968750, ETC: 13.73m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:44,409 - INFO - Sin mejora significativa: contador 29/100.
+2025-02-19 22:47:45,094 - INFO - Epoch 356: Loss: 0.576760, Acc: -4953726.171875, ETC: 13.04m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:45,095 - INFO - Sin mejora significativa: contador 30/100.
+2025-02-19 22:47:45,868 - INFO - Epoch 357: Loss: 0.576813, Acc: -3112954.492188, ETC: 14.71m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:45,869 - INFO - Sin mejora significativa: contador 31/100.
+2025-02-19 22:47:46,601 - INFO - Epoch 358: Loss: 0.576840, Acc: -4936503.906250, ETC: 13.91m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:46,602 - INFO - Sin mejora significativa: contador 32/100.
+2025-02-19 22:47:47,314 - INFO - Epoch 359: Loss: 0.576776, Acc: -3528171.093750, ETC: 13.51m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:47,315 - INFO - Sin mejora significativa: contador 33/100.
+2025-02-19 22:47:48,048 - INFO - Epoch 360: Loss: 0.576645, Acc: -4093360.546875, ETC: 13.91m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:48,049 - INFO - Sin mejora significativa: contador 34/100.
+2025-02-19 22:47:48,705 - INFO - Epoch 361: Loss: 0.576560, Acc: -4436275.390625, ETC: 12.42m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:48,706 - INFO - Sin mejora significativa: contador 35/100.
+2025-02-19 22:47:49,314 - INFO - Epoch 362: Loss: 0.576580, Acc: -3349084.375000, ETC: 11.51m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:49,315 - INFO - Sin mejora significativa: contador 36/100.
+2025-02-19 22:47:49,994 - INFO - Epoch 363: Loss: 0.576630, Acc: -4667821.875000, ETC: 12.82m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:49,995 - INFO - Sin mejora significativa: contador 37/100.
+2025-02-19 22:47:50,679 - INFO - Epoch 364: Loss: 0.576609, Acc: -3599832.031250, ETC: 12.94m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:50,680 - INFO - Sin mejora significativa: contador 38/100.
+2025-02-19 22:47:51,318 - INFO - Epoch 365: Loss: 0.576524, Acc: -3970983.593750, ETC: 12.05m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:51,319 - INFO - Sin mejora significativa: contador 39/100.
+2025-02-19 22:47:52,108 - INFO - Epoch 366: Loss: 0.576469, Acc: -4338832.421875, ETC: 14.89m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:52,109 - INFO - Sin mejora significativa: contador 40/100.
+2025-02-19 22:47:52,978 - INFO - Epoch 367: Loss: 0.576483, Acc: -3413432.812500, ETC: 16.40m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:52,981 - INFO - Sin mejora significativa: contador 41/100.
+2025-02-19 22:47:53,679 - INFO - Epoch 368: Loss: 0.576503, Acc: -4407855.078125, ETC: 13.16m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:53,680 - INFO - Sin mejora significativa: contador 42/100.
+2025-02-19 22:47:54,326 - INFO - Epoch 369: Loss: 0.576466, Acc: -3737708.203125, ETC: 12.16m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:54,328 - INFO - Sin mejora significativa: contador 43/100.
+2025-02-19 22:47:55,026 - INFO - Epoch 370: Loss: 0.576406, Acc: -3783200.390625, ETC: 13.12m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:55,027 - INFO - Sin mejora significativa: contador 44/100.
+2025-02-19 22:47:55,770 - INFO - Epoch 371: Loss: 0.576384, Acc: -4279989.062500, ETC: 13.96m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:55,771 - INFO - Sin mejora significativa: contador 45/100.
+2025-02-19 22:47:56,403 - INFO - Epoch 372: Loss: 0.576394, Acc: -3469037.500000, ETC: 11.83m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:56,403 - INFO - Sin mejora significativa: contador 46/100.
+2025-02-19 22:47:57,166 - INFO - Epoch 373: Loss: 0.576386, Acc: -4164764.453125, ETC: 14.29m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:57,167 - INFO - Sin mejora significativa: contador 47/100.
+2025-02-19 22:47:57,816 - INFO - Epoch 374: Loss: 0.576345, Acc: -3840208.593750, ETC: 12.16m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:57,816 - INFO - Mejora detectada: nuevo valor 0.5763. Reiniciando contador.
+2025-02-19 22:47:58,511 - INFO - Epoch 375: Loss: 0.576308, Acc: -3645414.062500, ETC: 13.01m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:58,512 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:47:59,160 - INFO - Epoch 376: Loss: 0.576301, Acc: -4181397.265625, ETC: 12.13m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:59,162 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:47:59,873 - INFO - Epoch 377: Loss: 0.576299, Acc: -3531601.953125, ETC: 13.29m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:47:59,874 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:48:00,548 - INFO - Epoch 378: Loss: 0.576276, Acc: -3959754.296875, ETC: 12.58m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:00,549 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:48:01,177 - INFO - Epoch 379: Loss: 0.576241, Acc: -3881301.171875, ETC: 11.72m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:01,178 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:48:01,838 - INFO - Epoch 380: Loss: 0.576219, Acc: -3572989.843750, ETC: 12.31m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:01,839 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:48:02,493 - INFO - Epoch 381: Loss: 0.576213, Acc: -4060892.968750, ETC: 12.16m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:02,494 - INFO - Sin mejora significativa: contador 7/100.
+2025-02-19 22:48:03,102 - INFO - Epoch 382: Loss: 0.576200, Acc: -3584964.453125, ETC: 11.30m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:03,103 - INFO - Sin mejora significativa: contador 8/100.
+2025-02-19 22:48:03,798 - INFO - Epoch 383: Loss: 0.576173, Acc: -3813112.890625, ETC: 12.88m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:03,799 - INFO - Sin mejora significativa: contador 9/100.
+2025-02-19 22:48:04,522 - INFO - Epoch 384: Loss: 0.576146, Acc: -3871916.406250, ETC: 13.40m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:04,523 - INFO - Sin mejora significativa: contador 10/100.
+2025-02-19 22:48:05,283 - INFO - Epoch 385: Loss: 0.576131, Acc: -3545190.234375, ETC: 14.11m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:05,284 - INFO - Sin mejora significativa: contador 11/100.
+2025-02-19 22:48:06,080 - INFO - Epoch 386: Loss: 0.576119, Acc: -3944233.593750, ETC: 14.74m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:06,081 - INFO - Sin mejora significativa: contador 12/100.
+2025-02-19 22:48:06,739 - INFO - Epoch 387: Loss: 0.576101, Acc: -3611106.640625, ETC: 12.19m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:06,740 - INFO - Sin mejora significativa: contador 13/100.
+2025-02-19 22:48:07,426 - INFO - Epoch 388: Loss: 0.576076, Acc: -3715423.046875, ETC: 12.69m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:07,427 - INFO - Sin mejora significativa: contador 14/100.
+2025-02-19 22:48:08,155 - INFO - Epoch 389: Loss: 0.576054, Acc: -3826885.156250, ETC: 13.44m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:08,156 - INFO - Sin mejora significativa: contador 15/100.
+2025-02-19 22:48:08,895 - INFO - Epoch 390: Loss: 0.576039, Acc: -3532395.312500, ETC: 13.68m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:08,896 - INFO - Sin mejora significativa: contador 16/100.
+2025-02-19 22:48:09,541 - INFO - Epoch 391: Loss: 0.576024, Acc: -3843191.406250, ETC: 11.88m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:09,542 - INFO - Sin mejora significativa: contador 17/100.
+2025-02-19 22:48:10,148 - INFO - Epoch 392: Loss: 0.576004, Acc: -3608015.625000, ETC: 11.18m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:10,149 - INFO - Sin mejora significativa: contador 18/100.
+2025-02-19 22:48:10,794 - INFO - Epoch 393: Loss: 0.575981, Acc: -3653105.078125, ETC: 11.88m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:10,796 - INFO - Sin mejora significativa: contador 19/100.
+2025-02-19 22:48:11,421 - INFO - Epoch 394: Loss: 0.575961, Acc: -3766866.406250, ETC: 11.52m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:11,422 - INFO - Sin mejora significativa: contador 20/100.
+2025-02-19 22:48:12,139 - INFO - Epoch 395: Loss: 0.575944, Acc: -3523274.609375, ETC: 13.19m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:12,141 - INFO - Sin mejora significativa: contador 21/100.
+2025-02-19 22:48:12,938 - INFO - Epoch 396: Loss: 0.575927, Acc: -3764080.078125, ETC: 14.67m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:12,939 - INFO - Sin mejora significativa: contador 22/100.
+2025-02-19 22:48:13,652 - INFO - Epoch 397: Loss: 0.575906, Acc: -3586188.671875, ETC: 13.07m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:13,653 - INFO - Sin mejora significativa: contador 23/100.
+2025-02-19 22:48:14,649 - INFO - Epoch 398: Loss: 0.575885, Acc: -3614196.093750, ETC: 18.25m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:14,650 - INFO - Sin mejora significativa: contador 24/100.
+2025-02-19 22:48:15,610 - INFO - Epoch 399: Loss: 0.575865, Acc: -3703438.281250, ETC: 17.59m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:15,611 - INFO - Sin mejora significativa: contador 25/100.
+2025-02-19 22:48:16,382 - INFO - Epoch 400: Loss: 0.575847, Acc: -3511932.421875, ETC: 14.11m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:16,383 - INFO - Sin mejora significativa: contador 26/100.
+2025-02-19 22:48:17,054 - INFO - Epoch 401: Loss: 0.575828, Acc: -3700824.609375, ETC: 12.27m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:17,055 - INFO - Sin mejora significativa: contador 27/100.
+2025-02-19 22:48:17,882 - INFO - Epoch 402: Loss: 0.575808, Acc: -3551907.812500, ETC: 15.08m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:17,883 - INFO - Sin mejora significativa: contador 28/100.
+2025-02-19 22:48:18,553 - INFO - Epoch 403: Loss: 0.575787, Acc: -3586889.453125, ETC: 12.21m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:18,554 - INFO - Sin mejora significativa: contador 29/100.
+2025-02-19 22:48:19,243 - INFO - Epoch 404: Loss: 0.575766, Acc: -3639783.593750, ETC: 12.56m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:19,244 - INFO - Sin mejora significativa: contador 30/100.
+2025-02-19 22:48:19,944 - INFO - Epoch 405: Loss: 0.575747, Acc: -3498802.343750, ETC: 12.73m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:19,945 - INFO - Sin mejora significativa: contador 31/100.
+2025-02-19 22:48:20,673 - INFO - Epoch 406: Loss: 0.575728, Acc: -3647816.796875, ETC: 13.28m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:20,674 - INFO - Sin mejora significativa: contador 32/100.
+2025-02-19 22:48:21,314 - INFO - Epoch 407: Loss: 0.575707, Acc: -3514253.906250, ETC: 11.65m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:21,315 - INFO - Sin mejora significativa: contador 33/100.
+2025-02-19 22:48:22,043 - INFO - Epoch 408: Loss: 0.575686, Acc: -3567257.031250, ETC: 13.22m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:22,044 - INFO - Sin mejora significativa: contador 34/100.
+2025-02-19 22:48:22,763 - INFO - Epoch 409: Loss: 0.575665, Acc: -3579305.859375, ETC: 13.04m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:22,774 - INFO - Sin mejora significativa: contador 35/100.
+2025-02-19 22:48:23,427 - INFO - Epoch 410: Loss: 0.575645, Acc: -3488314.453125, ETC: 11.83m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:23,428 - INFO - Sin mejora significativa: contador 36/100.
+2025-02-19 22:48:24,182 - INFO - Epoch 411: Loss: 0.575625, Acc: -3599518.359375, ETC: 13.65m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:24,183 - INFO - Sin mejora significativa: contador 37/100.
+2025-02-19 22:48:24,947 - INFO - Epoch 412: Loss: 0.575604, Acc: -3479234.765625, ETC: 13.86m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:24,948 - INFO - Sin mejora significativa: contador 38/100.
+2025-02-19 22:48:25,631 - INFO - Epoch 413: Loss: 0.575583, Acc: -3549223.828125, ETC: 12.34m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:25,632 - INFO - Sin mejora significativa: contador 39/100.
+2025-02-19 22:48:26,277 - INFO - Epoch 414: Loss: 0.575561, Acc: -3520994.921875, ETC: 11.63m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:26,278 - INFO - Sin mejora significativa: contador 40/100.
+2025-02-19 22:48:26,925 - INFO - Epoch 415: Loss: 0.575540, Acc: -3480118.359375, ETC: 11.68m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:26,926 - INFO - Sin mejora significativa: contador 41/100.
+2025-02-19 22:48:27,609 - INFO - Epoch 416: Loss: 0.575519, Acc: -3548721.093750, ETC: 12.30m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:27,610 - INFO - Sin mejora significativa: contador 42/100.
+2025-02-19 22:48:28,229 - INFO - Epoch 417: Loss: 0.575498, Acc: -3450308.593750, ETC: 11.15m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:28,230 - INFO - Sin mejora significativa: contador 43/100.
+2025-02-19 22:48:28,913 - INFO - Epoch 418: Loss: 0.575476, Acc: -3526617.187500, ETC: 12.32m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:28,915 - INFO - Sin mejora significativa: contador 44/100.
+2025-02-19 22:48:29,612 - INFO - Epoch 419: Loss: 0.575455, Acc: -3467292.578125, ETC: 12.57m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:29,613 - INFO - Sin mejora significativa: contador 45/100.
+2025-02-19 22:48:30,273 - INFO - Epoch 420: Loss: 0.575433, Acc: -3473767.968750, ETC: 11.85m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:30,274 - INFO - Sin mejora significativa: contador 46/100.
+2025-02-19 22:48:30,953 - INFO - Epoch 421: Loss: 0.575411, Acc: -3494377.343750, ETC: 12.20m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:30,954 - INFO - Sin mejora significativa: contador 47/100.
+2025-02-19 22:48:31,649 - INFO - Epoch 422: Loss: 0.575389, Acc: -3432325.390625, ETC: 12.46m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:31,651 - INFO - Sin mejora significativa: contador 48/100.
+2025-02-19 22:48:32,376 - INFO - Epoch 423: Loss: 0.575367, Acc: -3495141.406250, ETC: 12.99m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:32,377 - INFO - Sin mejora significativa: contador 49/100.
+2025-02-19 22:48:33,062 - INFO - Epoch 424: Loss: 0.575345, Acc: -3424518.750000, ETC: 12.28m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:33,063 - INFO - Mejora detectada: nuevo valor 0.5753. Reiniciando contador.
+2025-02-19 22:48:33,757 - INFO - Epoch 425: Loss: 0.575322, Acc: -3464442.578125, ETC: 12.40m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:33,758 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:48:34,495 - INFO - Epoch 426: Loss: 0.575299, Acc: -3439489.062500, ETC: 13.18m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:34,496 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:48:35,105 - INFO - Epoch 427: Loss: 0.575277, Acc: -3423933.593750, ETC: 10.87m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:35,106 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:48:35,745 - INFO - Epoch 428: Loss: 0.575254, Acc: -3451241.796875, ETC: 11.38m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:35,746 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:48:36,386 - INFO - Epoch 429: Loss: 0.575231, Acc: -3397499.218750, ETC: 11.41m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:36,387 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:48:37,030 - INFO - Epoch 430: Loss: 0.575208, Acc: -3442942.187500, ETC: 11.44m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:37,031 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:48:37,746 - INFO - Epoch 431: Loss: 0.575185, Acc: -3392685.156250, ETC: 12.72m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:37,747 - INFO - Sin mejora significativa: contador 7/100.
+2025-02-19 22:48:38,408 - INFO - Epoch 432: Loss: 0.575161, Acc: -3416612.890625, ETC: 11.75m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:38,409 - INFO - Sin mejora significativa: contador 8/100.
+2025-02-19 22:48:39,137 - INFO - Epoch 433: Loss: 0.575138, Acc: -3399920.312500, ETC: 12.91m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:39,138 - INFO - Sin mejora significativa: contador 9/100.
+2025-02-19 22:48:39,782 - INFO - Epoch 434: Loss: 0.575114, Acc: -3386223.046875, ETC: 11.41m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:39,782 - INFO - Sin mejora significativa: contador 10/100.
+2025-02-19 22:48:40,393 - INFO - Epoch 435: Loss: 0.575090, Acc: -3404169.921875, ETC: 10.84m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:40,394 - INFO - Sin mejora significativa: contador 11/100.
+2025-02-19 22:48:41,080 - INFO - Epoch 436: Loss: 0.575066, Acc: -3364705.859375, ETC: 12.13m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:41,081 - INFO - Sin mejora significativa: contador 12/100.
+2025-02-19 22:48:41,774 - INFO - Epoch 437: Loss: 0.575042, Acc: -3396418.359375, ETC: 12.23m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:41,775 - INFO - Sin mejora significativa: contador 13/100.
+2025-02-19 22:48:42,507 - INFO - Epoch 438: Loss: 0.575018, Acc: -3356048.828125, ETC: 12.94m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:42,508 - INFO - Sin mejora significativa: contador 14/100.
+2025-02-19 22:48:43,140 - INFO - Epoch 439: Loss: 0.574994, Acc: -3377392.578125, ETC: 11.14m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:43,141 - INFO - Sin mejora significativa: contador 15/100.
+2025-02-19 22:48:43,882 - INFO - Epoch 440: Loss: 0.574969, Acc: -3355743.750000, ETC: 13.08m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:43,883 - INFO - Sin mejora significativa: contador 16/100.
+2025-02-19 22:48:44,509 - INFO - Epoch 441: Loss: 0.574945, Acc: -3353969.921875, ETC: 11.02m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:44,510 - INFO - Sin mejora significativa: contador 17/100.
+2025-02-19 22:48:45,125 - INFO - Epoch 442: Loss: 0.574920, Acc: -3356072.656250, ETC: 10.83m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:45,126 - INFO - Sin mejora significativa: contador 18/100.
+2025-02-19 22:48:45,758 - INFO - Epoch 443: Loss: 0.574895, Acc: -3333445.312500, ETC: 11.14m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:45,759 - INFO - Sin mejora significativa: contador 19/100.
+2025-02-19 22:48:46,419 - INFO - Epoch 444: Loss: 0.574870, Acc: -3351285.156250, ETC: 11.57m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:46,420 - INFO - Sin mejora significativa: contador 20/100.
+2025-02-19 22:48:47,041 - INFO - Epoch 445: Loss: 0.574845, Acc: -3319509.375000, ETC: 10.93m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:47,042 - INFO - Sin mejora significativa: contador 21/100.
+2025-02-19 22:48:47,704 - INFO - Epoch 446: Loss: 0.574820, Acc: -3339853.125000, ETC: 11.60m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:47,705 - INFO - Sin mejora significativa: contador 22/100.
+2025-02-19 22:48:48,332 - INFO - Epoch 447: Loss: 0.574794, Acc: -3311753.125000, ETC: 10.98m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:48,333 - INFO - Sin mejora significativa: contador 23/100.
+2025-02-19 22:48:48,961 - INFO - Epoch 448: Loss: 0.574769, Acc: -3323644.531250, ETC: 10.98m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:48,962 - INFO - Sin mejora significativa: contador 24/100.
+2025-02-19 22:48:49,608 - INFO - Epoch 449: Loss: 0.574743, Acc: -3307303.125000, ETC: 11.28m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:49,608 - INFO - Sin mejora significativa: contador 25/100.
+2025-02-19 22:48:50,224 - INFO - Epoch 450: Loss: 0.574717, Acc: -3305930.468750, ETC: 10.74m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:50,225 - INFO - Sin mejora significativa: contador 26/100.
+2025-02-19 22:48:50,968 - INFO - Epoch 451: Loss: 0.574691, Acc: -3302969.921875, ETC: 12.95m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:50,969 - INFO - Sin mejora significativa: contador 27/100.
+2025-02-19 22:48:51,629 - INFO - Epoch 452: Loss: 0.574665, Acc: -3289422.265625, ETC: 11.52m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:51,630 - INFO - Sin mejora significativa: contador 28/100.
+2025-02-19 22:48:52,271 - INFO - Epoch 453: Loss: 0.574639, Acc: -3296693.750000, ETC: 11.17m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:52,272 - INFO - Sin mejora significativa: contador 29/100.
+2025-02-19 22:48:52,959 - INFO - Epoch 454: Loss: 0.574613, Acc: -3275498.828125, ETC: 11.96m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:52,961 - INFO - Sin mejora significativa: contador 30/100.
+2025-02-19 22:48:53,635 - INFO - Epoch 455: Loss: 0.574586, Acc: -3287769.921875, ETC: 11.73m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:53,636 - INFO - Sin mejora significativa: contador 31/100.
+2025-02-19 22:48:54,283 - INFO - Epoch 456: Loss: 0.574560, Acc: -3264238.476562, ETC: 11.24m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:54,285 - INFO - Sin mejora significativa: contador 32/100.
+2025-02-19 22:48:54,952 - INFO - Epoch 457: Loss: 0.574533, Acc: -3276630.468750, ETC: 11.59m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:54,953 - INFO - Sin mejora significativa: contador 33/100.
+2025-02-19 22:48:55,620 - INFO - Epoch 458: Loss: 0.574506, Acc: -3254920.312500, ETC: 11.55m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:55,621 - INFO - Sin mejora significativa: contador 34/100.
+2025-02-19 22:48:56,223 - INFO - Epoch 459: Loss: 0.574479, Acc: -3264134.570312, ETC: 10.44m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:56,224 - INFO - Sin mejora significativa: contador 35/100.
+2025-02-19 22:48:56,875 - INFO - Epoch 460: Loss: 0.574452, Acc: -3246618.945312, ETC: 11.27m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:56,875 - INFO - Sin mejora significativa: contador 36/100.
+2025-02-19 22:48:57,518 - INFO - Epoch 461: Loss: 0.574425, Acc: -3251161.523438, ETC: 11.12m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:57,519 - INFO - Sin mejora significativa: contador 37/100.
+2025-02-19 22:48:58,137 - INFO - Epoch 462: Loss: 0.574398, Acc: -3238580.273438, ETC: 10.65m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:58,138 - INFO - Sin mejora significativa: contador 38/100.
+2025-02-19 22:48:58,878 - INFO - Epoch 463: Loss: 0.574370, Acc: -3238330.468750, ETC: 12.75m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:58,879 - INFO - Sin mejora significativa: contador 39/100.
+2025-02-19 22:48:59,530 - INFO - Epoch 464: Loss: 0.574343, Acc: -3230368.750000, ETC: 11.22m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:48:59,531 - INFO - Mejora detectada: nuevo valor 0.5743. Reiniciando contador.
+2025-02-19 22:49:00,188 - INFO - Epoch 465: Loss: 0.574315, Acc: -3225919.726562, ETC: 11.32m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:00,188 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:49:00,832 - INFO - Epoch 466: Loss: 0.574287, Acc: -3221850.781250, ETC: 11.06m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:00,833 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:49:01,496 - INFO - Epoch 467: Loss: 0.574259, Acc: -3213964.453125, ETC: 11.39m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:01,496 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:49:02,147 - INFO - Epoch 468: Loss: 0.574231, Acc: -3213100.000000, ETC: 11.18m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:02,148 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:49:02,882 - INFO - Epoch 469: Loss: 0.574203, Acc: -3202336.718750, ETC: 12.60m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:02,883 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:49:03,618 - INFO - Epoch 470: Loss: 0.574175, Acc: -3204313.281250, ETC: 12.58m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:03,619 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:49:04,241 - INFO - Epoch 471: Loss: 0.574147, Acc: -3190799.414062, ETC: 10.66m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:04,241 - INFO - Sin mejora significativa: contador 7/100.
+2025-02-19 22:49:04,883 - INFO - Epoch 472: Loss: 0.574118, Acc: -3195763.281250, ETC: 10.97m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:04,884 - INFO - Sin mejora significativa: contador 8/100.
+2025-02-19 22:49:05,649 - INFO - Epoch 473: Loss: 0.574090, Acc: -3179036.523438, ETC: 13.07m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:05,651 - INFO - Sin mejora significativa: contador 9/100.
+2025-02-19 22:49:06,378 - INFO - Epoch 474: Loss: 0.574061, Acc: -3187836.328125, ETC: 12.40m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:06,378 - INFO - Sin mejora significativa: contador 10/100.
+2025-02-19 22:49:07,051 - INFO - Epoch 475: Loss: 0.574033, Acc: -3166609.570312, ETC: 11.47m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:07,051 - INFO - Sin mejora significativa: contador 11/100.
+2025-02-19 22:49:07,719 - INFO - Epoch 476: Loss: 0.574004, Acc: -3181083.007812, ETC: 11.39m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:07,720 - INFO - Sin mejora significativa: contador 12/100.
+2025-02-19 22:49:08,391 - INFO - Epoch 477: Loss: 0.573975, Acc: -3152834.179688, ETC: 11.44m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:08,392 - INFO - Sin mejora significativa: contador 13/100.
+2025-02-19 22:49:09,169 - INFO - Epoch 478: Loss: 0.573946, Acc: -3176405.078125, ETC: 13.22m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:09,171 - INFO - Sin mejora significativa: contador 14/100.
+2025-02-19 22:49:09,904 - INFO - Epoch 479: Loss: 0.573917, Acc: -3136541.796875, ETC: 12.45m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:09,906 - INFO - Sin mejora significativa: contador 15/100.
+2025-02-19 22:49:10,607 - INFO - Epoch 480: Loss: 0.573888, Acc: -3175373.828125, ETC: 11.90m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:10,608 - INFO - Sin mejora significativa: contador 16/100.
+2025-02-19 22:49:11,383 - INFO - Epoch 481: Loss: 0.573859, Acc: -3115602.734375, ETC: 13.13m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:11,385 - INFO - Sin mejora significativa: contador 17/100.
+2025-02-19 22:49:12,270 - INFO - Epoch 482: Loss: 0.573830, Acc: -3180897.070312, ETC: 15.00m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:12,271 - INFO - Sin mejora significativa: contador 18/100.
+2025-02-19 22:49:12,957 - INFO - Epoch 483: Loss: 0.573801, Acc: -3085990.820312, ETC: 11.60m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:12,958 - INFO - Sin mejora significativa: contador 19/100.
+2025-02-19 22:49:13,629 - INFO - Epoch 484: Loss: 0.573772, Acc: -3198572.460938, ETC: 11.33m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:13,630 - INFO - Sin mejora significativa: contador 20/100.
+2025-02-19 22:49:14,272 - INFO - Epoch 485: Loss: 0.573743, Acc: -3039906.054688, ETC: 10.85m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:14,273 - INFO - Sin mejora significativa: contador 21/100.
+2025-02-19 22:49:14,955 - INFO - Epoch 486: Loss: 0.573714, Acc: -3239382.421875, ETC: 11.51m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:14,956 - INFO - Sin mejora significativa: contador 22/100.
+2025-02-19 22:49:15,890 - INFO - Epoch 487: Loss: 0.573686, Acc: -2961940.039062, ETC: 15.77m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:15,891 - INFO - Sin mejora significativa: contador 23/100.
+2025-02-19 22:49:16,606 - INFO - Epoch 488: Loss: 0.573659, Acc: -3324956.640625, ETC: 12.04m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:16,606 - INFO - Sin mejora significativa: contador 24/100.
+2025-02-19 22:49:17,352 - INFO - Epoch 489: Loss: 0.573635, Acc: -2822007.812500, ETC: 12.53m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:17,353 - INFO - Sin mejora significativa: contador 25/100.
+2025-02-19 22:49:18,117 - INFO - Epoch 490: Loss: 0.573614, Acc: -3496319.921875, ETC: 12.85m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:18,118 - INFO - Sin mejora significativa: contador 26/100.
+2025-02-19 22:49:18,784 - INFO - Epoch 491: Loss: 0.573601, Acc: -2566946.679688, ETC: 11.18m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:18,785 - INFO - Sin mejora significativa: contador 27/100.
+2025-02-19 22:49:19,435 - INFO - Epoch 492: Loss: 0.573603, Acc: -3815372.656250, ETC: 10.89m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:19,436 - INFO - Sin mejora significativa: contador 28/100.
+2025-02-19 22:49:20,117 - INFO - Epoch 493: Loss: 0.573628, Acc: -2144298.437500, ETC: 11.41m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:20,118 - INFO - Sin mejora significativa: contador 29/100.
+2025-02-19 22:49:20,898 - INFO - Epoch 494: Loss: 0.573688, Acc: -4277403.515625, ETC: 13.07m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:20,899 - INFO - Sin mejora significativa: contador 30/100.
+2025-02-19 22:49:21,598 - INFO - Epoch 495: Loss: 0.573778, Acc: -1715976.562500, ETC: 11.69m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:21,599 - INFO - Sin mejora significativa: contador 31/100.
+2025-02-19 22:49:22,235 - INFO - Epoch 496: Loss: 0.573859, Acc: -4456006.640625, ETC: 10.64m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:22,236 - INFO - Sin mejora significativa: contador 32/100.
+2025-02-19 22:49:22,880 - INFO - Epoch 497: Loss: 0.573825, Acc: -1997216.210938, ETC: 10.74m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:22,881 - INFO - Sin mejora significativa: contador 33/100.
+2025-02-19 22:49:23,672 - INFO - Epoch 498: Loss: 0.573637, Acc: -3643150.390625, ETC: 13.18m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:23,673 - INFO - Sin mejora significativa: contador 34/100.
+2025-02-19 22:49:24,340 - INFO - Epoch 499: Loss: 0.573399, Acc: -3186991.406250, ETC: 11.09m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:24,341 - INFO - Sin mejora significativa: contador 35/100.
+2025-02-19 22:49:24,976 - INFO - Epoch 500: Loss: 0.573301, Acc: -2433481.054688, ETC: 10.57m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:24,977 - INFO - Mejora detectada: nuevo valor 0.5733. Reiniciando contador.
+2025-02-19 22:49:25,645 - INFO - Epoch 501: Loss: 0.573369, Acc: -4031491.406250, ETC: 11.11m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:25,647 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:49:26,422 - INFO - Epoch 502: Loss: 0.573452, Acc: -2153292.578125, ETC: 12.88m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:26,423 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:49:27,136 - INFO - Epoch 503: Loss: 0.573408, Acc: -3634320.312500, ETC: 11.83m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:27,137 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:49:27,975 - INFO - Epoch 504: Loss: 0.573256, Acc: -3021030.273438, ETC: 13.88m, w_data: 0.12, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:27,978 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:49:28,898 - INFO - Epoch 505: Loss: 0.573153, Acc: -2611883.984375, ETC: 15.22m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:28,899 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:49:29,738 - INFO - Epoch 506: Loss: 0.573169, Acc: -3770846.093750, ETC: 13.87m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:29,740 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:49:30,556 - INFO - Epoch 507: Loss: 0.573215, Acc: -2344633.789062, ETC: 13.47m, w_data: 0.12, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:30,557 - INFO - Sin mejora significativa: contador 7/100.
+2025-02-19 22:49:31,431 - INFO - Epoch 508: Loss: 0.573179, Acc: -3452593.359375, ETC: 14.41m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:31,434 - INFO - Sin mejora significativa: contador 8/100.
+2025-02-19 22:49:32,381 - INFO - Epoch 509: Loss: 0.573075, Acc: -3046476.562500, ETC: 15.64m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:32,382 - INFO - Sin mejora significativa: contador 9/100.
+2025-02-19 22:49:33,101 - INFO - Epoch 510: Loss: 0.573006, Acc: -2646323.046875, ETC: 11.83m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:33,103 - INFO - Sin mejora significativa: contador 10/100.
+2025-02-19 22:49:33,923 - INFO - Epoch 511: Loss: 0.573012, Acc: -3600036.718750, ETC: 13.48m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:33,924 - INFO - Sin mejora significativa: contador 11/100.
+2025-02-19 22:49:34,886 - INFO - Epoch 512: Loss: 0.573025, Acc: -2501759.570312, ETC: 15.85m, w_data: 0.12, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:34,888 - INFO - Sin mejora significativa: contador 12/100.
+2025-02-19 22:49:35,679 - INFO - Epoch 513: Loss: 0.572982, Acc: -3284298.046875, ETC: 12.96m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:35,680 - INFO - Sin mejora significativa: contador 13/100.
+2025-02-19 22:49:36,371 - INFO - Epoch 514: Loss: 0.572906, Acc: -3083620.312500, ETC: 11.32m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:36,372 - INFO - Sin mejora significativa: contador 14/100.
+2025-02-19 22:49:36,997 - INFO - Epoch 515: Loss: 0.572862, Acc: -2668421.093750, ETC: 10.23m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:36,997 - INFO - Sin mejora significativa: contador 15/100.
+2025-02-19 22:49:37,653 - INFO - Epoch 516: Loss: 0.572859, Acc: -3464418.359375, ETC: 10.73m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:37,654 - INFO - Sin mejora significativa: contador 16/100.
+2025-02-19 22:49:38,381 - INFO - Epoch 517: Loss: 0.572852, Acc: -2625175.976562, ETC: 11.91m, w_data: 0.12, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:38,384 - INFO - Sin mejora significativa: contador 17/100.
+2025-02-19 22:49:39,048 - INFO - Epoch 518: Loss: 0.572808, Acc: -3167746.679688, ETC: 10.85m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:39,049 - INFO - Sin mejora significativa: contador 18/100.
+2025-02-19 22:49:39,685 - INFO - Epoch 519: Loss: 0.572752, Acc: -3097200.195312, ETC: 10.36m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:39,685 - INFO - Sin mejora significativa: contador 19/100.
+2025-02-19 22:49:40,311 - INFO - Epoch 520: Loss: 0.572719, Acc: -2706686.523438, ETC: 10.22m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:40,312 - INFO - Sin mejora significativa: contador 20/100.
+2025-02-19 22:49:40,958 - INFO - Epoch 521: Loss: 0.572708, Acc: -3354205.468750, ETC: 10.52m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:40,959 - INFO - Sin mejora significativa: contador 21/100.
+2025-02-19 22:49:41,595 - INFO - Epoch 522: Loss: 0.572690, Acc: -2711156.835938, ETC: 10.34m, w_data: 0.12, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:41,596 - INFO - Sin mejora significativa: contador 22/100.
+2025-02-19 22:49:42,225 - INFO - Epoch 523: Loss: 0.572650, Acc: -3096240.039062, ETC: 10.23m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:42,226 - INFO - Sin mejora significativa: contador 23/100.
+2025-02-19 22:49:42,840 - INFO - Epoch 524: Loss: 0.572605, Acc: -3077078.906250, ETC: 9.99m, w_data: 0.12, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:42,841 - INFO - Sin mejora significativa: contador 24/100.
+2025-02-19 22:49:43,532 - INFO - Epoch 525: Loss: 0.572576, Acc: -2745436.523438, ETC: 11.21m, w_data: 0.12, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:43,533 - INFO - Sin mejora significativa: contador 25/100.
+2025-02-19 22:49:44,240 - INFO - Epoch 526: Loss: 0.572559, Acc: -3256888.281250, ETC: 11.44m, w_data: 0.12, w_pde: 0.85, w_bc: 0.03
+2025-02-19 22:49:44,240 - INFO - Sin mejora significativa: contador 26/100.
+2025-02-19 22:49:44,858 - INFO - Epoch 527: Loss: 0.572536, Acc: -2754227.734375, ETC: 9.99m, w_data: 0.12, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:44,859 - INFO - Sin mejora significativa: contador 27/100.
+2025-02-19 22:49:45,534 - INFO - Epoch 528: Loss: 0.572501, Acc: -3052951.953125, ETC: 10.89m, w_data: 0.12, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:45,535 - INFO - Sin mejora significativa: contador 28/100.
+2025-02-19 22:49:46,185 - INFO - Epoch 529: Loss: 0.572464, Acc: -3030510.156250, ETC: 10.50m, w_data: 0.12, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:46,186 - INFO - Sin mejora significativa: contador 29/100.
+2025-02-19 22:49:46,852 - INFO - Epoch 530: Loss: 0.572435, Acc: -2781411.914062, ETC: 10.74m, w_data: 0.12, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:46,853 - INFO - Sin mejora significativa: contador 30/100.
+2025-02-19 22:49:47,485 - INFO - Epoch 531: Loss: 0.572414, Acc: -3175047.070312, ETC: 10.18m, w_data: 0.12, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:47,486 - INFO - Sin mejora significativa: contador 31/100.
+2025-02-19 22:49:48,157 - INFO - Epoch 532: Loss: 0.572390, Acc: -2772964.062500, ETC: 10.82m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:48,158 - INFO - Sin mejora significativa: contador 32/100.
+2025-02-19 22:49:48,803 - INFO - Epoch 533: Loss: 0.572358, Acc: -3034143.554688, ETC: 10.40m, w_data: 0.12, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:48,804 - INFO - Sin mejora significativa: contador 33/100.
+2025-02-19 22:49:49,466 - INFO - Epoch 534: Loss: 0.572325, Acc: -2976304.296875, ETC: 10.64m, w_data: 0.12, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:49,467 - INFO - Sin mejora significativa: contador 34/100.
+2025-02-19 22:49:50,091 - INFO - Epoch 535: Loss: 0.572296, Acc: -2820507.031250, ETC: 10.00m, w_data: 0.12, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:50,092 - INFO - Mejora detectada: nuevo valor 0.5723. Reiniciando contador.
+2025-02-19 22:49:50,750 - INFO - Epoch 536: Loss: 0.572272, Acc: -3107704.492188, ETC: 10.55m, w_data: 0.12, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:50,751 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:49:51,415 - INFO - Epoch 537: Loss: 0.572248, Acc: -2783575.976562, ETC: 10.64m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:51,415 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:49:52,027 - INFO - Epoch 538: Loss: 0.572220, Acc: -3028561.523438, ETC: 9.79m, w_data: 0.12, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:52,028 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:49:52,665 - INFO - Epoch 539: Loss: 0.572189, Acc: -2921544.921875, ETC: 10.19m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:52,666 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:49:53,359 - INFO - Epoch 540: Loss: 0.572160, Acc: -2861342.187500, ETC: 11.09m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:53,360 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:49:53,976 - INFO - Epoch 541: Loss: 0.572135, Acc: -3044185.546875, ETC: 9.81m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:53,977 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:49:54,611 - INFO - Epoch 542: Loss: 0.572110, Acc: -2794463.476562, ETC: 10.11m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:54,612 - INFO - Sin mejora significativa: contador 7/100.
+2025-02-19 22:49:55,217 - INFO - Epoch 543: Loss: 0.572084, Acc: -3021154.687500, ETC: 9.63m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:55,218 - INFO - Sin mejora significativa: contador 8/100.
+2025-02-19 22:49:55,864 - INFO - Epoch 544: Loss: 0.572056, Acc: -2869533.593750, ETC: 10.28m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:55,865 - INFO - Sin mejora significativa: contador 9/100.
+2025-02-19 22:49:56,488 - INFO - Epoch 545: Loss: 0.572028, Acc: -2899642.578125, ETC: 9.90m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:56,489 - INFO - Sin mejora significativa: contador 10/100.
+2025-02-19 22:49:57,105 - INFO - Epoch 546: Loss: 0.572002, Acc: -2976241.992188, ETC: 9.79m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:57,106 - INFO - Sin mejora significativa: contador 11/100.
+2025-02-19 22:49:57,692 - INFO - Epoch 547: Loss: 0.571976, Acc: -2812507.031250, ETC: 9.27m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:57,693 - INFO - Sin mejora significativa: contador 12/100.
+2025-02-19 22:49:58,399 - INFO - Epoch 548: Loss: 0.571952, Acc: -2999464.453125, ETC: 11.19m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:58,400 - INFO - Sin mejora significativa: contador 13/100.
+2025-02-19 22:49:59,015 - INFO - Epoch 549: Loss: 0.571926, Acc: -2828498.437500, ETC: 9.73m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:59,016 - INFO - Sin mejora significativa: contador 14/100.
+2025-02-19 22:49:59,627 - INFO - Epoch 550: Loss: 0.571899, Acc: -2929341.406250, ETC: 9.65m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:49:59,628 - INFO - Sin mejora significativa: contador 15/100.
+2025-02-19 22:50:00,233 - INFO - Epoch 551: Loss: 0.571873, Acc: -2905139.062500, ETC: 9.56m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:00,234 - INFO - Sin mejora significativa: contador 16/100.
+2025-02-19 22:50:00,865 - INFO - Epoch 552: Loss: 0.571847, Acc: -2842246.484375, ETC: 9.98m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:00,866 - INFO - Sin mejora significativa: contador 17/100.
+2025-02-19 22:50:01,488 - INFO - Epoch 553: Loss: 0.571823, Acc: -2956696.093750, ETC: 9.79m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:01,489 - INFO - Sin mejora significativa: contador 18/100.
+2025-02-19 22:50:02,117 - INFO - Epoch 554: Loss: 0.571798, Acc: -2810737.500000, ETC: 9.87m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:02,118 - INFO - Sin mejora significativa: contador 19/100.
+2025-02-19 22:50:02,750 - INFO - Epoch 555: Loss: 0.571773, Acc: -2939957.421875, ETC: 9.94m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:02,751 - INFO - Sin mejora significativa: contador 20/100.
+2025-02-19 22:50:03,387 - INFO - Epoch 556: Loss: 0.571748, Acc: -2843396.484375, ETC: 10.01m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:03,388 - INFO - Sin mejora significativa: contador 21/100.
+2025-02-19 22:50:04,024 - INFO - Epoch 557: Loss: 0.571723, Acc: -2878069.921875, ETC: 9.98m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:04,025 - INFO - Sin mejora significativa: contador 22/100.
+2025-02-19 22:50:04,664 - INFO - Epoch 558: Loss: 0.571698, Acc: -2895582.226562, ETC: 10.01m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:04,665 - INFO - Sin mejora significativa: contador 23/100.
+2025-02-19 22:50:05,319 - INFO - Epoch 559: Loss: 0.571674, Acc: -2823607.812500, ETC: 10.24m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:05,319 - INFO - Sin mejora significativa: contador 24/100.
+2025-02-19 22:50:05,939 - INFO - Epoch 560: Loss: 0.571650, Acc: -2919128.320312, ETC: 9.70m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:05,940 - INFO - Sin mejora significativa: contador 25/100.
+2025-02-19 22:50:06,544 - INFO - Epoch 561: Loss: 0.571626, Acc: -2810175.195312, ETC: 9.43m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:06,545 - INFO - Sin mejora significativa: contador 26/100.
+2025-02-19 22:50:07,153 - INFO - Epoch 562: Loss: 0.571603, Acc: -2899113.085938, ETC: 9.49m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:07,154 - INFO - Sin mejora significativa: contador 27/100.
+2025-02-19 22:50:07,782 - INFO - Epoch 563: Loss: 0.571579, Acc: -2833436.914062, ETC: 9.78m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:07,783 - INFO - Sin mejora significativa: contador 28/100.
+2025-02-19 22:50:08,431 - INFO - Epoch 564: Loss: 0.571555, Acc: -2854524.804688, ETC: 10.12m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:08,432 - INFO - Sin mejora significativa: contador 29/100.
+2025-02-19 22:50:09,060 - INFO - Epoch 565: Loss: 0.571531, Acc: -2865444.921875, ETC: 9.74m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:09,061 - INFO - Sin mejora significativa: contador 30/100.
+2025-02-19 22:50:09,678 - INFO - Epoch 566: Loss: 0.571508, Acc: -2815235.156250, ETC: 9.59m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:09,679 - INFO - Sin mejora significativa: contador 31/100.
+2025-02-19 22:50:10,276 - INFO - Epoch 567: Loss: 0.571485, Acc: -2880208.203125, ETC: 9.27m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:10,277 - INFO - Sin mejora significativa: contador 32/100.
+2025-02-19 22:50:10,938 - INFO - Epoch 568: Loss: 0.571462, Acc: -2799724.414062, ETC: 10.26m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:10,938 - INFO - Sin mejora significativa: contador 33/100.
+2025-02-19 22:50:11,563 - INFO - Epoch 569: Loss: 0.571439, Acc: -2869178.320312, ETC: 9.68m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:11,565 - INFO - Sin mejora significativa: contador 34/100.
+2025-02-19 22:50:12,429 - INFO - Epoch 570: Loss: 0.571417, Acc: -2807376.171875, ETC: 13.36m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:12,430 - INFO - Sin mejora significativa: contador 35/100.
+2025-02-19 22:50:13,101 - INFO - Epoch 571: Loss: 0.571394, Acc: -2840805.468750, ETC: 10.35m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:13,101 - INFO - Sin mejora significativa: contador 36/100.
+2025-02-19 22:50:13,787 - INFO - Epoch 572: Loss: 0.571372, Acc: -2824959.179688, ETC: 10.61m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:13,788 - INFO - Sin mejora significativa: contador 37/100.
+2025-02-19 22:50:14,656 - INFO - Epoch 573: Loss: 0.571349, Acc: -2810207.031250, ETC: 13.39m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:14,657 - INFO - Sin mejora significativa: contador 38/100.
+2025-02-19 22:50:15,444 - INFO - Epoch 574: Loss: 0.571327, Acc: -2838038.085938, ETC: 12.15m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:15,445 - INFO - Sin mejora significativa: contador 39/100.
+2025-02-19 22:50:16,090 - INFO - Epoch 575: Loss: 0.571306, Acc: -2789067.578125, ETC: 9.91m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:16,091 - INFO - Sin mejora significativa: contador 40/100.
+2025-02-19 22:50:16,740 - INFO - Epoch 576: Loss: 0.571284, Acc: -2838752.539062, ETC: 9.97m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:16,741 - INFO - Mejora detectada: nuevo valor 0.5713. Reiniciando contador.
+2025-02-19 22:50:17,356 - INFO - Epoch 577: Loss: 0.571262, Acc: -2781116.210938, ETC: 9.45m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:17,357 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:50:17,958 - INFO - Epoch 578: Loss: 0.571241, Acc: -2827144.335938, ETC: 9.21m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:17,959 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:50:18,557 - INFO - Epoch 579: Loss: 0.571220, Acc: -2783351.171875, ETC: 9.18m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:18,558 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:50:19,177 - INFO - Epoch 580: Loss: 0.571199, Acc: -2808282.031250, ETC: 9.45m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:19,178 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:50:19,849 - INFO - Epoch 581: Loss: 0.571178, Acc: -2789750.585938, ETC: 10.19m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:19,850 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:50:21,217 - INFO - Epoch 582: Loss: 0.571157, Acc: -2788142.187500, ETC: 20.90m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:21,220 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:50:22,288 - INFO - Epoch 583: Loss: 0.571136, Acc: -2794878.515625, ETC: 16.29m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:22,289 - INFO - Sin mejora significativa: contador 7/100.
+2025-02-19 22:50:22,926 - INFO - Epoch 584: Loss: 0.571116, Acc: -2770958.203125, ETC: 9.72m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:22,927 - INFO - Sin mejora significativa: contador 8/100.
+2025-02-19 22:50:23,569 - INFO - Epoch 585: Loss: 0.571095, Acc: -2795692.968750, ETC: 9.77m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:23,569 - INFO - Sin mejora significativa: contador 9/100.
+2025-02-19 22:50:24,189 - INFO - Epoch 586: Loss: 0.571075, Acc: -2758386.718750, ETC: 9.44m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:24,190 - INFO - Sin mejora significativa: contador 10/100.
+2025-02-19 22:50:24,849 - INFO - Epoch 587: Loss: 0.571055, Acc: -2791647.265625, ETC: 10.02m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:24,850 - INFO - Sin mejora significativa: contador 11/100.
+2025-02-19 22:50:25,506 - INFO - Epoch 588: Loss: 0.571036, Acc: -2750107.421875, ETC: 9.96m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:25,507 - INFO - Sin mejora significativa: contador 12/100.
+2025-02-19 22:50:26,136 - INFO - Epoch 589: Loss: 0.571016, Acc: -2783785.742188, ETC: 9.54m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:26,137 - INFO - Sin mejora significativa: contador 13/100.
+2025-02-19 22:50:26,811 - INFO - Epoch 590: Loss: 0.570996, Acc: -2744776.757812, ETC: 10.20m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:26,812 - INFO - Sin mejora significativa: contador 14/100.
+2025-02-19 22:50:27,483 - INFO - Epoch 591: Loss: 0.570977, Acc: -2773728.710938, ETC: 10.16m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:27,484 - INFO - Sin mejora significativa: contador 15/100.
+2025-02-19 22:50:28,085 - INFO - Epoch 592: Loss: 0.570958, Acc: -2740883.593750, ETC: 9.06m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:28,086 - INFO - Sin mejora significativa: contador 16/100.
+2025-02-19 22:50:28,752 - INFO - Epoch 593: Loss: 0.570939, Acc: -2762945.312500, ETC: 10.06m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:28,753 - INFO - Sin mejora significativa: contador 17/100.
+2025-02-19 22:50:29,397 - INFO - Epoch 594: Loss: 0.570920, Acc: -2737209.570312, ETC: 9.71m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:29,398 - INFO - Sin mejora significativa: contador 18/100.
+2025-02-19 22:50:30,010 - INFO - Epoch 595: Loss: 0.570901, Acc: -2752378.515625, ETC: 9.21m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:30,011 - INFO - Sin mejora significativa: contador 19/100.
+2025-02-19 22:50:30,667 - INFO - Epoch 596: Loss: 0.570883, Acc: -2733048.828125, ETC: 9.88m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:30,668 - INFO - Sin mejora significativa: contador 20/100.
+2025-02-19 22:50:31,277 - INFO - Epoch 597: Loss: 0.570864, Acc: -2742438.085938, ETC: 9.15m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:31,278 - INFO - Sin mejora significativa: contador 21/100.
+2025-02-19 22:50:31,903 - INFO - Epoch 598: Loss: 0.570846, Acc: -2728116.015625, ETC: 9.37m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:31,904 - INFO - Sin mejora significativa: contador 22/100.
+2025-02-19 22:50:32,542 - INFO - Epoch 599: Loss: 0.570828, Acc: -2733248.046875, ETC: 9.57m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:32,543 - INFO - Sin mejora significativa: contador 23/100.
+2025-02-19 22:50:33,175 - INFO - Epoch 600: Loss: 0.570810, Acc: -2722361.914062, ETC: 9.47m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:33,176 - INFO - Sin mejora significativa: contador 24/100.
+2025-02-19 22:50:33,860 - INFO - Epoch 601: Loss: 0.570792, Acc: -2724771.484375, ETC: 10.24m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:33,861 - INFO - Sin mejora significativa: contador 25/100.
+2025-02-19 22:50:34,501 - INFO - Epoch 602: Loss: 0.570774, Acc: -2715908.984375, ETC: 9.56m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:34,502 - INFO - Sin mejora significativa: contador 26/100.
+2025-02-19 22:50:35,094 - INFO - Epoch 603: Loss: 0.570757, Acc: -2716866.210938, ETC: 8.85m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:35,095 - INFO - Sin mejora significativa: contador 27/100.
+2025-02-19 22:50:35,751 - INFO - Epoch 604: Loss: 0.570740, Acc: -2708872.070312, ETC: 9.77m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:35,752 - INFO - Sin mejora significativa: contador 28/100.
+2025-02-19 22:50:36,426 - INFO - Epoch 605: Loss: 0.570722, Acc: -2709426.562500, ETC: 10.04m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:36,427 - INFO - Sin mejora significativa: contador 29/100.
+2025-02-19 22:50:37,034 - INFO - Epoch 606: Loss: 0.570705, Acc: -2701285.937500, ETC: 9.04m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:37,035 - INFO - Sin mejora significativa: contador 30/100.
+2025-02-19 22:50:37,712 - INFO - Epoch 607: Loss: 0.570688, Acc: -2702448.437500, ETC: 10.07m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:37,713 - INFO - Sin mejora significativa: contador 31/100.
+2025-02-19 22:50:38,362 - INFO - Epoch 608: Loss: 0.570672, Acc: -2693071.679688, ETC: 9.61m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:38,363 - INFO - Sin mejora significativa: contador 32/100.
+2025-02-19 22:50:38,995 - INFO - Epoch 609: Loss: 0.570655, Acc: -2696079.492188, ETC: 9.38m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:38,996 - INFO - Sin mejora significativa: contador 33/100.
+2025-02-19 22:50:39,653 - INFO - Epoch 610: Loss: 0.570639, Acc: -2684015.234375, ETC: 9.72m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:39,654 - INFO - Sin mejora significativa: contador 34/100.
+2025-02-19 22:50:40,333 - INFO - Epoch 611: Loss: 0.570622, Acc: -2690694.726562, ETC: 10.04m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:40,334 - INFO - Sin mejora significativa: contador 35/100.
+2025-02-19 22:50:41,006 - INFO - Epoch 612: Loss: 0.570606, Acc: -2673582.031250, ETC: 9.79m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:41,007 - INFO - Sin mejora significativa: contador 36/100.
+2025-02-19 22:50:41,641 - INFO - Epoch 613: Loss: 0.570590, Acc: -2687115.429688, ETC: 9.37m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:41,642 - INFO - Sin mejora significativa: contador 37/100.
+2025-02-19 22:50:42,282 - INFO - Epoch 614: Loss: 0.570574, Acc: -2660638.281250, ETC: 9.42m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:42,283 - INFO - Sin mejora significativa: contador 38/100.
+2025-02-19 22:50:42,954 - INFO - Epoch 615: Loss: 0.570558, Acc: -2686961.914062, ETC: 9.88m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:42,955 - INFO - Sin mejora significativa: contador 39/100.
+2025-02-19 22:50:43,720 - INFO - Epoch 616: Loss: 0.570543, Acc: -2642825.585938, ETC: 11.27m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:43,721 - INFO - Sin mejora significativa: contador 40/100.
+2025-02-19 22:50:44,509 - INFO - Epoch 617: Loss: 0.570528, Acc: -2693598.828125, ETC: 11.57m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:44,510 - INFO - Sin mejora significativa: contador 41/100.
+2025-02-19 22:50:45,188 - INFO - Epoch 618: Loss: 0.570512, Acc: -2615291.015625, ETC: 9.94m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:45,189 - INFO - Sin mejora significativa: contador 42/100.
+2025-02-19 22:50:45,875 - INFO - Epoch 619: Loss: 0.570497, Acc: -2714074.218750, ETC: 10.07m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:45,876 - INFO - Sin mejora significativa: contador 43/100.
+2025-02-19 22:50:46,589 - INFO - Epoch 620: Loss: 0.570483, Acc: -2567687.304688, ETC: 10.44m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:46,590 - INFO - Sin mejora significativa: contador 44/100.
+2025-02-19 22:50:47,230 - INFO - Epoch 621: Loss: 0.570469, Acc: -2763528.710938, ETC: 9.36m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:47,231 - INFO - Sin mejora significativa: contador 45/100.
+2025-02-19 22:50:47,887 - INFO - Epoch 622: Loss: 0.570455, Acc: -2477683.007812, ETC: 9.59m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:47,888 - INFO - Sin mejora significativa: contador 46/100.
+2025-02-19 22:50:48,613 - INFO - Epoch 623: Loss: 0.570444, Acc: -2875000.781250, ETC: 10.58m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:48,614 - INFO - Sin mejora significativa: contador 47/100.
+2025-02-19 22:50:49,280 - INFO - Epoch 624: Loss: 0.570437, Acc: -2296561.914062, ETC: 9.70m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:49,281 - INFO - Sin mejora significativa: contador 48/100.
+2025-02-19 22:50:49,995 - INFO - Epoch 625: Loss: 0.570436, Acc: -3119831.835938, ETC: 10.42m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:49,996 - INFO - Sin mejora significativa: contador 49/100.
+2025-02-19 22:50:50,648 - INFO - Epoch 626: Loss: 0.570452, Acc: -1922797.070312, ETC: 9.47m, w_data: 0.13, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:50:50,649 - INFO - Sin mejora significativa: contador 50/100.
+2025-02-19 22:50:51,337 - INFO - Epoch 627: Loss: 0.570500, Acc: -3634211.328125, ETC: 10.01m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:51,338 - INFO - Sin mejora significativa: contador 51/100.
+2025-02-19 22:50:52,023 - INFO - Epoch 628: Loss: 0.570612, Acc: -1204083.203125, ETC: 9.93m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:50:52,024 - INFO - Sin mejora significativa: contador 52/100.
+2025-02-19 22:50:52,675 - INFO - Epoch 629: Loss: 0.570840, Acc: -4507626.171875, ETC: 9.41m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:52,676 - INFO - Sin mejora significativa: contador 53/100.
+2025-02-19 22:50:53,341 - INFO - Epoch 630: Loss: 0.571201, Acc: -579708.935547, ETC: 9.64m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:50:53,342 - INFO - Sin mejora significativa: contador 54/100.
+2025-02-19 22:50:53,968 - INFO - Epoch 631: Loss: 0.571603, Acc: -4918854.687500, ETC: 9.04m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:53,969 - INFO - Sin mejora significativa: contador 55/100.
+2025-02-19 22:50:54,610 - INFO - Epoch 632: Loss: 0.571604, Acc: -1005931.738281, ETC: 9.28m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:50:54,611 - INFO - Sin mejora significativa: contador 56/100.
+2025-02-19 22:50:55,229 - INFO - Epoch 633: Loss: 0.571033, Acc: -3183855.664062, ETC: 8.89m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:55,229 - INFO - Sin mejora significativa: contador 57/100.
+2025-02-19 22:50:55,854 - INFO - Epoch 634: Loss: 0.570388, Acc: -3400149.609375, ETC: 9.01m, w_data: 0.13, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:50:55,855 - INFO - Sin mejora significativa: contador 58/100.
+2025-02-19 22:50:56,490 - INFO - Epoch 635: Loss: 0.570402, Acc: -1120229.394531, ETC: 9.13m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:50:56,491 - INFO - Sin mejora significativa: contador 59/100.
+2025-02-19 22:50:57,122 - INFO - Epoch 636: Loss: 0.570828, Acc: -4230684.375000, ETC: 9.07m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:50:57,123 - INFO - Sin mejora significativa: contador 60/100.
+2025-02-19 22:50:57,736 - INFO - Epoch 637: Loss: 0.570887, Acc: -1768958.007812, ETC: 8.82m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:50:57,737 - INFO - Sin mejora significativa: contador 61/100.
+2025-02-19 22:50:58,452 - INFO - Epoch 638: Loss: 0.570494, Acc: -2437271.484375, ETC: 10.26m, w_data: 0.13, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:50:58,453 - INFO - Sin mejora significativa: contador 62/100.
+2025-02-19 22:50:59,132 - INFO - Epoch 639: Loss: 0.570278, Acc: -3677007.421875, ETC: 9.73m, w_data: 0.13, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:50:59,133 - INFO - Mejora detectada: nuevo valor 0.5703. Reiniciando contador.
+2025-02-19 22:50:59,746 - INFO - Epoch 640: Loss: 0.570476, Acc: -1345436.035156, ETC: 8.77m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:50:59,747 - INFO - Sin mejora significativa: contador 1/100.
+2025-02-19 22:51:00,360 - INFO - Epoch 641: Loss: 0.570594, Acc: -3379937.890625, ETC: 8.79m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:51:00,361 - INFO - Sin mejora significativa: contador 2/100.
+2025-02-19 22:51:01,050 - INFO - Epoch 642: Loss: 0.570388, Acc: -2703873.437500, ETC: 9.83m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:01,051 - INFO - Sin mejora significativa: contador 3/100.
+2025-02-19 22:51:01,798 - INFO - Epoch 643: Loss: 0.570247, Acc: -1786330.859375, ETC: 10.65m, w_data: 0.13, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:01,800 - INFO - Sin mejora significativa: contador 4/100.
+2025-02-19 22:51:02,539 - INFO - Epoch 644: Loss: 0.570346, Acc: -3575314.062500, ETC: 10.54m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:51:02,540 - INFO - Sin mejora significativa: contador 5/100.
+2025-02-19 22:51:03,217 - INFO - Epoch 645: Loss: 0.570386, Acc: -2013844.140625, ETC: 9.64m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:03,218 - INFO - Sin mejora significativa: contador 6/100.
+2025-02-19 22:51:03,908 - INFO - Epoch 646: Loss: 0.570258, Acc: -2458753.710938, ETC: 9.78m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:51:03,909 - INFO - Sin mejora significativa: contador 7/100.
+2025-02-19 22:51:04,551 - INFO - Epoch 647: Loss: 0.570203, Acc: -3238941.210938, ETC: 9.12m, w_data: 0.13, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:04,552 - INFO - Sin mejora significativa: contador 8/100.
+2025-02-19 22:51:05,157 - INFO - Epoch 648: Loss: 0.570270, Acc: -1821909.179688, ETC: 8.56m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:05,157 - INFO - Sin mejora significativa: contador 9/100.
+2025-02-19 22:51:05,854 - INFO - Epoch 649: Loss: 0.570252, Acc: -2946363.671875, ETC: 9.88m, w_data: 0.13, w_pde: 0.84, w_bc: 0.03
+2025-02-19 22:51:05,855 - INFO - Sin mejora significativa: contador 10/100.
+2025-02-19 22:51:06,519 - INFO - Epoch 650: Loss: 0.570153, Acc: -2745137.304688, ETC: 9.37m, w_data: 0.13, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:06,520 - INFO - Sin mejora significativa: contador 11/100.
+2025-02-19 22:51:07,180 - INFO - Epoch 651: Loss: 0.570152, Acc: -2016050.195312, ETC: 9.33m, w_data: 0.13, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:07,181 - INFO - Sin mejora significativa: contador 12/100.
+2025-02-19 22:51:07,940 - INFO - Epoch 652: Loss: 0.570205, Acc: -3113406.835938, ETC: 10.73m, w_data: 0.13, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:07,941 - INFO - Sin mejora significativa: contador 13/100.
+2025-02-19 22:51:08,586 - INFO - Epoch 653: Loss: 0.570159, Acc: -2362532.031250, ETC: 9.09m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:08,587 - INFO - Sin mejora significativa: contador 14/100.
+2025-02-19 22:51:09,223 - INFO - Epoch 654: Loss: 0.570081, Acc: -2346321.484375, ETC: 8.94m, w_data: 0.13, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:09,224 - INFO - Sin mejora significativa: contador 15/100.
+2025-02-19 22:51:09,852 - INFO - Epoch 655: Loss: 0.570098, Acc: -3016556.835938, ETC: 8.83m, w_data: 0.13, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:09,853 - INFO - Sin mejora significativa: contador 16/100.
+2025-02-19 22:51:10,498 - INFO - Epoch 656: Loss: 0.570138, Acc: -2171767.968750, ETC: 9.07m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:10,499 - INFO - Sin mejora significativa: contador 17/100.
+2025-02-19 22:51:11,155 - INFO - Epoch 657: Loss: 0.570092, Acc: -2620997.265625, ETC: 9.19m, w_data: 0.13, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:11,166 - INFO - Sin mejora significativa: contador 18/100.
+2025-02-19 22:51:11,787 - INFO - Epoch 658: Loss: 0.570032, Acc: -2783552.539062, ETC: 8.68m, w_data: 0.13, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:11,787 - INFO - Sin mejora significativa: contador 19/100.
+2025-02-19 22:51:12,422 - INFO - Epoch 659: Loss: 0.570047, Acc: -2146492.968750, ETC: 8.88m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:12,422 - INFO - Sin mejora significativa: contador 20/100.
+2025-02-19 22:51:13,070 - INFO - Epoch 660: Loss: 0.570073, Acc: -2780632.031250, ETC: 9.06m, w_data: 0.13, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:13,071 - INFO - Sin mejora significativa: contador 21/100.
+2025-02-19 22:51:13,721 - INFO - Epoch 661: Loss: 0.570038, Acc: -2523301.171875, ETC: 9.07m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:13,721 - INFO - Sin mejora significativa: contador 22/100.
+2025-02-19 22:51:14,353 - INFO - Epoch 662: Loss: 0.569996, Acc: -2246166.406250, ETC: 8.80m, w_data: 0.13, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:14,354 - INFO - Sin mejora significativa: contador 23/100.
+2025-02-19 22:51:15,006 - INFO - Epoch 663: Loss: 0.570002, Acc: -2825355.078125, ETC: 9.08m, w_data: 0.13, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:15,007 - INFO - Sin mejora significativa: contador 24/100.
+2025-02-19 22:51:15,649 - INFO - Epoch 664: Loss: 0.570013, Acc: -2305600.976562, ETC: 8.95m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:15,650 - INFO - Sin mejora significativa: contador 25/100.
+2025-02-19 22:51:16,265 - INFO - Epoch 665: Loss: 0.569989, Acc: -2434931.445312, ETC: 8.54m, w_data: 0.13, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:16,266 - INFO - Sin mejora significativa: contador 26/100.
+2025-02-19 22:51:16,902 - INFO - Epoch 666: Loss: 0.569964, Acc: -2741270.703125, ETC: 8.82m, w_data: 0.13, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:16,903 - INFO - Sin mejora significativa: contador 27/100.
+2025-02-19 22:51:17,570 - INFO - Epoch 667: Loss: 0.569964, Acc: -2193341.992188, ETC: 9.26m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:17,571 - INFO - Sin mejora significativa: contador 28/100.
+2025-02-19 22:51:18,183 - INFO - Epoch 668: Loss: 0.569963, Acc: -2638302.929688, ETC: 8.45m, w_data: 0.13, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:18,184 - INFO - Sin mejora significativa: contador 29/100.
+2025-02-19 22:51:18,834 - INFO - Epoch 669: Loss: 0.569943, Acc: -2537971.679688, ETC: 9.01m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:18,835 - INFO - Sin mejora significativa: contador 30/100.
+2025-02-19 22:51:19,492 - INFO - Epoch 670: Loss: 0.569929, Acc: -2243815.820312, ETC: 9.09m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:19,493 - INFO - Sin mejora significativa: contador 31/100.
+2025-02-19 22:51:20,138 - INFO - Epoch 671: Loss: 0.569930, Acc: -2733579.687500, ETC: 8.91m, w_data: 0.13, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:20,139 - INFO - Sin mejora significativa: contador 32/100.
+2025-02-19 22:51:20,773 - INFO - Epoch 672: Loss: 0.569924, Acc: -2317265.820312, ETC: 8.73m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:20,773 - INFO - Sin mejora significativa: contador 33/100.
+2025-02-19 22:51:21,409 - INFO - Epoch 673: Loss: 0.569905, Acc: -2429793.750000, ETC: 8.75m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:21,411 - INFO - Sin mejora significativa: contador 34/100.
+2025-02-19 22:51:22,060 - INFO - Epoch 674: Loss: 0.569893, Acc: -2644178.710938, ETC: 8.94m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:22,061 - INFO - Sin mejora significativa: contador 35/100.
+2025-02-19 22:51:22,703 - INFO - Epoch 675: Loss: 0.569893, Acc: -2229188.085938, ETC: 8.81m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:22,703 - INFO - Sin mejora significativa: contador 36/100.
+2025-02-19 22:51:23,339 - INFO - Epoch 676: Loss: 0.569889, Acc: -2599537.500000, ETC: 8.71m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:23,340 - INFO - Sin mejora significativa: contador 37/100.
+2025-02-19 22:51:24,001 - INFO - Epoch 677: Loss: 0.569874, Acc: -2444045.312500, ETC: 9.07m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:24,002 - INFO - Sin mejora significativa: contador 38/100.
+2025-02-19 22:51:24,639 - INFO - Epoch 678: Loss: 0.569861, Acc: -2316594.335938, ETC: 8.71m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:24,639 - INFO - Sin mejora significativa: contador 39/100.
+2025-02-19 22:51:25,262 - INFO - Epoch 679: Loss: 0.569857, Acc: -2612939.843750, ETC: 8.50m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:25,263 - INFO - Sin mejora significativa: contador 40/100.
+2025-02-19 22:51:25,878 - INFO - Epoch 680: Loss: 0.569853, Acc: -2302317.773438, ETC: 8.39m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:25,879 - INFO - Sin mejora significativa: contador 41/100.
+2025-02-19 22:51:26,533 - INFO - Epoch 681: Loss: 0.569843, Acc: -2455485.546875, ETC: 8.92m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:26,535 - INFO - Sin mejora significativa: contador 42/100.
+2025-02-19 22:51:27,171 - INFO - Epoch 682: Loss: 0.569833, Acc: -2498506.250000, ETC: 8.65m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:27,172 - INFO - Sin mejora significativa: contador 43/100.
+2025-02-19 22:51:27,789 - INFO - Epoch 683: Loss: 0.569827, Acc: -2296260.546875, ETC: 8.41m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:27,790 - INFO - Sin mejora significativa: contador 44/100.
+2025-02-19 22:51:28,428 - INFO - Epoch 684: Loss: 0.569822, Acc: -2516817.773438, ETC: 8.64m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:28,429 - INFO - Sin mejora significativa: contador 45/100.
+2025-02-19 22:51:29,077 - INFO - Epoch 685: Loss: 0.569812, Acc: -2384793.554688, ETC: 8.79m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:29,078 - INFO - Sin mejora significativa: contador 46/100.
+2025-02-19 22:51:29,697 - INFO - Epoch 686: Loss: 0.569803, Acc: -2359605.273438, ETC: 8.38m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:29,698 - INFO - Sin mejora significativa: contador 47/100.
+2025-02-19 22:51:30,324 - INFO - Epoch 687: Loss: 0.569797, Acc: -2500152.734375, ETC: 8.48m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:30,325 - INFO - Sin mejora significativa: contador 48/100.
+2025-02-19 22:51:30,950 - INFO - Epoch 688: Loss: 0.569793, Acc: -2322630.273438, ETC: 8.43m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:30,951 - INFO - Sin mejora significativa: contador 49/100.
+2025-02-19 22:51:31,604 - INFO - Epoch 689: Loss: 0.569786, Acc: -2428755.664062, ETC: 8.82m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:31,605 - INFO - Sin mejora significativa: contador 50/100.
+2025-02-19 22:51:32,212 - INFO - Epoch 690: Loss: 0.569777, Acc: -2437961.718750, ETC: 8.18m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:32,213 - INFO - Sin mejora significativa: contador 51/100.
+2025-02-19 22:51:32,829 - INFO - Epoch 691: Loss: 0.569770, Acc: -2311228.710938, ETC: 8.30m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:32,830 - INFO - Sin mejora significativa: contador 52/100.
+2025-02-19 22:51:33,509 - INFO - Epoch 692: Loss: 0.569764, Acc: -2476634.960938, ETC: 9.13m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:33,509 - INFO - Sin mejora significativa: contador 53/100.
+2025-02-19 22:51:34,127 - INFO - Epoch 693: Loss: 0.569758, Acc: -2340391.992188, ETC: 8.30m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:34,128 - INFO - Sin mejora significativa: contador 54/100.
+2025-02-19 22:51:34,758 - INFO - Epoch 694: Loss: 0.569750, Acc: -2372718.164062, ETC: 8.44m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:34,759 - INFO - Sin mejora significativa: contador 55/100.
+2025-02-19 22:51:35,401 - INFO - Epoch 695: Loss: 0.569744, Acc: -2438809.179688, ETC: 8.60m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:35,402 - INFO - Sin mejora significativa: contador 56/100.
+2025-02-19 22:51:36,030 - INFO - Epoch 696: Loss: 0.569738, Acc: -2295619.921875, ETC: 8.39m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:36,031 - INFO - Sin mejora significativa: contador 57/100.
+2025-02-19 22:51:36,660 - INFO - Epoch 697: Loss: 0.569733, Acc: -2435754.492188, ETC: 8.41m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:36,661 - INFO - Sin mejora significativa: contador 58/100.
+2025-02-19 22:51:37,276 - INFO - Epoch 698: Loss: 0.569726, Acc: -2342204.492188, ETC: 8.21m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:37,277 - INFO - Sin mejora significativa: contador 59/100.
+2025-02-19 22:51:37,916 - INFO - Epoch 699: Loss: 0.569720, Acc: -2345582.812500, ETC: 8.52m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:37,917 - INFO - Sin mejora significativa: contador 60/100.
+2025-02-19 22:51:38,570 - INFO - Epoch 700: Loss: 0.569714, Acc: -2406070.507812, ETC: 8.69m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:38,571 - INFO - Sin mejora significativa: contador 61/100.
+2025-02-19 22:51:39,172 - INFO - Epoch 701: Loss: 0.569708, Acc: -2307184.570312, ETC: 7.98m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:39,172 - INFO - Sin mejora significativa: contador 62/100.
+2025-02-19 22:51:39,809 - INFO - Epoch 702: Loss: 0.569702, Acc: -2380961.328125, ETC: 8.47m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:39,810 - INFO - Sin mejora significativa: contador 63/100.
+2025-02-19 22:51:40,485 - INFO - Epoch 703: Loss: 0.569696, Acc: -2351870.312500, ETC: 8.95m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:40,486 - INFO - Sin mejora significativa: contador 64/100.
+2025-02-19 22:51:41,156 - INFO - Epoch 704: Loss: 0.569690, Acc: -2313828.515625, ETC: 8.86m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:41,157 - INFO - Sin mejora significativa: contador 65/100.
+2025-02-19 22:51:41,797 - INFO - Epoch 705: Loss: 0.569685, Acc: -2384036.523438, ETC: 8.46m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:41,797 - INFO - Sin mejora significativa: contador 66/100.
+2025-02-19 22:51:42,474 - INFO - Epoch 706: Loss: 0.569680, Acc: -2302803.906250, ETC: 8.93m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:42,474 - INFO - Sin mejora significativa: contador 67/100.
+2025-02-19 22:51:43,095 - INFO - Epoch 707: Loss: 0.569674, Acc: -2346371.093750, ETC: 8.19m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:43,096 - INFO - Sin mejora significativa: contador 68/100.
+2025-02-19 22:51:43,778 - INFO - Epoch 708: Loss: 0.569669, Acc: -2345448.046875, ETC: 8.99m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:43,779 - INFO - Sin mejora significativa: contador 69/100.
+2025-02-19 22:51:44,383 - INFO - Epoch 709: Loss: 0.569663, Acc: -2292019.531250, ETC: 7.95m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:44,384 - INFO - Sin mejora significativa: contador 70/100.
+2025-02-19 22:51:45,016 - INFO - Epoch 710: Loss: 0.569658, Acc: -2365549.218750, ETC: 8.29m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:45,016 - INFO - Sin mejora significativa: contador 71/100.
+2025-02-19 22:51:45,639 - INFO - Epoch 711: Loss: 0.569653, Acc: -2285803.906250, ETC: 8.18m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:45,640 - INFO - Sin mejora significativa: contador 72/100.
+2025-02-19 22:51:46,260 - INFO - Epoch 712: Loss: 0.569648, Acc: -2333239.453125, ETC: 8.13m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:46,261 - INFO - Sin mejora significativa: contador 73/100.
+2025-02-19 22:51:46,903 - INFO - Epoch 713: Loss: 0.569643, Acc: -2313262.695312, ETC: 8.43m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:46,904 - INFO - Sin mejora significativa: contador 74/100.
+2025-02-19 22:51:47,560 - INFO - Epoch 714: Loss: 0.569638, Acc: -2296064.257812, ETC: 8.59m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:47,561 - INFO - Sin mejora significativa: contador 75/100.
+2025-02-19 22:51:48,180 - INFO - Epoch 715: Loss: 0.569634, Acc: -2316786.914062, ETC: 8.10m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:48,181 - INFO - Sin mejora significativa: contador 76/100.
+2025-02-19 22:51:48,809 - INFO - Epoch 716: Loss: 0.569629, Acc: -2299551.171875, ETC: 8.20m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:48,810 - INFO - Sin mejora significativa: contador 77/100.
+2025-02-19 22:51:49,462 - INFO - Epoch 717: Loss: 0.569625, Acc: -2278871.679688, ETC: 8.48m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:49,463 - INFO - Sin mejora significativa: contador 78/100.
+2025-02-19 22:51:50,085 - INFO - Epoch 718: Loss: 0.569622, Acc: -2332243.164062, ETC: 8.10m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:50,086 - INFO - Sin mejora significativa: contador 79/100.
+2025-02-19 22:51:50,709 - INFO - Epoch 719: Loss: 0.569620, Acc: -2232369.921875, ETC: 8.10m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:50,710 - INFO - Sin mejora significativa: contador 80/100.
+2025-02-19 22:51:51,343 - INFO - Epoch 720: Loss: 0.569619, Acc: -2356931.250000, ETC: 8.22m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:51,344 - INFO - Sin mejora significativa: contador 81/100.
+2025-02-19 22:51:51,988 - INFO - Epoch 721: Loss: 0.569622, Acc: -2202265.234375, ETC: 8.35m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:51,989 - INFO - Sin mejora significativa: contador 82/100.
+2025-02-19 22:51:52,612 - INFO - Epoch 722: Loss: 0.569631, Acc: -2371140.234375, ETC: 8.08m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:52,613 - INFO - Sin mejora significativa: contador 83/100.
+2025-02-19 22:51:53,254 - INFO - Epoch 723: Loss: 0.569651, Acc: -2166716.015625, ETC: 8.30m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:53,255 - INFO - Sin mejora significativa: contador 84/100.
+2025-02-19 22:51:53,892 - INFO - Epoch 724: Loss: 0.569689, Acc: -2415614.453125, ETC: 8.22m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:53,892 - INFO - Sin mejora significativa: contador 85/100.
+2025-02-19 22:51:54,515 - INFO - Epoch 725: Loss: 0.569757, Acc: -2078654.687500, ETC: 8.01m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:54,516 - INFO - Sin mejora significativa: contador 86/100.
+2025-02-19 22:51:55,136 - INFO - Epoch 726: Loss: 0.569866, Acc: -2531788.281250, ETC: 8.00m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:55,136 - INFO - Sin mejora significativa: contador 87/100.
+2025-02-19 22:51:55,759 - INFO - Epoch 727: Loss: 0.570002, Acc: -1929545.312500, ETC: 8.00m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:55,760 - INFO - Sin mejora significativa: contador 88/100.
+2025-02-19 22:51:56,421 - INFO - Epoch 728: Loss: 0.570114, Acc: -2681008.593750, ETC: 8.47m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:56,421 - INFO - Sin mejora significativa: contador 89/100.
+2025-02-19 22:51:57,038 - INFO - Epoch 729: Loss: 0.570091, Acc: -1847593.554688, ETC: 7.91m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:57,039 - INFO - Sin mejora significativa: contador 90/100.
+2025-02-19 22:51:57,651 - INFO - Epoch 730: Loss: 0.569903, Acc: -2651490.039062, ETC: 7.85m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:57,652 - INFO - Sin mejora significativa: contador 91/100.
+2025-02-19 22:51:58,341 - INFO - Epoch 731: Loss: 0.569668, Acc: -2048993.945312, ETC: 8.80m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:58,341 - INFO - Sin mejora significativa: contador 92/100.
+2025-02-19 22:51:59,035 - INFO - Epoch 732: Loss: 0.569573, Acc: -2262777.539062, ETC: 8.86m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:59,036 - INFO - Sin mejora significativa: contador 93/100.
+2025-02-19 22:51:59,657 - INFO - Epoch 733: Loss: 0.569647, Acc: -2487737.304688, ETC: 7.93m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:51:59,658 - INFO - Sin mejora significativa: contador 94/100.
+2025-02-19 22:52:00,295 - INFO - Epoch 734: Loss: 0.569766, Acc: -1807233.203125, ETC: 8.12m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:52:00,296 - INFO - Sin mejora significativa: contador 95/100.
+2025-02-19 22:52:00,959 - INFO - Epoch 735: Loss: 0.569793, Acc: -2752859.179688, ETC: 8.44m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:52:00,960 - INFO - Sin mejora significativa: contador 96/100.
+2025-02-19 22:52:01,604 - INFO - Epoch 736: Loss: 0.569703, Acc: -1808843.164062, ETC: 8.18m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:52:01,604 - INFO - Sin mejora significativa: contador 97/100.
+2025-02-19 22:52:02,216 - INFO - Epoch 737: Loss: 0.569596, Acc: -2472598.437500, ETC: 7.77m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:52:02,217 - INFO - Sin mejora significativa: contador 98/100.
+2025-02-19 22:52:02,858 - INFO - Epoch 738: Loss: 0.569562, Acc: -2316666.210938, ETC: 8.14m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:52:02,859 - INFO - Sin mejora significativa: contador 99/100.
+2025-02-19 22:52:03,519 - INFO - Epoch 739: Loss: 0.569603, Acc: -1916175.781250, ETC: 8.35m, w_data: 0.14, w_pde: 0.83, w_bc: 0.03
+2025-02-19 22:52:03,520 - INFO - Sin mejora significativa: contador 100/100.
+2025-02-19 22:52:03,520 - INFO - Se activa Early Stopping.
+2025-02-19 22:52:03,520 - INFO - Early stopping activado en la época 739
+2025-02-19 22:52:04,242 - INFO - Gráficas de métricas guardadas.
+2025-02-19 22:52:04,292 - INFO - Modelo guardado en: D:\Personal\Area de Trabajo\Universidad\Matriculas\Novena\Optimización y Control en Redes Distribuidas\Proyecto Final\code\test\output\burgers_v1_1500_0.001_42\model
+2025-02-19 22:52:04,302 - INFO - Training statistics saved to: D:\Personal\Area de Trabajo\Universidad\Matriculas\Novena\Optimización y Control en Redes Distribuidas\Proyecto Final\code\test\output\burgers_v1_1500_0.001_42\train_results\training_stats.json
+2025-02-19 22:52:04,303 - INFO - Hiperparámetros de entrenamiento guardados en: D:\Personal\Area de Trabajo\Universidad\Matriculas\Novena\Optimización y Control en Redes Distribuidas\Proyecto Final\code\test\output\burgers_v1_1500_0.001_42\train_results\hyperparams_train.json
+2025-02-19 22:52:04,305 - INFO - Estructura de la red guardada en: D:\Personal\Area de Trabajo\Universidad\Matriculas\Novena\Optimización y Control en Redes Distribuidas\Proyecto Final\code\test\output\burgers_v1_1500_0.001_42\model\model_architecture.txt
+2025-02-19 22:52:04,912 - INFO - Imagen de comparación guardada: solution_comparison.png
+2025-02-19 22:52:07,040 - INFO - Programa finalizado exitosamente.

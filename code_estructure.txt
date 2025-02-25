@@ -1,0 +1,27 @@
+code/
+│── data/                               # Almacenamiento y preprocesamiento de datos
+│── src/
+│   │── losses/                         # Funciones de pérdida personalizadas
+│   │   │── boundary_loss.py             # Pérdida para condiciones de frontera
+│   │   │── differential_equation_loss.py # Pérdida para ecuaciones diferenciales
+│   │   │── mse_loss.py                   # Error cuadrático medio (MSE)
+│   │── models/                          # Diferentes arquitecturas de modelos
+│   │   │── convolution_networks.py       # CNNs para procesamiento de datos espaciales
+│   │   │── gnn.py                        # Graph Neural Networks (GNNs)
+│   │   │── mlp.py                        # Perceptrón Multicapa (MLP)
+│   │   │── transformer.py                # Transformer para secuencias
+│   │   │── recurrent_networks.py         # RNNs y LSTMs para problemas secuenciales
+│   │   │── autoencoder.py                # Autoencoder para reducción de dimensionalidad
+│   │   │── physics_informed_model.py     # Integración de modelos informados por física
+│   │── core/                            # Código central del entrenamiento y selección de modelos
+│   │   │── data_loader.py                # Carga y preprocesamiento de datos
+│   │   │── model_selector.py             # Selección dinámica de modelos
+│   │   │── model_train.py                # Lógica de entrenamiento y validación
+│   │   │── network_architecture.py       # Definición de arquitecturas generales
+│   │── utils/                           # Funciones auxiliares
+│   │   │── visualization.py              # Visualización de datos y métricas
+│   │   │── helpers.py                    # Funciones de ayuda
+│   │── main.py                          # Script principal para ejecutar modelos
+│── requirements.txt                     # Librerías necesarias
+│── setup.py                             # Configuración del entorno
+│── code_estructure.txt                  # Documentación sobre la estructura del código

@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: PINN-BGK-Solver
+Version: 0.1.0
+Summary: Proyecto Final: Optimización y Control en Redes Distribuidas
+Author: Cristian Peña
+Author-email: cpenav@unal.edu.co
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown

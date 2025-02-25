@@ -1,0 +1,57 @@
+[
+    {
+        "timestamp": "2025-02-19 23:10:57",
+        "model_name": "PINN_PINN_V1",
+        "test_data": "burgers_shock.mat",
+        "metrics": {
+            "mae": 0.26169055700302124,
+            "mse": 0.1050981804728508,
+            "rmse": 0.3241885006427765,
+            "r2": 0.7215282917022705
+        }
+    },
+    {
+        "timestamp": "2025-02-19 23:11:43",
+        "model_name": "PINN_PINN_V1",
+        "test_data": "burgers_shock_IC_sin2pi.mat",
+        "metrics": {
+            "mae": 0.417924702167511,
+            "mse": 0.24695810675621033,
+            "rmse": 0.49694880843162537,
+            "r2": -0.048400282859802246
+        }
+    },
+    {
+        "timestamp": "2025-02-19 23:11:54",
+        "model_name": "PINN_PINN_V1",
+        "test_data": "burgers_shock_mu_005_pi.mat",
+        "metrics": {
+            "mae": 0.2649850845336914,
+            "mse": 0.10848455131053925,
+            "rmse": 0.3293699324131012,
+            "r2": 0.7159496545791626
+        }
+    },
+    {
+        "timestamp": "2025-02-19 23:16:29",
+        "model_name": "PINN_PINN_V1",
+        "test_data": "burgers_shock_IC_sin2pi.mat",
+        "metrics": {
+            "mae": 0.417924702167511,
+            "mse": 0.24695810675621033,
+            "rmse": 0.49694880843162537,
+            "r2": -0.048400282859802246
+        }
+    },
+    {
+        "timestamp": "2025-02-20 01:28:37",
+        "model_name": "PINN_PINN_V1",
+        "test_data": "burgers_shock_IC_sin2pi.mat",
+        "metrics": {
+            "mae": 0.4542851150035858,
+            "mse": 0.31228211522102356,
+            "rmse": 0.5588220953941345,
+            "r2": -0.3257174491882324
+        }
+    }
+]

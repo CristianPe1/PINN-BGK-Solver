@@ -1,0 +1,20 @@
+{
+    "learning_rate": 0.001,
+    "batch_size": 32,
+    "epochs_no_improve": 50,
+    "min_loss_improvement": 0.001,
+    "epochs": 550,
+    "optimizer": "Adam",
+    "loss_function": "MSELoss",
+    "activation_function": "Tanh",
+    "layers": [
+        2,
+        50,
+        50,
+        50,
+        50,
+        1
+    ],
+    "seed": 42,
+    "model_type": "v1"
+}

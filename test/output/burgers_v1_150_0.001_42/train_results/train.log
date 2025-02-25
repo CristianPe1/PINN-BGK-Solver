@@ -1,0 +1,172 @@
+2025-02-19 23:30:40,170 - INFO - Usando PINN_V1.
+2025-02-19 23:30:40,173 - INFO - Arquitectura de la red (v1):
+PINN_V1(
+  (batch_norms): ModuleList()
+  (activation): Tanh()
+  (linears): ModuleList(
+    (0): Linear(in_features=2, out_features=50, bias=True)
+    (1-3): 3 x Linear(in_features=50, out_features=50, bias=True)
+    (4): Linear(in_features=50, out_features=1, bias=True)
+  )
+)
+2025-02-19 23:30:40,174 - INFO - Iniciando entrenamiento...
+2025-02-19 23:30:40,819 - INFO - Mejora detectada: nuevo valor 0.3684. Reiniciando contador.
+2025-02-19 23:30:41,504 - INFO - Mejora detectada: nuevo valor 0.3253. Reiniciando contador.
+2025-02-19 23:30:42,218 - INFO - Mejora detectada: nuevo valor 0.2944. Reiniciando contador.
+2025-02-19 23:30:42,857 - INFO - Mejora detectada: nuevo valor 0.2757. Reiniciando contador.
+2025-02-19 23:30:43,489 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:30:44,201 - INFO - Sin mejora: contador 2/100.
+2025-02-19 23:30:44,950 - INFO - Sin mejora: contador 3/100.
+2025-02-19 23:30:45,589 - INFO - Sin mejora: contador 4/100.
+2025-02-19 23:30:46,426 - INFO - Sin mejora: contador 5/100.
+2025-02-19 23:30:47,255 - INFO - Sin mejora: contador 6/100.
+2025-02-19 23:30:47,911 - INFO - Mejora detectada: nuevo valor 0.2739. Reiniciando contador.
+2025-02-19 23:30:48,669 - INFO - Mejora detectada: nuevo valor 0.2725. Reiniciando contador.
+2025-02-19 23:30:49,356 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:30:49,984 - INFO - Sin mejora: contador 2/100.
+2025-02-19 23:30:50,613 - INFO - Sin mejora: contador 3/100.
+2025-02-19 23:30:51,259 - INFO - Sin mejora: contador 4/100.
+2025-02-19 23:30:51,948 - INFO - Sin mejora: contador 5/100.
+2025-02-19 23:30:52,566 - INFO - Sin mejora: contador 6/100.
+2025-02-19 23:30:53,194 - INFO - Sin mejora: contador 7/100.
+2025-02-19 23:30:53,984 - INFO - Sin mejora: contador 8/100.
+2025-02-19 23:30:54,620 - INFO - Sin mejora: contador 9/100.
+2025-02-19 23:30:55,271 - INFO - Mejora detectada: nuevo valor 0.2709. Reiniciando contador.
+2025-02-19 23:30:55,885 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:30:56,483 - INFO - Sin mejora: contador 2/100.
+2025-02-19 23:30:57,086 - INFO - Sin mejora: contador 3/100.
+2025-02-19 23:30:57,679 - INFO - Sin mejora: contador 4/100.
+2025-02-19 23:30:58,355 - INFO - Sin mejora: contador 5/100.
+2025-02-19 23:30:58,990 - INFO - Sin mejora: contador 6/100.
+2025-02-19 23:30:59,601 - INFO - Sin mejora: contador 7/100.
+2025-02-19 23:31:00,219 - INFO - Mejora detectada: nuevo valor 0.2697. Reiniciando contador.
+2025-02-19 23:31:00,828 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:31:01,454 - INFO - Mejora detectada: nuevo valor 0.2682. Reiniciando contador.
+2025-02-19 23:31:02,058 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:31:02,656 - INFO - Sin mejora: contador 2/100.
+2025-02-19 23:31:03,249 - INFO - Sin mejora: contador 3/100.
+2025-02-19 23:31:03,887 - INFO - Sin mejora: contador 4/100.
+2025-02-19 23:31:04,478 - INFO - Sin mejora: contador 5/100.
+2025-02-19 23:31:05,104 - INFO - Mejora detectada: nuevo valor 0.2669. Reiniciando contador.
+2025-02-19 23:31:05,717 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:31:06,448 - INFO - Mejora detectada: nuevo valor 0.2655. Reiniciando contador.
+2025-02-19 23:31:07,152 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:31:07,750 - INFO - Mejora detectada: nuevo valor 0.2642. Reiniciando contador.
+2025-02-19 23:31:08,359 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:31:08,956 - INFO - Sin mejora: contador 2/100.
+2025-02-19 23:31:09,576 - INFO - Mejora detectada: nuevo valor 0.2628. Reiniciando contador.
+2025-02-19 23:31:10,190 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:31:10,801 - INFO - Mejora detectada: nuevo valor 0.2613. Reiniciando contador.
+2025-02-19 23:31:11,460 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:31:12,111 - INFO - Mejora detectada: nuevo valor 0.2595. Reiniciando contador.
+2025-02-19 23:31:12,720 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:31:13,311 - INFO - Mejora detectada: nuevo valor 0.2576. Reiniciando contador.
+2025-02-19 23:31:13,938 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:31:14,517 - INFO - Mejora detectada: nuevo valor 0.2557. Reiniciando contador.
+2025-02-19 23:31:15,144 - INFO - Mejora detectada: nuevo valor 0.2545. Reiniciando contador.
+2025-02-19 23:31:15,739 - INFO - Mejora detectada: nuevo valor 0.2532. Reiniciando contador.
+2025-02-19 23:31:16,349 - INFO - Mejora detectada: nuevo valor 0.2517. Reiniciando contador.
+2025-02-19 23:31:16,960 - INFO - Mejora detectada: nuevo valor 0.2502. Reiniciando contador.
+2025-02-19 23:31:17,581 - INFO - Mejora detectada: nuevo valor 0.2487. Reiniciando contador.
+2025-02-19 23:31:18,170 - INFO - Mejora detectada: nuevo valor 0.2470. Reiniciando contador.
+2025-02-19 23:31:18,781 - INFO - Mejora detectada: nuevo valor 0.2452. Reiniciando contador.
+2025-02-19 23:31:19,398 - INFO - Mejora detectada: nuevo valor 0.2433. Reiniciando contador.
+2025-02-19 23:31:19,986 - INFO - Mejora detectada: nuevo valor 0.2412. Reiniciando contador.
+2025-02-19 23:31:20,566 - INFO - Mejora detectada: nuevo valor 0.2390. Reiniciando contador.
+2025-02-19 23:31:21,173 - INFO - Mejora detectada: nuevo valor 0.2367. Reiniciando contador.
+2025-02-19 23:31:21,783 - INFO - Mejora detectada: nuevo valor 0.2344. Reiniciando contador.
+2025-02-19 23:31:22,366 - INFO - Mejora detectada: nuevo valor 0.2318. Reiniciando contador.
+2025-02-19 23:31:22,944 - INFO - Mejora detectada: nuevo valor 0.2292. Reiniciando contador.
+2025-02-19 23:31:23,557 - INFO - Mejora detectada: nuevo valor 0.2263. Reiniciando contador.
+2025-02-19 23:31:24,261 - INFO - Mejora detectada: nuevo valor 0.2235. Reiniciando contador.
+2025-02-19 23:31:24,937 - INFO - Mejora detectada: nuevo valor 0.2205. Reiniciando contador.
+2025-02-19 23:31:25,574 - INFO - Mejora detectada: nuevo valor 0.2176. Reiniciando contador.
+2025-02-19 23:31:26,175 - INFO - Mejora detectada: nuevo valor 0.2145. Reiniciando contador.
+2025-02-19 23:31:26,877 - INFO - Mejora detectada: nuevo valor 0.2114. Reiniciando contador.
+2025-02-19 23:31:27,543 - INFO - Mejora detectada: nuevo valor 0.2084. Reiniciando contador.
+2025-02-19 23:31:28,455 - INFO - Mejora detectada: nuevo valor 0.2053. Reiniciando contador.
+2025-02-19 23:31:29,109 - INFO - Mejora detectada: nuevo valor 0.2022. Reiniciando contador.
+2025-02-19 23:31:29,777 - INFO - Mejora detectada: nuevo valor 0.1991. Reiniciando contador.
+2025-02-19 23:31:30,457 - INFO - Mejora detectada: nuevo valor 0.1960. Reiniciando contador.
+2025-02-19 23:31:31,087 - INFO - Mejora detectada: nuevo valor 0.1929. Reiniciando contador.
+2025-02-19 23:31:31,676 - INFO - Mejora detectada: nuevo valor 0.1898. Reiniciando contador.
+2025-02-19 23:31:32,273 - INFO - Mejora detectada: nuevo valor 0.1867. Reiniciando contador.
+2025-02-19 23:31:32,896 - INFO - Mejora detectada: nuevo valor 0.1836. Reiniciando contador.
+2025-02-19 23:31:33,528 - INFO - Mejora detectada: nuevo valor 0.1806. Reiniciando contador.
+2025-02-19 23:31:34,137 - INFO - Mejora detectada: nuevo valor 0.1776. Reiniciando contador.
+2025-02-19 23:31:34,748 - INFO - Mejora detectada: nuevo valor 0.1746. Reiniciando contador.
+2025-02-19 23:31:35,359 - INFO - Mejora detectada: nuevo valor 0.1718. Reiniciando contador.
+2025-02-19 23:31:35,981 - INFO - Mejora detectada: nuevo valor 0.1692. Reiniciando contador.
+2025-02-19 23:31:36,640 - INFO - Mejora detectada: nuevo valor 0.1667. Reiniciando contador.
+2025-02-19 23:31:37,441 - INFO - Mejora detectada: nuevo valor 0.1644. Reiniciando contador.
+2025-02-19 23:31:38,083 - INFO - Mejora detectada: nuevo valor 0.1624. Reiniciando contador.
+2025-02-19 23:31:38,883 - INFO - Mejora detectada: nuevo valor 0.1605. Reiniciando contador.
+2025-02-19 23:31:39,617 - INFO - Mejora detectada: nuevo valor 0.1589. Reiniciando contador.
+2025-02-19 23:31:40,280 - INFO - Mejora detectada: nuevo valor 0.1575. Reiniciando contador.
+2025-02-19 23:31:40,895 - INFO - Mejora detectada: nuevo valor 0.1563. Reiniciando contador.
+2025-02-19 23:31:41,594 - INFO - Mejora detectada: nuevo valor 0.1552. Reiniciando contador.
+2025-02-19 23:31:42,246 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:31:42,881 - INFO - Mejora detectada: nuevo valor 0.1533. Reiniciando contador.
+2025-02-19 23:31:43,487 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:31:44,133 - INFO - Mejora detectada: nuevo valor 0.1518. Reiniciando contador.
+2025-02-19 23:31:44,818 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:31:45,412 - INFO - Mejora detectada: nuevo valor 0.1503. Reiniciando contador.
+2025-02-19 23:31:46,021 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:31:46,646 - INFO - Mejora detectada: nuevo valor 0.1490. Reiniciando contador.
+2025-02-19 23:31:47,278 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:31:47,915 - INFO - Mejora detectada: nuevo valor 0.1478. Reiniciando contador.
+2025-02-19 23:31:48,522 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:31:49,133 - INFO - Sin mejora: contador 2/100.
+2025-02-19 23:31:49,744 - INFO - Mejora detectada: nuevo valor 0.1467. Reiniciando contador.
+2025-02-19 23:31:50,360 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:31:50,978 - INFO - Sin mejora: contador 2/100.
+2025-02-19 23:31:51,616 - INFO - Sin mejora: contador 3/100.
+2025-02-19 23:31:52,199 - INFO - Sin mejora: contador 4/100.
+2025-02-19 23:31:52,786 - INFO - Mejora detectada: nuevo valor 0.1455. Reiniciando contador.
+2025-02-19 23:31:53,395 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:31:54,013 - INFO - Sin mejora: contador 2/100.
+2025-02-19 23:31:54,596 - INFO - Sin mejora: contador 3/100.
+2025-02-19 23:31:55,197 - INFO - Mejora detectada: nuevo valor 0.1443. Reiniciando contador.
+2025-02-19 23:31:55,808 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:31:56,431 - INFO - Sin mejora: contador 2/100.
+2025-02-19 23:31:57,045 - INFO - Sin mejora: contador 3/100.
+2025-02-19 23:31:57,621 - INFO - Mejora detectada: nuevo valor 0.1431. Reiniciando contador.
+2025-02-19 23:31:58,266 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:31:58,892 - INFO - Sin mejora: contador 2/100.
+2025-02-19 23:31:59,484 - INFO - Sin mejora: contador 3/100.
+2025-02-19 23:32:00,111 - INFO - Mejora detectada: nuevo valor 0.1419. Reiniciando contador.
+2025-02-19 23:32:00,701 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:32:01,309 - INFO - Sin mejora: contador 2/100.
+2025-02-19 23:32:01,921 - INFO - Mejora detectada: nuevo valor 0.1408. Reiniciando contador.
+2025-02-19 23:32:02,522 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:32:03,125 - INFO - Sin mejora: contador 2/100.
+2025-02-19 23:32:03,723 - INFO - Mejora detectada: nuevo valor 0.1396. Reiniciando contador.
+2025-02-19 23:32:04,321 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:32:04,931 - INFO - Sin mejora: contador 2/100.
+2025-02-19 23:32:05,537 - INFO - Mejora detectada: nuevo valor 0.1384. Reiniciando contador.
+2025-02-19 23:32:06,130 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:32:06,714 - INFO - Sin mejora: contador 2/100.
+2025-02-19 23:32:07,338 - INFO - Mejora detectada: nuevo valor 0.1371. Reiniciando contador.
+2025-02-19 23:32:07,954 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:32:08,561 - INFO - Sin mejora: contador 2/100.
+2025-02-19 23:32:09,267 - INFO - Mejora detectada: nuevo valor 0.1357. Reiniciando contador.
+2025-02-19 23:32:09,849 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:32:10,442 - INFO - Sin mejora: contador 2/100.
+2025-02-19 23:32:11,056 - INFO - Mejora detectada: nuevo valor 0.1342. Reiniciando contador.
+2025-02-19 23:32:11,675 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:32:12,284 - INFO - Mejora detectada: nuevo valor 0.1331. Reiniciando contador.
+2025-02-19 23:32:12,889 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:32:13,500 - INFO - Mejora detectada: nuevo valor 0.1320. Reiniciando contador.
+2025-02-19 23:32:14,130 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:32:14,733 - INFO - Mejora detectada: nuevo valor 0.1308. Reiniciando contador.
+2025-02-19 23:32:15,329 - INFO - Sin mejora: contador 1/100.
+2025-02-19 23:32:15,330 - INFO - Entrenamiento finalizado en 1.59 minutos
+2025-02-19 23:32:15,331 - INFO - Pérdida final: 0.130240
+2025-02-19 23:32:15,331 - INFO - Precisión final: -24484398.44%
+2025-02-19 23:32:16,049 - INFO - Gráficas de métricas guardadas.
+2025-02-19 23:32:16,094 - INFO - Modelo guardado en: D:\Personal\Area de Trabajo\Universidad\Matriculas\Novena\Optimización y Control en Redes Distribuidas\Proyecto Final\code\test\output\burgers_v1_150_0.001_42\model
+2025-02-19 23:32:16,097 - INFO - Training statistics saved to: D:\Personal\Area de Trabajo\Universidad\Matriculas\Novena\Optimización y Control en Redes Distribuidas\Proyecto Final\code\test\output\burgers_v1_150_0.001_42\train_results\training_stats.json
+2025-02-19 23:32:16,098 - INFO - Hiperparámetros de entrenamiento guardados en: D:\Personal\Area de Trabajo\Universidad\Matriculas\Novena\Optimización y Control en Redes Distribuidas\Proyecto Final\code\test\output\burgers_v1_150_0.001_42\train_results\hyperparams_train.json
+2025-02-19 23:32:16,100 - INFO - Estructura de la red guardada en: D:\Personal\Area de Trabajo\Universidad\Matriculas\Novena\Optimización y Control en Redes Distribuidas\Proyecto Final\code\test\output\burgers_v1_150_0.001_42\model\model_architecture.txt
+2025-02-19 23:32:16,647 - INFO - Imagen de comparación guardada: solution_comparison.png
+2025-02-19 23:32:16,664 - INFO - Programa finalizado exitosamente.

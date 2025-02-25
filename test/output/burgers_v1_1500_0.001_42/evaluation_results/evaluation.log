@@ -1,0 +1,18 @@
+2025-02-20 01:28:36,392 - INFO - Iniciando evaluación. Los logs se guardarán en: D:\Personal\Area de Trabajo\Universidad\Matriculas\Novena\Optimización y Control en Redes Distribuidas\Proyecto Final\code\test\output\burgers_v1_1500_0.001_42\evaluation_results\evaluation.log
+2025-02-20 01:28:36,393 - INFO - Cargando modelo desde: D:\Personal\Area de Trabajo\Universidad\Matriculas\Novena\Optimización y Control en Redes Distribuidas\Proyecto Final\code\test\output\burgers_v1_1500_0.001_42\model
+2025-02-20 01:28:36,395 - INFO - Función de activation cargada: Tanh
+2025-02-20 01:28:36,397 - INFO - Arquitectura de capas cargada: [2, 50, 50, 50, 50, 1]
+2025-02-20 01:28:36,513 - INFO - Modelo cargado correctamente.
+2025-02-20 01:28:37,316 - INFO - Archivo de test seleccionado: D:\Personal\Area de Trabajo\Universidad\Matriculas\Novena\Optimización y Control en Redes Distribuidas\Proyecto Final\code\test\data/evaluation\burgers_shock_IC_sin2pi.mat
+2025-02-20 01:28:37,378 - INFO - === Métricas de Regresión ===
+2025-02-20 01:28:37,378 - INFO - MAE (Error Absoluto Medio): 0.4543 (menor es mejor)
+2025-02-20 01:28:37,379 - INFO - MSE (Error Cuadrático Medio): 0.3123 (menor es mejor)
+2025-02-20 01:28:37,380 - INFO - RMSE (Raíz del Error Cuadrático Medio): 0.5588 (menor es mejor)
+2025-02-20 01:28:37,380 - INFO - R² (Coeficiente de Determinación): -0.3257 (más cercano a 1 es mejor)
+2025-02-20 01:28:37,380 - INFO - 
+Interpretación:
+2025-02-20 01:28:37,380 - INFO - - MAE: Error promedio en las mismas unidades que la variable objetivo
+2025-02-20 01:28:37,381 - INFO - - MSE: Error promedio al cuadrado, penaliza errores grandes
+2025-02-20 01:28:37,381 - INFO - - RMSE: Raíz cuadrada del MSE, interpretable en unidades originales
+2025-02-20 01:28:37,381 - INFO - - R²: Proporción de varianza explicada por el modelo (0 a 1)
+2025-02-20 01:28:37,988 - INFO - Gráfica de solución guardada en: D:\Personal\Area de Trabajo\Universidad\Matriculas\Novena\Optimización y Control en Redes Distribuidas\Proyecto Final\code\test\output\burgers_v1_1500_0.001_42\evaluation_results\solution_evaluation_burgers_shock_IC_sin2pi.png

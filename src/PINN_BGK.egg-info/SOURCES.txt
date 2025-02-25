@@ -1,0 +1,7 @@
+setup.py
+src/PINN_BGK.egg-info/PKG-INFO
+src/PINN_BGK.egg-info/SOURCES.txt
+src/PINN_BGK.egg-info/dependency_links.txt
+src/PINN_BGK.egg-info/entry_points.txt
+src/PINN_BGK.egg-info/requires.txt
+src/PINN_BGK.egg-info/top_level.txt

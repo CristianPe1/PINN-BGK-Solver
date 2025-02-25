@@ -1,0 +1,18 @@
+{
+    "final_loss": 0.2469,
+    "final_accuracy": 0.4676,
+    "total_training_time_sec": 17.898,
+    "MAE": 0.3125,
+    "MSE": 0.159,
+    "RMSE": 0.3988,
+    "R2": 0.5848,
+    "losses": [
+        0.2469
+    ],
+    "accuracies": [
+        0.4676
+    ],
+    "epoch_times": [
+        17.8833
+    ]
+}
