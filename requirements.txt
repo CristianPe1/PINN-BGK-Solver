@@ -37,5 +37,9 @@ pytest>=7.4.0
 # Optional Dependencies
 scikit-image>=0.21.0
 
+# Data generation
+fenics
+git+https://bitbucket.org/fenics-project/mshr
+
 # For CUDA 11.8 compatibility, use:
 --extra-index-url https://download.pytorch.org/whl/cu118

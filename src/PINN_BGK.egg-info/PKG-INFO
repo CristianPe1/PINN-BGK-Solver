@@ -8,3 +8,86 @@ Classifier: Programming Language :: Python :: 3
 Classifier: Operating System :: OS Independent
 Requires-Python: >=3.8
 Description-Content-Type: text/markdown
+
+# PINN-BGK Solver
+
+Este proyecto implementa un método de redes neuronales informadas por la física (PINN) para resolver la ecuación de Burgers en el contexto de Optimización y Control en Redes Distribuidas.
+
+## Descripción
+
+El paquete **PINN-BGK** utiliza PyTorch para entrenar un modelo basado en una red MLP, integrando técnicas de early stopping, visualización de métricas y guardado de resultados (modelo, estadísticas y gráficos). La configuración se centraliza en un archivo YAML para facilitar su modificación sin alterar el código fuente.
+
+## Instalación
+
+1. **Clonar el repositorio** a tu máquina.
+2. **Acceder a la carpeta del proyecto**:
+   ```bash
+   cd "D:/Personal/Area de Trabajo/Universidad/Matriculas/Novena/Optimización y Control en Redes Distribuidas/Proyecto Final/code"
+   ```
+3. **Instalar el proyecto en modo editable**:
+   ```bash
+   pip install -e .
+   ```
+
+## Requerimientos
+
+Consulta el archivo [requirements.txt](requirements.txt) para conocer las dependencias principales, que incluyen:
+- PyTorch, torchvision y torchaudio
+- NumPy, SciPy, scikit-learn, pandas
+- Matplotlib, seaborn
+- PyYAML, tqdm
+- y otras herramientas de desarrollo y calidad de código
+
+## Uso
+
+Una vez instalado, puedes ejecutar el proyecto mediante el entry point definido. Por ejemplo:
+```bash
+PINN-BGK
+```
+Este comando ejecutará el archivo `src/main.py`, que carga la configuración desde `config/config.yaml`, entrena el modelo y guarda los resultados en la carpeta de salida definida.
+
+## Estructura del Proyecto
+
+```
+Proyecto Final/
+├── code/
+│   ├── config/
+│   │   └── config.yaml         # Configuración centralizada (modelo, entrenamiento, física y logging)
+│   ├── requirements.txt        # Requerimientos de Python
+│   ├── README.md               # Este archivo
+│   ├── setup.py                # Configuración del paquete e entry point
+│   ├── src/
+│   │   ├── __init__.py         # Permite tratar src como un paquete
+│   │   └── main.py             # Entry point del proyecto
+│   ├── model/
+│   │   └── train.py            # Clase Trainer
+│   ├── utils/
+│   │   ├── data_loader.py      # Carga y preprocesamiento de datos
+│   │   └── visualization.py    # Funciones para graficar métricas y solución
+│   └── structure_model/
+│       └── pinn_structure_v1.py  # Definición del modelo PINN_V1
+└── data/
+    └── training/
+        └── burgers_shock_mu_01_pi.mat  # Datos de entrenamiento
+```
+
+## Configuración
+
+El archivo YAML en `config/config.yaml` se divide en secciones:
+
+- **model**: Define la arquitectura (capas, tipo y función de activación) y la tasa de aprendizaje.
+- **training**: Parámetros de entrenamiento (número de épocas, batch size, early stopping, etc.).
+- **physics**: Parámetros físicos (por ejemplo, la viscosidad `nu` y tipo de frontera).
+- **logging**: Configuración de logging y carpeta de salida.
+
+Modifica este archivo para ajustar las condiciones de tu experimento sin alterar el código fuente.
+
+## Notas Adicionales
+
+- Se recomienda la instalación editable ("pip install -e .") para actualizar automáticamente el entorno tras modificar el código.
+- Para ejecutar el proyecto, utiliza el entry point `PINN-BGK` definido en setup.py.
+- Consulta los archivos `setup.py`, `requirements.txt` y `config/config.yaml` para más detalles sobre instalación y configuración.
+
+## Licencia
+
+[Incluye aquí la información de licencia si corresponde]

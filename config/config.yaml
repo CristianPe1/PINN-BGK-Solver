@@ -10,6 +10,7 @@ training:
   epochs_no_improve: 20
   min_loss_improvement: 1e-5
   seed: 42
+  memory_limit_gb: 4
 
 physics:
   nu: 0.01
@@ -19,3 +20,24 @@ physics:
 logging:
   level: "INFO"
   output_folder: "output"
+
+data_generation:
+  type: "burgers"  # Opciones: burgers, kovasznay, taylor_green, lid_driven_cavity
+  spatial_points: 256
+  time_points: 100
+  # Parámetros específicos para cada tipo de datos
+  Re: 40             # Para Kovasznay
+  U0: 1.0            # Para Taylor-Green y cavidad
+  resolution: 32     # Para Kovasznay y cavidad (N)
+  Nx: 32             # Para Taylor-Green
+  Ny: 32             # Para Taylor-Green
+  T: 2.0             # Para Taylor-Green y cavidad
+  num_steps: 50      # Para Taylor-Green y cavidad
+
+evaluation:
+  model_path: "output/Model_mlp_1_0.001_42/model/weights_model.pth"  # Ruta al modelo entrenado
+  data_path: "data/training/burgers_shock_mu_01_pi.mat"  # Datos para evaluar
+  output_folder: "evaluation_results"  # Carpeta donde guardar resultados
+  metrics: ["MAE", "MSE", "RMSE", "R2"]  # Métricas a calcular
+  visualize: true  # Generar visualizaciones
+  compare_with_analytical: false  # Comparar con solución analítica

@@ -1,0 +1,35 @@
+2025-02-25 00:45:16,976 - INFO - Usando PINN_V1.
+2025-02-25 00:45:16,977 - INFO - Usando CPU.
+2025-02-25 00:45:16,978 - INFO - Arquitectura de la red (v1):
+PINN_V1(
+  (batch_norms): ModuleList()
+  (activation): Tanh()
+  (linears): ModuleList(
+    (0): Linear(in_features=2, out_features=50, bias=True)
+    (1-3): 3 x Linear(in_features=50, out_features=50, bias=True)
+    (4): Linear(in_features=50, out_features=1, bias=True)
+  )
+)
+2025-02-25 00:45:16,980 - INFO - Iniciando entrenamiento...
+2025-02-25 00:45:16,980 - INFO - Usando batch size: 128
+2025-02-25 00:45:16,989 - INFO - CPU Memory: Total=15.94 GB, Available=3.97 GB, Used=11.96 GB, Usage=75.1%
+2025-02-25 00:45:16,997 - INFO - Memoria CPU disponible: 3.97GB
+2025-02-25 00:45:16,998 - INFO - Aumentando batch size a 256
+2025-02-25 00:45:17,506 - INFO - Memoria CPU disponible: 3.97GB
+2025-02-25 00:45:17,507 - INFO - Aumentando batch size a 512
+2025-02-25 00:45:18,015 - INFO - Memoria CPU disponible: 3.97GB
+2025-02-25 00:45:18,016 - INFO - Aumentando batch size a 1024
+2025-02-25 00:45:18,524 - INFO - Memoria CPU disponible: 3.97GB
+2025-02-25 00:45:18,525 - INFO - Memoria disponible cercana al límite: 3.97GB
+2025-02-25 00:45:18,525 - INFO - Nuevo batch size: 1024
+2025-02-25 00:45:19,411 - INFO - Mejora detectada: nuevo valor 1.5312. Reiniciando contador.
+2025-02-25 00:45:19,413 - INFO - Entrenamiento finalizado en 0.04 minutos
+2025-02-25 00:45:19,414 - INFO - Pérdida final: 1.5312
+2025-02-25 00:45:19,414 - INFO - Precisión final: 0.1547
+2025-02-25 00:45:20,105 - INFO - Gráficas de métricas guardadas.
+2025-02-25 00:45:20,181 - INFO - Modelo guardado en: D:\Personal\Area de Trabajo\Universidad\Matriculas\Novena\Optimización y Control en Redes Distribuidas\Proyecto Final\code\test\output\burgers_v1_1_0.001_42\model
+2025-02-25 00:45:20,205 - INFO - Training statistics saved to: D:\Personal\Area de Trabajo\Universidad\Matriculas\Novena\Optimización y Control en Redes Distribuidas\Proyecto Final\code\test\output\burgers_v1_1_0.001_42\train_results\training_stats.json
+2025-02-25 00:45:20,209 - INFO - Hiperparámetros de entrenamiento guardados en: D:\Personal\Area de Trabajo\Universidad\Matriculas\Novena\Optimización y Control en Redes Distribuidas\Proyecto Final\code\test\output\burgers_v1_1_0.001_42\train_results\hyperparams_train.json
+2025-02-25 00:45:20,210 - INFO - Estructura de la red guardada en: D:\Personal\Area de Trabajo\Universidad\Matriculas\Novena\Optimización y Control en Redes Distribuidas\Proyecto Final\code\test\output\burgers_v1_1_0.001_42\model\model_architecture.txt
+2025-02-25 00:45:20,824 - INFO - Imagen de comparación guardada: solution_comparison.png
+2025-02-25 00:45:23,336 - INFO - Programa finalizado exitosamente.

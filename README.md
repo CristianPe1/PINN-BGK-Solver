@@ -27,13 +27,62 @@ Consulta el archivo [requirements.txt](requirements.txt) para conocer las depend
 - PyYAML, tqdm
 - y otras herramientas de desarrollo y calidad de código
 
-## Uso
+## Modos de Operación
 
-Una vez instalado, puedes ejecutar el proyecto mediante el entry point definido. Por ejemplo:
+El framework soporta tres modos principales de operación, todos configurables a través del archivo YAML:
+
+### 1. Entrenamiento del Modelo
+
 ```bash
-PINN-BGK
+PINN-BGK --mode train
 ```
-Este comando ejecutará el archivo `src/main.py`, que carga la configuración desde `config/config.yaml`, entrena el modelo y guarda los resultados en la carpeta de salida definida.
+
+Este modo entrena un modelo PINN utilizando los hiperparámetros definidos en la sección `model` y `training` del archivo de configuración. El proceso incluye:
+
+- Carga de datos de entrenamiento
+- Inicialización del modelo con la arquitectura especificada
+- Entrenamiento con early stopping
+- Generación de gráficos de métricas (pérdida, precisión)
+- Visualización de la solución predicha vs. real
+- Guardado del modelo entrenado y estadísticas
+
+### 2. Generación de Datos Sintéticos
+
+```bash
+PINN-BGK --mode generate
+```
+
+Este modo genera datos sintéticos para diferentes ecuaciones y escenarios físicos:
+
+- **Ecuación de Burgers 1D**: Genera la solución analítica
+- **Flujo de Kovasznay**: Implementa la solución para el flujo estacionario de Navier-Stokes
+- **Vórtice de Taylor-Green**: Simula un vórtice que decae con el tiempo
+- **Flujo en Cavidad**: Implementa la simulación del flujo en una cavidad con tapa móvil
+
+Cada generación produce archivos .mat con datos y un informe JSON detallado con metadatos.
+
+### 3. Evaluación de Modelos
+
+```bash
+PINN-BGK --mode evaluate
+```
+
+Este modo evalúa un modelo previamente entrenado con datos específicos:
+
+- Carga el modelo desde la ruta especificada
+- Evalúa el modelo con los datos proporcionados
+- Calcula métricas (MAE, MSE, RMSE, R2)
+- Genera visualizaciones comparativas
+- Produce un mapa de calor de errores
+- Guarda los resultados detallados en formato JSON
+
+## Uso de Configuración Personalizada
+
+Puedes proporcionar una configuración personalizada mediante:
+
+```bash
+PINN-BGK --mode [modo] --config ruta/a/configuracion.yaml
+```
 
 ## Estructura del Proyecto
 
@@ -41,42 +90,120 @@ Este comando ejecutará el archivo `src/main.py`, que carga la configuración de
 Proyecto Final/
 ├── code/
 │   ├── config/
-│   │   └── config.yaml         # Configuración centralizada (modelo, entrenamiento, física y logging)
+│   │   └── config.yaml         # Configuración centralizada para todos los modos
 │   ├── requirements.txt        # Requerimientos de Python
 │   ├── README.md               # Este archivo
 │   ├── setup.py                # Configuración del paquete e entry point
 │   ├── src/
 │   │   ├── __init__.py         # Permite tratar src como un paquete
-│   │   └── main.py             # Entry point del proyecto
-│   ├── model/
-│   │   └── train.py            # Clase Trainer
-│   ├── utils/
-│   │   ├── data_loader.py      # Carga y preprocesamiento de datos
-│   │   └── visualization.py    # Funciones para graficar métricas y solución
-│   └── structure_model/
-│       └── pinn_structure_v1.py  # Definición del modelo PINN_V1
+│   │   ├── main.py             # Entry point del proyecto con modos de operación
+│   │   ├── data_handlers/      # Manejo de datos y generación
+│   │   │   ├── data_loader.py  # Cargador de datos
+│   │   │   ├── fluid_data_generator.py # Generador de datos de fluidos
+│   │   │   └── generators/     # Implementaciones específicas de generadores
+│   │   ├── model/
+│   │   │   └── train.py        # Clase Trainer para entrenamiento
+│   │   ├── utils/
+│   │   │   ├── data_loader.py  # Utilidades para carga de datos
+│   │   │   ├── visualization.py # Funciones para visualización
+│   │   │   └── device_utils.py # Utilidades para dispositivos (CPU/GPU)
+│   │   └── structure_model/
+│   │       └── pinn_structure_v1.py # Definición del modelo PINN
 └── data/
-    └── training/
-        └── burgers_shock_mu_01_pi.mat  # Datos de entrenamiento
+    ├── training/               # Datos para entrenamiento
+    │   └── burgers_shock_mu_01_pi.mat
+    ├── synthetic/              # Datos generados sintéticamente
+    └── evaluation/             # Resultados de evaluación
 ```
 
-## Configuración
+## Archivo de Configuración YAML
 
-El archivo YAML en `config/config.yaml` se divide en secciones:
+El archivo `config.yaml` se organiza en secciones para cada modo de operación:
 
-- **model**: Define la arquitectura (capas, tipo y función de activación) y la tasa de aprendizaje.
-- **training**: Parámetros de entrenamiento (número de épocas, batch size, early stopping, etc.).
-- **physics**: Parámetros físicos (por ejemplo, la viscosidad `nu` y tipo de frontera).
-- **logging**: Configuración de logging y carpeta de salida.
+### Modelo y Entrenamiento
 
-Modifica este archivo para ajustar las condiciones de tu experimento sin alterar el código fuente.
+```yaml
+model:
+  type: "mlp"
+  layers: [2, 50, 50, 50, 50, 1]
+  activation_function: "Tanh"
+  learning_rate: 0.001
+
+training:
+  epochs: 100
+  batch_size: 32
+  epochs_no_improve: 20
+  min_loss_improvement: 1e-5
+  seed: 42
+  memory_limit_gb: 4
+```
+
+### Parámetros Físicos
+
+```yaml
+physics:
+  nu: 0.01
+  boundary_type: "dirichlet"
+  physics_type: "burgers"
+```
+
+### Generación de Datos
+
+```yaml
+data_generation:
+  type: "burgers"  # Opciones: burgers, kovasznay, taylor_green, lid_driven_cavity
+  spatial_points: 256
+  time_points: 100
+  # Parámetros específicos
+  Re: 40               # Para Kovasznay
+  U0: 1.0              # Para flujos
+  resolution: 32       # Para mallas
+  Nx: 32               # Para mallas 2D
+  Ny: 32               # Para mallas 2D
+  T: 2.0               # Tiempo total
+  num_steps: 50        # Pasos temporales
+```
+
+### Evaluación de Modelos
+
+```yaml
+evaluation:
+  model_path: "output/Model_mlp_1_0.001_42/model/weights_model.pth"
+  data_path: "data/training/burgers_shock_mu_01_pi.mat"
+  output_folder: "evaluation_results"
+  metrics: ["MAE", "MSE", "RMSE", "R2"]
+  visualize: true
+  compare_with_analytical: false
+```
+
+## Logs y Resultados
+
+- Todos los modos generan logs detallados del proceso.
+- Los resultados de entrenamiento se guardan en carpetas organizadas.
+- La generación de datos incluye metadatos y estadísticas en JSON.
+- Las evaluaciones producen métricas y visualizaciones comparativas.
+
+## Extensibilidad
+
+El framework está diseñado para ser fácilmente extensible:
+- Nuevos generadores de datos pueden añadirse en `data_handlers/generators/`
+- Nuevas arquitecturas de modelos pueden implementarse extendiendo las clases base
+- Los parámetros físicos pueden modificarse sin cambiar el código
 
 ## Notas Adicionales
 
-- Se recomienda la instalación editable ("pip install -e .") para actualizar automáticamente el entorno tras modificar el código.
-- Para ejecutar el proyecto, utiliza el entry point `PINN-BGK` definido en setup.py.
-- Consulta los archivos `setup.py`, `requirements.txt` y `config/config.yaml` para más detalles sobre instalación y configuración.
+- Se recomienda la instalación editable para actualizar automáticamente el entorno tras modificar el código.
+- Las visualizaciones se guardan automáticamente en las carpetas correspondientes al tipo de ejecución.
+- Para experimentos rápidos, se pueden reducir los parámetros de entrenamiento en la configuración.
+
+## Citación
+@software{pena2023pinnbgk,
+  author = {Pe{\~n}a, Cristian},
+  title = {{PINN-BGK-Solver}: Un Framework para la Resolución de Ecuaciones Diferenciales con PINN},
+  year = {2023},
+  url = {https://github.com/CristianPe1/PINN-BGK-Solver},
+  version = {1.0.0},
+  organization = {Universidad Nacional de Colombia}
+}
 
 ## Licencia
-
-[Incluye aquí la información de licencia si corresponde]

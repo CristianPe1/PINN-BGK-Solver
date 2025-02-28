@@ -28,8 +28,8 @@ setup(
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     include_package_data=True,
-    install_requires=requirements,
-    # setup_requires=['setuptools_scm'],
+        install_requires=[req for req in requirements if not req.startswith("git+")],
+    dependency_links=[req for req in requirements if req.startswith("git+")],
     entry_points={
         "console_scripts": [
             "PINN-BGK=main:main"  # Se asume que en main.py se define main()

@@ -99,3 +99,24 @@ class Visualizer:
         plt.savefig(os.path.join(self.OUTPUT_TRAIN_DIR, filename))
         self.logger.info(f"Imagen de comparación guardada: {filename}")
         plt.close()
+
+    def plot_error_heatmap(self, t, x, error, filename="error_heatmap.png"):
+        """
+        Visualiza el error entre la predicción y el valor real como un mapa de calor.
+        
+        Args:
+            t: Array de valores de tiempo
+            x: Array de valores de posición
+            error: Matriz de error (diferencia absoluta entre predicción y valor real)
+            filename: Nombre del archivo para guardar la visualización
+        """
+        plt.figure(figsize=(10, 6))
+        plt.pcolormesh(t, x, error, shading='auto', cmap='hot')
+        plt.colorbar(label="Error absoluto")
+        plt.xlabel("t")
+        plt.ylabel("x")
+        plt.title("Mapa de calor del error")
+        plt.tight_layout()
+        plt.savefig(os.path.join(self.output_dir, filename), dpi=300)
+        self.logger.info(f"Gráfico de error guardado como {filename}")
+        plt.close()
