@@ -7,46 +7,79 @@ import torch.nn as nn
 
 # -------- Versión V1 (por ejemplo, la usada en burguer_equation.py) --------
 class PINN_V1(nn.Module):
-    def __init__(self, layers, activation=nn.Tanh()):
+    """
+    Implementación simple de una red neuronal informada por la física (PINN)
+    para resolver la ecuación de Burgers.
+    """
+    def __init__(self, layers, activation="Tanh"):
+        """
+        Inicializa la red neuronal con capas especificadas y función de activación.
+        
+        Args:
+            layers (list): Lista con número de neuronas por capa (incluyendo entrada y salida)
+            activation (str): Función de activación ("Tanh", "ReLU", "Sigmoid")
+        """
         super(PINN_V1, self).__init__()
-        self.layers = layers
-        self.batch_norms = nn.ModuleList()
-        activation_function = getattr(nn, activation, None)
-        if activation_function is not None:
-            self.activation = activation_function()
+        
+        # Verificar que hay al menos capas de entrada, oculta y salida
+        if len(layers) < 3:
+            raise ValueError("Se requieren al menos 3 capas (entrada, oculta, salida)")
+            
+        # Crear capas lineales
+        self.linear_layers = nn.ModuleList()
+        for i in range(len(layers) - 1):
+            self.linear_layers.append(nn.Linear(layers[i], layers[i+1]))
+        
+        # Definir función de activación
+        if activation == "Tanh":
+            self.activation = torch.tanh
+        elif activation == "ReLU":
+            self.activation = torch.relu
+        elif activation == "Sigmoid":
+            self.activation = torch.sigmoid
         else:
-            raise ValueError("Función de activación no soportada.")
-        # self.activation = nn.Tanh()
-        
-        self.linears = nn.ModuleList([nn.Linear(layers[i], layers[i+1]) for i in range(len(layers)-1)])
-        for i in range(len(layers)-1):
-            nn.init.xavier_normal_(self.linears[i].weight.data)
-            nn.init.zeros_(self.linears[i].bias.data)
-    
-    def forward(self, x, t) :
-        # Normalización Min-Max para los inputs x y t
-        x_min, x_max = x.min(), x.max()
-        t_min, t_max = t.min(), t.max()
-        
-        # Normalización al rango [0, 1]
-        x_norm = (x - x_min) / (x_max - x_min + 1e-8)
-        t_norm = (t - t_min) / (t_max - t_min + 1e-8)
-
-        # Concatenar los inputs normalizados
-        a = torch.cat(tensors=(x_norm, t_norm), dim=len(x.shape) - 1)
-
-        # Pasar a través de las capas lineales con Batch Normalization y activación
-        for i, layer in enumerate(self.linears[:-1]):
-            a = layer(a)  # Capa lineal
+            self.activation = torch.tanh  # Default
             
-            if i < len(self.batch_norms):  # Evitar batch norm en la capa de salida
-                a = self.batch_norms[i](a)  # Aplicar Batch Normalization
+        # Inicializar pesos con inicialización Xavier
+        for m in self.linear_layers:
+            if isinstance(m, nn.Linear):
+                nn.init.xavier_normal_(m.weight)
+                nn.init.constant_(m.bias, 0)
+                
+    def forward(self, input_tensor):
+        """
+        Forward pass de la red. Acepta tanto un tensor único como argumentos separados.
+        
+        Args:
+            input_tensor: Un tensor de forma [batch_size, 2] donde cada fila es (x, t)
+                         o una tupla de tensores (x, t)
             
-            a = self.activation(a)  # Función de activación
+        Returns:
+            torch.Tensor: Tensor de salida [batch_size, 1] con u(x, t)
+        """
+        # Manejar caso donde se proporcionan x, t por separado o como un tensor conjunto
+        if isinstance(input_tensor, tuple) and len(input_tensor) == 2:
+            x, t = input_tensor
+            # Asegurar que tienen la dimensión correcta
+            if x.dim() == 1:
+                x = x.unsqueeze(1)  # [batch_size] -> [batch_size, 1]
+            if t.dim() == 1:
+                t = t.unsqueeze(1)  # [batch_size] -> [batch_size, 1]
+            # Concatenar para formar un tensor [batch_size, 2]
+            xt = torch.cat([x, t], dim=1)
+        else:
+            # Si ya viene como un tensor [batch_size, 2]
+            xt = input_tensor
         
-        # Capa de salida sin BatchNorm ni activación
-        out = self.linears[-1](a)
-        
+        # Forward pass a través de todas las capas
+        out = xt
+        n_layers = len(self.linear_layers)
+        for i, linear in enumerate(self.linear_layers):
+            out = linear(out)
+            # Aplicar activación a todas las capas excepto la última
+            if i < n_layers - 1:
+                out = self.activation(out)
+                
         return out
 
     def calculate_metrics(self, loss_val, test_fn):

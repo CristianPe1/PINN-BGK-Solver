@@ -1,14 +1,62 @@
-model:
-  type: "mlp"
-  layers: [2, 50, 50, 50, 50, 1]
-  activation_function: "Tanh"
-  learning_rate: 0.001
+# Configuración general
+selected_model: "pinn_v1"  # Nombre del modelo a utilizar (debe estar en la sección 'models')
+selected_loss: "mse"       # Nombre de la función de pérdida (debe estar en la sección 'loss_functions')
+
+# Definiciones de modelos disponibles
+models:
+  pinn_v1:
+    type: "mlp"
+    layers: [2, 50, 50, 50, 50, 1]
+    activation_function: "Tanh"
+    learning_rate: 0.001
+    
+  pinn_v2:
+    type: "mlp_residual"
+    layers: [2, 64, 64, 64, 64, 1]
+    activation_function: "Swish"
+    learning_rate: 0.0005
+    
+  pinn_small:
+    type: "mlp"
+    layers: [2, 20, 20, 1]
+    activation_function: "ReLU"
+    learning_rate: 0.002
+
+# Definiciones de funciones de pérdida
+loss_functions:
+  mse:
+    type: "mean_squared_error"
+    weight: 1.0
+    
+  physics_informed:
+    type: "physics_informed_loss"
+    data_weight: 1.0
+    physics_weight: 0.5
+    
+  weighted_mse:
+    type: "weighted_mse"
+    interior_weight: 1.0
+    boundary_weight: 10.0
 
 training:
-  epochs: 1
-  batch_size: 32
+  epochs: 10
+  batch_size: 64
+  optimizer: "Adam"
+  optimizer_params:
+    lr: 0.001
+    betas: [0.9, 0.999]
+    eps: 1e-8
+    weight_decay: 0.0
+  scheduler: "ReduceLROnPlateau"
+  scheduler_params:
+    factor: 0.5
+    patience: 10
+    threshold: 1e-4
+    min_lr: 1e-6
+  early_stopping:
+    enabled: true
   epochs_no_improve: 20
-  min_loss_improvement: 1e-5
+  min_loss_improvement: 1e-4
   seed: 42
   memory_limit_gb: 4
 

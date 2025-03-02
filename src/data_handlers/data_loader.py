@@ -80,3 +80,31 @@ class DataLoader:
         while tensor.ndim < target_dim:
             tensor = tensor.unsqueeze(-1)
         return tensor
+    
+class DataGenerator(ABC):
+    """Clase abstracta para generadores de datos sintéticos para ecuaciones diferenciales."""
+    
+    def __init__(self, output_dir):
+        """
+        Inicializa el generador.
+        
+        Args:
+            output_dir (str): Directorio donde se guardarán los datos generados
+        """
+        os.makedirs(output_dir, exist_ok=True)
+        self.output_dir = output_dir
+    
+    @abstractmethod
+    def generate(self):
+        """Genera los datos sintéticos."""
+        pass
+    
+    @abstractmethod
+    def save(self, file_name):
+        """Guarda los datos generados."""
+        pass
+    
+    @abstractmethod
+    def plot(self):
+        """Visualiza los datos generados."""
+        pass

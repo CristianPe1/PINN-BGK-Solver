@@ -6,14 +6,15 @@ import torch
 import logging
 import argparse
 import numpy as np
-import torch.optim as optim
 from datetime import datetime
 
+# Importaciones locales
 from model.train import Trainer
-from utils.data_loader import DataLoader
+from model.loss_functions import get_loss_function
 from utils.visualization import Visualizer
-from structure_model.pinn_structure_v1 import PINN_V1
-from data_handlers.fluid_data_generator import FluidDataGenerator
+from utils.model_evaluator import ModelEvaluator
+from data_handlers.data_manager import DataManager
+from structure_model.model_factory import create_model
 
 # Establecer PROJECT_ROOT
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__)))
@@ -23,7 +24,7 @@ if PROJECT_ROOT not in sys.path:
 # Configuración de logger
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
-formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+formatter = logging.Formatter('%(asctime)s - %(levellevel)s - %(message)s')
 
 def load_config():
     config_path = os.path.join(PROJECT_ROOT, "..", "config", "config.yaml")
@@ -31,8 +32,8 @@ def load_config():
         config = yaml.safe_load(f)
     return config
 
-def create_output_dir(model_type, epochs, lr, seed, output_folder):
-    output_dir = os.path.join(PROJECT_ROOT, output_folder, f"Model_{model_type}_{epochs}_{lr}_{seed}")
+def create_output_dir(model_name, epochs, lr, seed, output_folder):
+    output_dir = os.path.join(PROJECT_ROOT, output_folder, f"Model_{model_name}_{epochs}_{lr}_{seed}")
     os.makedirs(output_dir, exist_ok=True)
     return output_dir
 
@@ -55,17 +56,18 @@ def generate_data(config):
     # Configurar parámetros
     spatial_points = data_cfg.get("spatial_points", 256)
     time_points = data_cfg.get("time_points", 100)
-    nu = physics_cfg.get("nu", 0.01)
     
-    # Inicializar generador de datos
+    
+    # Inicializar generador de datos - Cambiar FluidDataGenerator por DataManager
     logger.info(f"Inicializando generador de datos con {spatial_points} puntos espaciales y {time_points} puntos temporales.")
-    generator = FluidDataGenerator(spatial_points=spatial_points, time_points=time_points, output_dir=output_dir)
+    generator = DataManager(spatial_points=spatial_points, time_points=time_points, output_dir=output_dir)
     
     # Determinar tipo de datos a generar
     data_type = data_cfg.get("type", "burgers")
     
     if data_type == "burgers":
         # Generar solución de Burgers 1D
+        nu = physics_cfg.get("nu", 0.01)
         logger.info(f"Generando solución de Burgers 1D con nu={nu}...")
         x, t, usol = generator.burgers_synthetic_solution(nu=nu, save=True)
         logger.info(f"Solución de Burgers generada: {usol.shape}")
@@ -125,22 +127,38 @@ def generate_data(config):
 
 def train_model(config):
     """Función principal para entrenar el modelo."""
-    model_cfg    = config["model"]
-    train_cfg    = config["training"]
-    physics_cfg  = config["physics"]
-    log_cfg      = config["logging"]
+    # Seleccionar modelo y función de pérdida según config
+    selected_model = config.get("selected_model", "pinn_v1")
+    selected_loss = config.get("selected_loss", "mse")
+    
+    # Verificar que el modelo y la función de pérdida seleccionados existan
+    if selected_model not in config.get("models", {}):
+        logger.error(f"Modelo seleccionado '{selected_model}' no encontrado en la configuración.")
+        return
+        
+    if selected_loss not in config.get("loss_functions", {}):
+        logger.error(f"Función de pérdida seleccionada '{selected_loss}' no encontrada en la configuración.")
+        return
+    
+    # Obtener configuración específica
+    model_cfg = config["models"][selected_model]
+    loss_cfg = config["loss_functions"][selected_loss]
+    train_cfg = config["training"]
+    physics_cfg = config["physics"]
+    log_cfg = config["logging"]
 
-    num_epochs   = int(train_cfg["epochs"])
-    lr           = float(model_cfg["learning_rate"])
-    seed         = int(train_cfg["seed"])
-    batch_size   = int(train_cfg["batch_size"])
-    early_stop_patience = int(train_cfg["epochs_no_improve"])
-    min_loss_improvement  = float(train_cfg["min_loss_improvement"])
-    layers       = model_cfg["layers"]
-    model_type   = model_cfg["type"]
+    # Extraer parámetros de entrenamiento
+    num_epochs = int(train_cfg["epochs"])
+    lr = float(model_cfg.get("learning_rate", 0.001))
+    seed = int(train_cfg.get("seed", 42))
+    batch_size = int(train_cfg.get("batch_size", 32))
+    early_stop_patience = int(train_cfg.get("epochs_no_improve", 20))
+    min_loss_improvement = float(train_cfg.get("min_loss_improvement", 1e-5))
+    enabled = train_cfg.get("early_stopping", True)
 
-    # Crear directorios de salida basado en la configuración YAML
-    OUTPUT_DIR = create_output_dir(model_type, num_epochs, lr, seed, log_cfg["output_folder"])
+    # Crear directorios de salida
+    model_name = selected_model
+    OUTPUT_DIR = create_output_dir(model_name, num_epochs, lr, seed, log_cfg.get("output_folder", "output"))
     OUTPUT_TRAIN_DIR = os.path.join(OUTPUT_DIR, "train_results")
     os.makedirs(OUTPUT_TRAIN_DIR, exist_ok=True)
     MODEL_DIR = os.path.join(OUTPUT_DIR, "model")
@@ -149,45 +167,100 @@ def train_model(config):
     # Cargar datos
     DATA_DIR = os.path.join(PROJECT_ROOT, "..", "data", "training")
     data_file = os.path.join(DATA_DIR, "burgers_shock_mu_01_pi.mat")
-    data_loader = DataLoader(256, 100)
-    x_train, t_train, u_train = data_loader.load_data_from_file(data_file)
-
-    # Ajustar dimensiones
-    x_train = DataLoader.prepare_tensor(x_train)
-    t_train = DataLoader.prepare_tensor(t_train)
-    u_train = DataLoader.prepare_tensor(u_train)
-
-    # Inicializar modelo
-    logger.info("Inicializando modelo PINN_V1.")
-    model = PINN_V1(layers, model_cfg.get("activation_function", "Tanh"))
+    data_manager = DataManager(256, 100)
+    
+    # Cargar tensores de entrada y salida con verificación de errores
+    try:
+        # Cargar los datos y verificar que son correctos
+        input_tensor, output_tensor = data_manager.load_data_from_file(data_file)
+        
+        # Verificación adicional para asegurar que los tensores tienen dimensiones compatibles
+        if input_tensor.shape[0] != output_tensor.shape[0]:
+            logger.warning(f"¡Advertencia! Incompatibilidad en las dimensiones: input:{input_tensor.shape}, output:{output_tensor.shape}")
+            # Ajustar las dimensiones para que coincidan
+            min_samples = min(input_tensor.shape[0], output_tensor.shape[0])
+            input_tensor = input_tensor[:min_samples]
+            output_tensor = output_tensor[:min_samples]
+        
+        logger.info(f"Datos cargados con éxito: entrada={input_tensor.shape}, salida={output_tensor.shape}")
+        
+        # Para depuración, mostrar algunos valores
+        logger.debug(f"Primeros valores de entrada: {input_tensor[:5]}")
+        logger.debug(f"Primeros valores de salida: {output_tensor[:5]}")
+        
+    except Exception as e:
+        logger.error(f"Error al cargar datos: {str(e)}")
+        # Si no se pueden cargar los datos del archivo, generar datos sintéticos en su lugar
+        logger.info("Intentando generar datos sintéticos como alternativa...")
+        nu = float(physics_cfg.get("nu", 0.01))
+        input_tensor, output_tensor = data_manager.create_synthetic_data(nu)
+    
+    # Crear modelo según configuración
+    try:
+        model = create_model(model_cfg)
+        logger.info(f"Modelo {selected_model} creado con éxito")
+    except Exception as e:
+        logger.error(f"Error al crear modelo: {str(e)}")
+        return
+    
+    # Configurar dispositivo (GPU/CPU)
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     if torch.cuda.device_count() > 1:
         logger.info(f"Usando {torch.cuda.device_count()} GPUs con DataParallel.")
-        model = torch.nn.DataParallel(model).cuda()
-    elif torch.cuda.device_count() == 1:
-        logger.info("Usando GPU.")
-        model = model.cuda()
+        model = torch.nn.DataParallel(model).to(device)
     else:
-        logger.info("Usando CPU.")
+        model = model.to(device)
+    input_tensor = input_tensor.to(device)
+    output_tensor = output_tensor.to(device)
+    logger.info(f"Usando dispositivo: {device}")
 
     logger.info(f"Arquitectura del modelo:\n{model}")
-    optimizer = optim.Adam(model.parameters(), lr=lr)
+    optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 
-    # Entrenar
-    trainer = Trainer(model, optimizer, num_epochs, batch_size, memory_limit_gb=float(train_cfg.get("memory_limit_gb", 4)),
-                      early_stop_patience=early_stop_patience,
-                      min_loss_improvement=min_loss_improvement, verbose=True)
+    # Obtener función de pérdida
+    try:
+        loss_fn = get_loss_function(loss_cfg)
+        logger.info(f"Función de pérdida {selected_loss} cargada")
+    except Exception as e:
+        logger.error(f"Error al cargar función de pérdida: {str(e)}")
+        return
+    
+    # Configurar parámetros adicionales para la pérdida
+    loss_kwargs = loss_cfg.copy()
+    loss_kwargs["model"] = model  # Necesario para pérdidas physics-informed
+    loss_kwargs["nu"] = float(physics_cfg.get("nu", 0.01))
+    
+    # Inicializar trainer
+    trainer = Trainer(
+        model=model,
+        optimizer=optimizer, 
+        epochs=num_epochs,
+        batch_size=batch_size,
+        memory_limit_gb=float(train_cfg.get("memory_limit_gb", 4)),
+        scheduler=None,
+        early_stop_params={"enabled": enabled, "patience": early_stop_patience, "min_improvement": min_loss_improvement},       
+        loss_fn=loss_fn,
+        loss_kwargs=loss_kwargs,
+        verbose=True
+    )
     logger.info("Iniciando entrenamiento...")
-    losses, accuracies, epoch_times, total_training_time = trainer.train(x_train, t_train, u_train, nu=float(physics_cfg["nu"]))
-
+    losses, accuracies, epoch_times, total_training_time, learning_rates = trainer.train(
+        input_tensor=input_tensor, 
+        output_tensor=output_tensor,
+        **loss_kwargs
+    )
+    #Hacern falta los argumentos de la ecuacion difernecial a escoger
     # Visualizar métricas
     visualizer = Visualizer(OUTPUT_TRAIN_DIR, logger)
     visualizer.plot_metrics(losses, accuracies, epoch_times)
 
     # Evaluación final y métricas
     with torch.no_grad():
-        u_pred = model(x_train, t_train).detach()
-    u_train_clean = u_train.squeeze().detach().cpu().numpy()
-    u_pred_clean  = u_pred.squeeze().detach().cpu().numpy()
+        # Aquí pasamos directamente el tensor de entrada al modelo
+        y_pred = model(input_tensor)
+    
+    y_true = output_tensor.detach().cpu().numpy()
+    y_pred = y_pred.detach().cpu().numpy()
 
     from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
     PRECISION = 4
@@ -195,10 +268,10 @@ def train_model(config):
         "final_loss": round(float(losses[-1].item()) if hasattr(losses[-1], "item") else float(losses[-1]), PRECISION),
         "final_accuracy": round(float(accuracies[-1].item()) if hasattr(accuracies[-1], "item") else float(accuracies[-1]), PRECISION),
         "total_training_time_sec": round(float(total_training_time), PRECISION),
-        "MAE": round(float(mean_absolute_error(u_train_clean, u_pred_clean)), PRECISION),
-        "MSE": round(float(mean_squared_error(u_train_clean, u_pred_clean)), PRECISION),
-        "RMSE": round(float(np.sqrt(mean_squared_error(u_train_clean, u_pred_clean))), PRECISION),
-        "R2": round(float(r2_score(u_train_clean, u_pred_clean)), PRECISION),
+        "MAE": round(float(mean_absolute_error(y_true, y_pred)), PRECISION),
+        "MSE": round(float(mean_squared_error(y_true, y_pred)), PRECISION),
+        "RMSE": round(float(np.sqrt(mean_squared_error(y_true, y_pred))), PRECISION),
+        "R2": round(float(r2_score(y_true, y_pred)), PRECISION),
         "losses": [round(float(l.item()) if hasattr(l, "item") else float(l), PRECISION) for l in losses],
         "accuracies": [round(float(a.item()) if hasattr(a, "item") else float(a), PRECISION) for a in accuracies],
         "epoch_times": [round(float(t.item()) if hasattr(t, "item") else float(t), PRECISION) for t in epoch_times]
@@ -209,12 +282,52 @@ def train_model(config):
         json.dump(training_stats, f, indent=4)
     logger.info(f"Training statistics saved to: {stats_path}")
 
-    # Graficar solución
-    visualizer.plot_solution(t_train.squeeze().detach().cpu().numpy(),
-                             x_train.squeeze().detach().cpu().numpy(),
-                             u_pred.squeeze().detach().cpu().numpy(),
-                             u_train.squeeze().detach().cpu().numpy(),
-                             filename="solution_comparison.png")
+    # Graficar solución - Modificamos esta parte para extraer x, t de input_tensor
+    try:
+        # Extraer x, t de input_tensor
+        x_np = input_tensor[:, 0].detach().cpu().numpy()
+        t_np = input_tensor[:, 1].detach().cpu().numpy()
+        
+        print(x_np.shape)
+        print(t_np.shape)            
+        
+        print(x_np.shape)
+        print(t_np.shape)
+        
+        # Obtener dimensiones originales
+        nx = 256    
+        nt = 100
+        
+        # Remodelar para la visualización
+        x_grid = x_np.reshape(nx, nt)
+        t_grid = t_np.reshape(nx, nt)
+        u_pred_grid = y_pred.reshape(nx, nt)
+        y_true_grid = y_true.reshape(nx, nt)
+        
+        # print("x_grid")
+        # print(x_grid.shape)
+        # print("t_grid")
+        # print(t_grid.shape)
+        # print("u_pred_grid")
+        # print(u_pred_grid.shape)
+        # print("y_true_grid")
+        # print(y_true_grid.shape)
+        
+        # Graficar
+        visualizer.plot_solution(
+            t_grid,
+            x_grid,
+            u_pred_grid,
+            y_true_grid,
+            filename="solution_comparison.png"
+        )
+    except Exception as e:
+        logger.error(f"Error al graficar la solución: {str(e)}")
+        
+        # Alternativa: graficar como scatter plot
+        # visualizer
+        visualizer.plot_prediction_vs_true(y_pred, y_true, 
+                                           filename="prediction_vs_true.png")
 
     # Guardar modelo
     torch.save({
@@ -260,117 +373,46 @@ def evaluate_model(config):
                             f"eval_{datetime.now().strftime('%Y%m%d_%H%M%S')}")
     os.makedirs(output_dir, exist_ok=True)
     
-    # Cargar modelo
-    checkpoint = torch.load(model_path, map_location=torch.device('cpu'))
+    # Evaluar con el evaluador de modelos
+    evaluator = ModelEvaluator(output_dir=output_dir, logger=logger)
     
-    # Intentar extraer la arquitectura desde los metadatos o usar la configuración actual
-    try:
-        model_metadata_path = os.path.join(os.path.dirname(model_path), "hyperparams_train.json")
-        if os.path.exists(model_metadata_path):
-            with open(model_metadata_path, 'r') as f:
-                model_metadata = json.load(f)
-            layers = model_metadata.get("model", {}).get("layers", [2, 50, 50, 50, 50, 1])
-            activation = model_metadata.get("model", {}).get("activation_function", "Tanh")
-            logger.info(f"Arquitectura de modelo cargada desde metadatos: {layers}")
-        else:
-            layers = config["model"]["layers"]
-            activation = config["model"].get("activation_function", "Tanh")
-            logger.info(f"Usando arquitectura de modelo de config.yaml: {layers}")
-    except Exception as e:
-        logger.warning(f"Error al cargar metadatos del modelo: {str(e)}. Usando configuración actual.")
-        layers = config["model"]["layers"]
-        activation = config["model"].get("activation_function", "Tanh")
+    # Evaluar modelo individual
+    if eval_cfg.get("evaluate_single", True):
+        data_path = eval_cfg.get("data_path", "")
+        model_name = eval_cfg.get("model_name", "Modelo Principal")
+        nu = float(physics_cfg.get("nu", 0.01))
+        
+        if not os.path.exists(data_path):
+            logger.error(f"No se encontró el archivo de datos en: {data_path}")
+            return
+        
+        data_manager = DataManager(256, 100)
+        try:
+            # Cargar datos como tensores de entrada y salida
+            input_tensor, output_tensor = data_manager.load_data_from_file(data_path)
+            logger.info(f"Datos de evaluación cargados: entrada={input_tensor.shape}, salida={output_tensor.shape}")
+        except Exception as e:
+            logger.error(f"Error al cargar datos de evaluación: {str(e)}")
+            return
+        
+        # Cargar y evaluar modelo
+        model = evaluator.load_model(model_path)
+        metrics = evaluator.evaluate_model(model, data_path, nu, model_name)
+        logger.info(f"Evaluación completada para {model_name}")
     
-    # Inicializar modelo con la arquitectura correcta
-    model = PINN_V1(layers, activation)
-    model.load_state_dict(checkpoint['model_state_dict'])
-    model.eval()  # Modo evaluación
-    logger.info(f"Modelo cargado desde: {model_path}")
+    # Evaluar múltiples modelos si se ha configurado
+    if eval_cfg.get("compare_models", False):
+        models_config = eval_cfg.get("models_to_compare", [])
+        if models_config:
+            common_data_path = eval_cfg.get("data_path", "")
+            comparison_df = evaluator.batch_evaluate_models(models_config, common_data_path)
+            logger.info("Comparación de modelos completada")
     
-    # Cargar datos de evaluación
-    eval_data_path = eval_cfg.get("data_path", "")
-    if not os.path.exists(eval_data_path):
-        logger.error(f"No se encontró el archivo de datos en: {eval_data_path}")
-        return
+    # Generar informe completo
+    report_file = evaluator.generate_full_report()
+    logger.info(f"Informe de evaluación guardado en: {report_file}")
     
-    # Cargar datos
-    data_loader = DataLoader(256, 100)
-    x_eval, t_eval, u_eval = data_loader.load_data_from_file(eval_data_path)
-    
-    # Preparar tensores
-    x_eval = DataLoader.prepare_tensor(x_eval)
-    t_eval = DataLoader.prepare_tensor(t_eval)
-    u_eval = DataLoader.prepare_tensor(u_eval)
-    
-    logger.info(f"Datos de evaluación cargados, tamaño: {u_eval.shape}")
-    
-    # Evaluar modelo
-    with torch.no_grad():
-        u_pred = model(x_eval, t_eval)
-    
-    # Calcular métricas
-    from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-    u_eval_np = u_eval.squeeze().detach().cpu().numpy()
-    u_pred_np = u_pred.squeeze().detach().cpu().numpy()
-    
-    mae = mean_absolute_error(u_eval_np, u_pred_np)
-    mse = mean_squared_error(u_eval_np, u_pred_np)
-    rmse = np.sqrt(mse)
-    r2 = r2_score(u_eval_np, u_pred_np)
-    
-    # Guardar resultados
-    eval_results = {
-        "model_path": model_path,
-        "data_path": eval_data_path,
-        "metrics": {
-            "MAE": float(mae),
-            "MSE": float(mse),
-            "RMSE": float(rmse),
-            "R2": float(r2)
-        },
-        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "physics_params": {
-            "nu": float(physics_cfg.get("nu", 0.01))
-        }
-    }
-    
-    # Guardar resultados como JSON
-    results_path = os.path.join(output_dir, "evaluation_results.json")
-    with open(results_path, 'w') as f:
-        json.dump(eval_results, f, indent=4)
-    logger.info(f"Resultados de evaluación guardados en: {results_path}")
-    
-    # Visualizar resultados
-    visualizer = Visualizer(output_dir, logger)
-    visualizer.plot_solution(
-        t_eval.squeeze().detach().cpu().numpy(),
-        x_eval.squeeze().detach().cpu().numpy(),
-        u_pred.squeeze().detach().cpu().numpy(),
-        u_eval.squeeze().detach().cpu().numpy(),
-        filename="evaluation_comparison.png"
-    )
-    
-    # Calcular error punto a punto
-    error = np.abs(u_pred_np - u_eval_np)
-    
-    # Visualizar error
-    visualizer.plot_error_heatmap(
-        t_eval.squeeze().detach().cpu().numpy(),
-        x_eval.squeeze().detach().cpu().numpy(),
-        error,
-        filename="error_heatmap.png"
-    )
-    
-    # Imprimir resumen de métricas
-    logger.info("\n" + "="*50)
-    logger.info("RESULTADOS DE EVALUACIÓN:")
-    logger.info(f"MAE:  {mae:.6f}")
-    logger.info(f"MSE:  {mse:.6f}")
-    logger.info(f"RMSE: {rmse:.6f}")
-    logger.info(f"R2:   {r2:.6f}")
-    logger.info("="*50)
-    
-    return eval_results
+    return output_dir
 
 def main():
     # Configurar argumentos de línea de comandos

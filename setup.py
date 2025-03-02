@@ -19,7 +19,7 @@ if os.path.exists(requirements_path):
 
 setup(
     name="PINN-BGK",
-    version="0.1.0",
+    version="1.1.0",
     author="Cristian Peña",
     author_email="cpenav@unal.edu.co",
     description="Proyecto Final: Optimización y Control en Redes Distribuidas",

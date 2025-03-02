@@ -1,0 +1,4 @@
+2025-03-02 02:10:27,290 - data_manager - INFO - DataManager inicializado: spatial_points=256, time_points=100
+2025-03-02 02:10:27,293 - data_manager - INFO - Archivo .mat cargado correctamente: d:\personal\area de trabajo\universidad\matriculas\novena\optimización y control en redes distribuidas\proyecto final\code\src\..\data\training\burgers_shock_mu_01_pi.mat
+2025-03-02 02:10:27,295 - data_manager - INFO - Formato estándar detectado: x:(256,), t:(100,), usol:(256, 100)
+2025-03-02 02:10:27,298 - data_manager - INFO - Datos procesados con éxito. Formas finales: Input:torch.Size([25600, 2]), Output:torch.Size([25600, 1])
