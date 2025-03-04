@@ -17,9 +17,10 @@ if os.path.exists(requirements_path):
     with open(requirements_path, encoding="utf-8") as f:
         requirements = [line.strip() for line in f if line.strip() and not line.startswith("#") and not line.startswith("--")]
 
+# Configuración del paquete PINN-BGK:
 setup(
     name="PINN-BGK",
-    version="1.1.0",
+    version="1.4.3",
     author="Cristian Peña",
     author_email="cpenav@unal.edu.co",
     description="Proyecto Final: Optimización y Control en Redes Distribuidas",
@@ -28,7 +29,7 @@ setup(
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     include_package_data=True,
-        install_requires=[req for req in requirements if not req.startswith("git+")],
+    install_requires=[req for req in requirements if not req.startswith("git+")],
     dependency_links=[req for req in requirements if req.startswith("git+")],
     entry_points={
         "console_scripts": [

@@ -5,7 +5,7 @@ selected_loss: "mse"       # Nombre de la función de pérdida (debe estar en la
 # Definiciones de modelos disponibles
 models:
   pinn_v1:
-    type: "mlp"
+    type: "mlp"                      # Tipo de modelo (mlp: perceptrón multicapa, mlp_residual: perceptrón multicapa residual)
     layers: [2, 50, 50, 50, 50, 1]
     activation_function: "Tanh"
     learning_rate: 0.001
@@ -21,6 +21,37 @@ models:
     layers: [2, 20, 20, 1]
     activation_function: "ReLU"
     learning_rate: 0.002
+
+  # Modelos para física de fluidos
+  navier_stokes:
+    type: "navier_stokes"
+    layers: [3, 64, 64, 64, 64, 3]
+    activation_function: "Tanh"
+    learning_rate: 0.0005
+    physics_type: "navier_stokes"  # Especificar el tipo de física
+    
+  kovasznay:
+    type: "kovasznay"
+    layers: [2, 40, 40, 40, 3]
+    activation_function: "Tanh"
+    learning_rate: 0.001
+    re: 40.0  # Parámetro específico para Kovasznay
+    physics_type: "kovasznay"  # Especificar el tipo de física
+    
+  taylor_green:
+    type: "taylor_green"
+    layers: [3, 64, 64, 64, 64, 3]
+    activation_function: "Swish"
+    learning_rate: 0.0008
+    nu: 0.01  # Viscosidad cinemática
+    physics_type: "taylor_green"  # Especificar el tipo de física
+    
+  cavity_flow:
+    type: "cavity_flow"
+    layers: [2, 50, 50, 50, 50, 3]
+    activation_function: "Tanh"
+    learning_rate: 0.001
+    physics_type: "cavity_flow"  # Especificar el tipo de física
 
 # Definiciones de funciones de pérdida
 loss_functions:
@@ -39,7 +70,7 @@ loss_functions:
     boundary_weight: 10.0
 
 training:
-  epochs: 10
+  epochs: 1
   batch_size: 64
   optimizer: "Adam"
   optimizer_params:
@@ -63,12 +94,13 @@ training:
 physics:
   nu: 0.01
   boundary_type: "dirichlet"
-  physics_type: "burgers"
+  physics_type: "burgers"  # Tipo de física: "burgers", "kovasznay", "taylor_green", "cavity_flow"
 
 logging:
   level: "INFO"
   output_folder: "output"
 
+# Data configuration
 data_generation:
   type: "burgers"  # Opciones: burgers, kovasznay, taylor_green, lid_driven_cavity
   spatial_points: 256
@@ -85,6 +117,7 @@ data_generation:
 evaluation:
   model_path: "output/Model_mlp_1_0.001_42/model/weights_model.pth"  # Ruta al modelo entrenado
   data_path: "data/training/burgers_shock_mu_01_pi.mat"  # Datos para evaluar
+  data_dir: "data/training"  # Directorio donde buscar datos
   output_folder: "evaluation_results"  # Carpeta donde guardar resultados
   metrics: ["MAE", "MSE", "RMSE", "R2"]  # Métricas a calcular
   visualize: true  # Generar visualizaciones

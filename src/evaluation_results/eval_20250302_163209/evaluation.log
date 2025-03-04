@@ -1,0 +1,9 @@
+2025-03-02 16:32:09,668 - data_manager - INFO - DataManager inicializado: spatial_points=256, time_points=100
+2025-03-02 16:32:09,671 - root - INFO - Evaluando modelo: Model_pinn_v1_100_0.001_42
+2025-03-02 16:32:09,671 - root - INFO - Evaluando modelo 'Model_pinn_v1_100_0.001_42' con datos: data/training/burgers_shock_mu_01_pi.mat
+2025-03-02 16:32:09,691 - data_manager - INFO - Archivo .mat cargado correctamente: data/training/burgers_shock_mu_01_pi.mat
+2025-03-02 16:32:09,691 - data_manager - INFO - Formato estándar detectado: x:(256,), t:(100,), usol:(256, 100)
+2025-03-02 16:32:09,737 - data_manager - INFO - Datos procesados con éxito. Formas finales: Input:torch.Size([25600, 2]), Output:torch.Size([25600, 1])
+2025-03-02 16:32:09,738 - root - ERROR - Error al cargar datos: not enough values to unpack (expected 3, got 2)
+2025-03-02 16:32:09,738 - root - ERROR - Error al evaluar el modelo: not enough values to unpack (expected 3, got 2)
+2025-03-02 16:32:09,738 - root - INFO - Programa finalizado exitosamente en modo: evaluate.

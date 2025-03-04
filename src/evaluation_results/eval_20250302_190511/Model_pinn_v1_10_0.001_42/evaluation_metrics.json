@@ -1,0 +1,12 @@
+{
+  "model_name": "Model_pinn_v1_10_0.001_42",
+  "MAE": 0.017057795077562332,
+  "MSE": 0.001113524311222136,
+  "RMSE": 0.0333695113658905,
+  "R2": 0.9970495700836182,
+  "inference_time": 0.030000686645507812,
+  "memory_usage_mb": 0.0,
+  "evaluation_timestamp": "2025-03-02 19:06:51",
+  "data_file": "data/training/burgers_shock_mu_01_pi.mat",
+  "nu": 0.01
+}

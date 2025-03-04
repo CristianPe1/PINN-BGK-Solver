@@ -290,7 +290,10 @@ class DataManager:
             save (bool): Si True, guarda los resultados
                 
         Returns:
-            tuple: (input_tensor, output_tensor) para entrenamiento de modelo
+            tuple: (x, t, usol) para uso directo, donde:
+                   - x: Array de coordenadas espaciales
+                   - t: Array de coordenadas temporales
+                   - usol: Matriz de solución [nx, nt]
         """
         logger.info(f"Generando solución sintética de Burgers con nu={nu}...")
         start_time = datetime.now()
@@ -313,13 +316,13 @@ class DataManager:
                 denominator = 1 + (1 - np.exp(-nu*np.pi**2*t_val)) * np.cos(np.pi * x_val) / (np.sin(np.pi * x_val) + 1e-8)
                 usol[i, j] = -np.sin(np.pi * x_val) * np.exp(-nu*np.pi**2*t_val) / denominator
         
-        # Reshape para crear tensor de entrada (x, t) y tensor de salida u(x, t)
-        X_flat = X.transpose().flatten()  # Transposición para mantener consistencia
+        # Crear también los tensores de entrada y salida para el modelo
+        X_flat = X.transpose().flatten()
         T_flat = T.transpose().flatten()
-        input_points = np.column_stack((X_flat, T_flat))  # Shape: [n_points, 2]
-        output_values = usol.transpose().flatten().reshape(-1, 1)  # Shape: [n_points, 1]
+        input_points = np.column_stack((X_flat, T_flat))
+        output_values = usol.transpose().flatten().reshape(-1, 1)
         
-        # Convertir a tensores PyTorch
+        # Convertir a tensores PyTorch para uso futuro
         input_tensor = torch.tensor(input_points, dtype=torch.float32)
         output_tensor = torch.tensor(output_values, dtype=torch.float32)
         
@@ -348,7 +351,7 @@ class DataManager:
         # ... código existente para estadísticas y registro ...
         
         logger.info(f"Datos sintéticos generados: Input:{input_tensor.shape}, Output:{output_tensor.shape}")
-        return input_tensor, output_tensor
+        return x, t, usol
 
     def _log_simulation(self, simulation_type, parameters, output_file, metadata=None):
         """

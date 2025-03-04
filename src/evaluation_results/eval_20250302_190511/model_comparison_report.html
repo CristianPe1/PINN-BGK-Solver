@@ -1,0 +1,146 @@
+<html><head><title>Informe de Comparación de Modelos</title><style>body { font-family: Arial, sans-serif; margin: 20px; }table { border-collapse: collapse; width: 100%; }th, td { text-align: left; padding: 8px; border: 1px solid #ddd; }th { background-color: #f2f2f2; }tr:nth-child(even) { background-color: #f9f9f9; }img { max-width: 100%; height: auto; }</style></head><body><h1>Informe de Comparación de Modelos</h1><h2>Top 3 Mejores Modelos</h2><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model_name</th>
+      <th>MAE</th>
+      <th>MSE</th>
+      <th>RMSE</th>
+      <th>R2</th>
+      <th>inference_time</th>
+      <th>memory_usage_mb</th>
+      <th>evaluation_timestamp</th>
+      <th>data_file</th>
+      <th>nu</th>
+      <th>physics_type</th>
+      <th>layers</th>
+      <th>activation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Model_pinn_v1_100_0.001_42</td>
+      <td>0.013725</td>
+      <td>0.000211</td>
+      <td>0.014533</td>
+      <td>0.999440</td>
+      <td>0.033408</td>
+      <td>0.007812</td>
+      <td>2025-03-02 19:06:44</td>
+      <td>data/training/burgers_shock_mu_01_pi.mat</td>
+      <td>0.01</td>
+      <td>burgers</td>
+      <td>[2, 50, 50, 50, 50, 1]</td>
+      <td>Tanh</td>
+    </tr>
+    <tr>
+      <td>Model_pinn_v1_10_0.001_42</td>
+      <td>0.017058</td>
+      <td>0.001114</td>
+      <td>0.033370</td>
+      <td>0.997050</td>
+      <td>0.030001</td>
+      <td>0.000000</td>
+      <td>2025-03-02 19:06:51</td>
+      <td>data/training/burgers_shock_mu_01_pi.mat</td>
+      <td>0.01</td>
+      <td>burgers</td>
+      <td>[2, 50, 50, 50, 50, 1]</td>
+      <td>Tanh</td>
+    </tr>
+    <tr>
+      <td>Model_pinn_v1_1_0.001_42</td>
+      <td>0.101233</td>
+      <td>0.024991</td>
+      <td>0.158085</td>
+      <td>0.933783</td>
+      <td>0.033012</td>
+      <td>0.000000</td>
+      <td>2025-03-02 19:06:57</td>
+      <td>data/training/burgers_shock_mu_01_pi.mat</td>
+      <td>0.01</td>
+      <td>burgers</td>
+      <td>[2, 50, 50, 50, 50, 1]</td>
+      <td>Tanh</td>
+    </tr>
+  </tbody>
+</table><h2>Visualizaciones Comparativas</h2><img src="model_comparison_metrics.png" alt="Gráfico Comparativo"><h2>Todos los Modelos Evaluados</h2><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>model_name</th>
+      <th>MAE</th>
+      <th>MSE</th>
+      <th>RMSE</th>
+      <th>R2</th>
+      <th>inference_time</th>
+      <th>memory_usage_mb</th>
+      <th>evaluation_timestamp</th>
+      <th>data_file</th>
+      <th>nu</th>
+      <th>physics_type</th>
+      <th>layers</th>
+      <th>activation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Model_mlp_1_0.001_42</td>
+      <td>0.663884</td>
+      <td>0.584923</td>
+      <td>0.764802</td>
+      <td>-0.549831</td>
+      <td>0.039998</td>
+      <td>0.039062</td>
+      <td>2025-03-02 19:06:38</td>
+      <td>data/training/burgers_shock_mu_01_pi.mat</td>
+      <td>0.01</td>
+      <td>burgers</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>Model_pinn_v1_100_0.001_42</td>
+      <td>0.013725</td>
+      <td>0.000211</td>
+      <td>0.014533</td>
+      <td>0.999440</td>
+      <td>0.033408</td>
+      <td>0.007812</td>
+      <td>2025-03-02 19:06:44</td>
+      <td>data/training/burgers_shock_mu_01_pi.mat</td>
+      <td>0.01</td>
+      <td>burgers</td>
+      <td>[2, 50, 50, 50, 50, 1]</td>
+      <td>Tanh</td>
+    </tr>
+    <tr>
+      <td>Model_pinn_v1_10_0.001_42</td>
+      <td>0.017058</td>
+      <td>0.001114</td>
+      <td>0.033370</td>
+      <td>0.997050</td>
+      <td>0.030001</td>
+      <td>0.000000</td>
+      <td>2025-03-02 19:06:51</td>
+      <td>data/training/burgers_shock_mu_01_pi.mat</td>
+      <td>0.01</td>
+      <td>burgers</td>
+      <td>[2, 50, 50, 50, 50, 1]</td>
+      <td>Tanh</td>
+    </tr>
+    <tr>
+      <td>Model_pinn_v1_1_0.001_42</td>
+      <td>0.101233</td>
+      <td>0.024991</td>
+      <td>0.158085</td>
+      <td>0.933783</td>
+      <td>0.033012</td>
+      <td>0.000000</td>
+      <td>2025-03-02 19:06:57</td>
+      <td>data/training/burgers_shock_mu_01_pi.mat</td>
+      <td>0.01</td>
+      <td>burgers</td>
+      <td>[2, 50, 50, 50, 50, 1]</td>
+      <td>Tanh</td>
+    </tr>
+  </tbody>
+</table></body></html>

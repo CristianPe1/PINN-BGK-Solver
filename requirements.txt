@@ -13,6 +13,7 @@ pandas>=2.0.3
 matplotlib>=3.7.2
 seaborn>=0.12.2
 tabulate>=0.8.9
+pandas>=2.0.3
 
 # System Monitoring
 psutil>=5.9.5

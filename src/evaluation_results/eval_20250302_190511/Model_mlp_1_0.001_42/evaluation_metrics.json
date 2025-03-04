@@ -1,0 +1,12 @@
+{
+  "model_name": "Model_mlp_1_0.001_42",
+  "MAE": 0.6638835072517395,
+  "MSE": 0.5849226117134094,
+  "RMSE": 0.7648023366928101,
+  "R2": -0.5498307943344116,
+  "inference_time": 0.03999829292297363,
+  "memory_usage_mb": 0.0390625,
+  "evaluation_timestamp": "2025-03-02 19:06:38",
+  "data_file": "data/training/burgers_shock_mu_01_pi.mat",
+  "nu": 0.01
+}

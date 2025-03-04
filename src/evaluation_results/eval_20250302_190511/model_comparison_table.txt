@@ -1,0 +1,16 @@
+COMPARACIÓN DE MODELOS
+=====================
+
+Fecha: 2025-03-02 19:07:05
+Archivo de datos: burgers_shock_mu_01_pi.mat
+Total de modelos evaluados: 4
+
+                   model_name       MSE       MAE        R2  inference_time
+1  Model_pinn_v1_100_0.001_42  0.000211  0.013725  0.999440        0.033408
+2   Model_pinn_v1_10_0.001_42  0.001114  0.017058  0.997050        0.030001
+3    Model_pinn_v1_1_0.001_42  0.024991  0.101233  0.933783        0.033012
+0        Model_mlp_1_0.001_42  0.584923  0.663884 -0.549831        0.039998
+
+Nota: Los modelos están ordenados de mejor a peor según MSE.
+
+Gráficos comparativos disponibles en: model_comparison_metrics.png
