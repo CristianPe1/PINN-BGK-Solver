@@ -8,7 +8,6 @@ import torch
 import logging
 from datetime import datetime
 
-from structure_model.model_factory import create_model
 
 logger = logging.getLogger(__name__)
 

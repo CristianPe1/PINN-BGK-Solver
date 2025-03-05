@@ -9,8 +9,16 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import logging
 from datetime import datetime
 
+# Required imports - make sure these are available
 from data_handlers.data_manager import DataManager
-from model_factory import create_model
+from structure_model.pinn_structure_v1 import PINN_V1
+
+# Import model_factory conditionally
+try:
+    from model.model_factory import create_model
+    MODEL_FACTORY_AVAILABLE = True
+except ImportError:
+    MODEL_FACTORY_AVAILABLE = False
 
 logger = logging.getLogger(__name__)
 
@@ -32,15 +40,7 @@ class ModelEvaluator:
         self.evaluation_results = []
     
     def load_model(self, model_path):
-        """
-        Carga un modelo desde un archivo de pesos.
-        
-        Args:
-            model_path (str): Ruta al archivo de pesos del modelo
-            
-        Returns:
-            nn.Module: Modelo cargado
-        """
+        """Carga un modelo desde un archivo de pesos."""
         if not os.path.exists(model_path):
             raise FileNotFoundError(f"No se encontró el modelo en: {model_path}")
         
@@ -53,7 +53,7 @@ class ModelEvaluator:
         
         model = None
         
-        if os.path.exists(arch_path):
+        if os.path.exists(arch_path) and MODEL_FACTORY_AVAILABLE:
             try:
                 with open(arch_path, 'r') as f:
                     config = json.load(f)
@@ -68,68 +68,32 @@ class ModelEvaluator:
                 
             except Exception as e:
                 self.logger.warning(f"No se pudo recrear la arquitectura desde el archivo: {str(e)}")
-                # Continuar y usar un modelo predeterminado
         
         # Si no se pudo crear el modelo desde la configuración, usar uno predeterminado
         if model is None:
-            from structure_model.pinn_structure_v1 import PINN_V1
             model = PINN_V1([2, 50, 50, 50, 50, 1], "Tanh")
             self.logger.warning("Usando modelo predeterminado PINN_V1")
         
-        # Verificar si hay incompatibilidad en los nombres de las capas (linears vs linear_layers)
-        state_dict = checkpoint['model_state_dict']
-        
-        # Comprobar si necesitamos adaptación de nombres
-        needs_adaptation = any('linears.' in key for key in state_dict.keys()) and not any('linear_layers.' in key for key in state_dict.keys())
-        
-        if needs_adaptation:
-            self.logger.info("Detectada incompatibilidad de nombres de capas. Adaptando estado del modelo...")
-            new_state_dict = {}
-            
-            # Mapear nombres antiguos a nuevos
-            for key, value in state_dict.items():
-                if 'linears.' in key:
-                    new_key = key.replace('linears.', 'linear_layers.')
-                    new_state_dict[new_key] = value
-                else:
-                    new_state_dict[key] = value
-                    
-            state_dict = new_state_dict
-            self.logger.info("Adaptación de nombres completada.")
-        
         # Cargar pesos con manejo de errores flexible
         try:
+            state_dict = checkpoint['model_state_dict']
             model.load_state_dict(state_dict, strict=True)
-        except RuntimeError as e:
-            self.logger.warning(f"Error al cargar estado con 'strict=True': {str(e)}")
+        except Exception as e:
+            self.logger.warning(f"Error al cargar estado: {str(e)}")
             self.logger.info("Intentando cargar con 'strict=False'...")
             
             # Intentar carga sin estricta
-            missing_keys, unexpected_keys = model.load_state_dict(state_dict, strict=False)
-            
-            if missing_keys:
-                self.logger.warning(f"Claves faltantes: {missing_keys}")
-            if unexpected_keys:
-                self.logger.warning(f"Claves inesperadas: {unexpected_keys}")
+            try:
+                model.load_state_dict(state_dict, strict=False)
+            except Exception as e2:
+                self.logger.error(f"Error al cargar estado de forma no estricta: {str(e2)}")
         
         model.eval()  # Modo evaluación
-        
         self.logger.info(f"Modelo cargado exitosamente desde {model_path}")
         return model
     
     def evaluate_model(self, model_path, data_path, nu, model_name="Modelo"):
-        """
-        Evalúa un modelo con datos específicos.
-        
-        Args:
-            model_path (str): Ruta al modelo o instancia del modelo
-            data_path (str): Ruta a los datos de evaluación
-            nu (float): Coeficiente de viscosidad
-            model_name (str): Nombre identificativo del modelo
-            
-        Returns:
-            dict: Métricas de evaluación
-        """
+        """Evalúa un modelo con datos específicos."""
         # Cargar el modelo si se proporciona una ruta
         if isinstance(model_path, str):
             model = self.load_model(model_path)
@@ -212,15 +176,7 @@ class ModelEvaluator:
         return metrics
     
     def _plot_comparison(self, input_tensor, output_tensor, y_pred, output_dir):
-        """
-        Genera visualizaciones comparativas entre la solución real y la predicha.
-        
-        Args:
-            input_tensor (torch.Tensor): Tensor de entrada (coordenadas)
-            output_tensor (torch.Tensor): Tensor de salida real
-            y_pred (np.ndarray): Predicciones del modelo
-            output_dir (str): Directorio donde guardar las visualizaciones
-        """
+        """Genera visualizaciones comparativas entre la solución real y la predicha."""
         # Extraer datos
         x_np = input_tensor[:, 0].detach().cpu().numpy()
         t_np = input_tensor[:, 1].detach().cpu().numpy()
@@ -341,12 +297,7 @@ class ModelEvaluator:
             traceback.print_exc()
     
     def generate_full_report(self):
-        """
-        Genera un informe completo de todas las evaluaciones realizadas.
-        
-        Returns:
-            str: Ruta al informe generado
-        """
+        """Genera un informe completo de todas las evaluaciones realizadas."""
         if not self.evaluation_results:
             self.logger.warning("No hay resultados para generar informe.")
             return None

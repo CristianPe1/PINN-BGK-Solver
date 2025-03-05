@@ -165,6 +165,7 @@
     "evaluation": {
         "model_path": "output/Model_mlp_1_0.001_42/model/weights_model.pth",
         "data_path": "data/training/burgers_shock_mu_01_pi.mat",
+        "data_dir": "data/training",
         "output_folder": "evaluation_results",
         "metrics": [
             "MAE",

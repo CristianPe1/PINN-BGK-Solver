@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from .base_model import BaseNeuralNetwork
+from ..base_model import BaseNeuralNetwork
 
 class PINN_V2(nn.Module):
     """

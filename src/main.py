@@ -14,13 +14,16 @@ from model.train import Trainer
 from model.model_finder import ModelFinder
 from utils.visualization import Visualizer
 
+from model.model_factory import create_model
 from model.model_selector import ModelSelector
 from utils.output_manager import OutputManager
 from model.model_evaluator import ModelEvaluator
-from data_handlers.data_manager import DataManager
-from model.model_comparator import ModelComparator
 from model.loss_functions import get_loss_function
-from structure_model.model_factory import create_model
+from model.model_comparator import ModelComparator
+from data_handlers.data_manager import DataManager
+
+
+
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 # Establecer PROJECT_ROOT
@@ -156,6 +159,7 @@ def train_model(config):
     try:
         # Cargar los datos y verificar que son correctos
         input_tensor, output_tensor = data_manager.load_data_from_file(data_file)
+        print("Entro")
         
         # Verificación adicional para asegurar que los tensores tienen dimensiones compatibles
         if input_tensor.shape[0] != output_tensor.shape[0]:

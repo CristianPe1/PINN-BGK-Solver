@@ -1,4 +1,4 @@
-Fecha: 2025-03-03 22:58:17
+Fecha: 2025-03-05 10:10:18
 Directorio: d:\personal\area de trabajo\universidad\matriculas\novena\optimización y control en redes distribuidas\proyecto final\code\output\burgers\burgers_kovasznay_1_0.001_42
 Proyecto: d:\personal\area de trabajo\universidad\matriculas\novena\optimización y control en redes distribuidas\proyecto final\code
 

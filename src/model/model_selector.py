@@ -10,7 +10,8 @@ import torch
 import importlib
 import traceback
 from pathlib import Path
-from model_adapter import ModelAdapter
+# from model_adapter import ModelAdapter
+from model.model_factory import PHYSICS_DIMENSIONS
 
 # Configuración de logging más detallado
 logger = logging.getLogger(__name__)
@@ -51,11 +52,11 @@ try:
     else:
         try:
             # Intentamos importar el módulo
-            from structure_model.fluid_models.taylor_green_pinn import TaylorGreenPINN
-            logger.info("Modelo TaylorGreenPINN cargado correctamente")
+            from structure_model.fluid_models import CavityFlowPINN, KovasznayPINN, NavierStokesPINN, TaylorGreenPINN 
+            logger.info("Modelos de fluidos importados correctamente")
             FLUID_MODELS_AVAILABLE = True
         except ImportError as e:
-            logger.error(f"Error al importar TaylorGreenPINN: {e}")
+            logger.error(f"Error al importar modelos de fluidos: {e}")
             logger.debug(traceback.format_exc())
     
     # Verificamos los demás modelos
@@ -604,6 +605,19 @@ class ModelSelector:
         
         # Parámetros específicos para modelos de fluidos
         if category == "fluid":
+            # Ensure dimensions match the physics problem type
+            if model_type in PHYSICS_DIMENSIONS:
+                input_dim, output_dim = PHYSICS_DIMENSIONS[model_type]
+                if "layers" in model_config:
+                    layers = model_config["layers"]
+                    if layers and len(layers) > 1:
+                        if layers[0] != input_dim or layers[-1] != output_dim:
+                            logger.warning(f"Ajustando dimensiones para modelo {model_type}: {layers[0]}→{input_dim}, {layers[-1]}→{output_dim}")
+                            layers[0] = input_dim
+                            layers[-1] = output_dim
+                            model_config["layers"] = layers
+            
+            # Add specific parameters for each model type
             if model_type == "taylor_green":
                 kwargs["nu"] = model_config.get("nu", config.get("physics", {}).get("nu", 0.01))
             elif model_type == "kovasznay":
@@ -611,9 +625,21 @@ class ModelSelector:
             elif model_type == "cavity_flow":
                 kwargs["nu"] = model_config.get("nu", config.get("physics", {}).get("nu", 0.01))
                 kwargs["u0"] = model_config.get("u0", config.get("physics", {}).get("U0", 1.0))
-                
-        # Se pueden agregar más parámetros específicos para otros tipos de modelos aquí
-                
+        
+        # For standard models, also ensure dimensions match physics problem
+        elif category == "standard":
+            physics_type = model_config.get("physics_type", config.get("physics", {}).get("physics_type", "burgers"))
+            if physics_type in PHYSICS_DIMENSIONS:
+                input_dim, output_dim = PHYSICS_DIMENSIONS[physics_type]
+                if "layers" in model_config:
+                    layers = model_config["layers"]
+                    if layers and len(layers) > 1:
+                        if layers[0] != input_dim or layers[-1] != output_dim:
+                            logger.warning(f"Ajustando dimensiones para física {physics_type}: {layers[0]}→{input_dim}, {layers[-1]}→{output_dim}")
+                            layers[0] = input_dim
+                            layers[-1] = output_dim
+                            model_config["layers"] = layers
+                        
         return kwargs
     
     def list_available_models(self, category=None):
