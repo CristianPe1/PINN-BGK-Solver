@@ -1,4 +1,4 @@
-Fecha: 2025-03-05 10:06:41
+Fecha: 2025-03-05 10:23:30
 Directorio: d:\personal\area de trabajo\universidad\matriculas\novena\optimización y control en redes distribuidas\proyecto final\code\output\burgers\burgers_taylor_green_1_0.0008_42
 Proyecto: d:\personal\area de trabajo\universidad\matriculas\novena\optimización y control en redes distribuidas\proyecto final\code
 

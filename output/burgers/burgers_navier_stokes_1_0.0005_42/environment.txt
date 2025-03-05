@@ -1,4 +1,4 @@
-Fecha: 2025-03-05 10:10:05
+Fecha: 2025-03-05 10:30:16
 Directorio: d:\personal\area de trabajo\universidad\matriculas\novena\optimización y control en redes distribuidas\proyecto final\code\output\burgers\burgers_navier_stokes_1_0.0005_42
 Proyecto: d:\personal\area de trabajo\universidad\matriculas\novena\optimización y control en redes distribuidas\proyecto final\code
 

@@ -1,4 +1,4 @@
-Fecha: 2025-03-05 01:26:56
+Fecha: 2025-03-05 10:27:47
 Directorio: d:\personal\area de trabajo\universidad\matriculas\novena\optimización y control en redes distribuidas\proyecto final\code\output\burgers\burgers_pinn_v1_1_0.001_42
 Proyecto: d:\personal\area de trabajo\universidad\matriculas\novena\optimización y control en redes distribuidas\proyecto final\code
 

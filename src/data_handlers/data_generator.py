@@ -6,16 +6,34 @@ import torch
 import matplotlib.pyplot as plt
 from scipy.io import loadmat, savemat
 from datetime import datetime
+import fenics as fe
+import mshr
+FENICS_AVAILABLE = True
 
-try:
-    import fenics as fe
-    import mshr
-    FENICS_AVAILABLE = True
-except ImportError:
-    print("FEniCS no está disponible. Algunas funcionalidades estarán limitadas.")
-    FENICS_AVAILABLE = False
+# try:
+#     import fenics as fe
+#     import mshr
+#     FENICS_AVAILABLE = True
+# except ImportError:
+#     print("FEniCS no está disponible. Algunas funcionalidades estarán limitadas.")
+#     FENICS_AVAILABLE = False
 
 from .data_loader import DataLoader
+import sys
+import importlib.util
+
+# Verificar si el módulo fluid_data_generators está disponible e importarlo
+SYNTHETIC_GENERATORS_AVAILABLE = False
+try:
+    # Intentamos importar los generadores sintéticos
+    from ..utils.fluid_data_generators import (
+        TaylorGreenDataGenerator, 
+        KovasznayDataGenerator, 
+        CavityFlowDataGenerator
+    )
+    SYNTHETIC_GENERATORS_AVAILABLE = True
+except ImportError:
+    print("Generadores de fluidos sintéticos no disponibles. Se usarán solo soluciones numéricas.")
 
 # Configuración del logger
 logger = logging.getLogger("fluid_generator")
@@ -49,6 +67,17 @@ class DataGenerator(DataLoader):
         # Crear directorio si no existe
         os.makedirs(self.output_dir, exist_ok=True)
         
+        # Crear subdirectorios para cada tipo de fluido
+        self.fluid_dirs = {
+            'burgers': os.path.join(self.output_dir, "burgers"),
+            'taylor_green': os.path.join(self.output_dir, "taylor_green"),
+            'kovasznay': os.path.join(self.output_dir, "kovasznay"),
+            'cavity_flow': os.path.join(self.output_dir, "cavity_flow"),
+        }
+        
+        for dir_path in self.fluid_dirs.values():
+            os.makedirs(dir_path, exist_ok=True)
+        
         # Crear subdirectorio de logs
         self.logs_dir = os.path.join(self.output_dir, "logs")
         os.makedirs(self.logs_dir, exist_ok=True)
@@ -70,15 +99,185 @@ class DataGenerator(DataLoader):
         # Inicializar lista para registrar todas las simulaciones generadas
         self.generated_simulations = []
         
-        # Verificar si FEniCS está disponible
+        # Verificar disponibilidad de generadores
         if not FENICS_AVAILABLE:
             logger.warning("FEniCS no está disponible. Las simulaciones numéricas no funcionarán.")
         else:
-            logger.info("FEniCS disponible. Todas las funcionalidades habilitadas.")
+            logger.info("FEniCS disponible para simulaciones numéricas.")
+            
+        if not SYNTHETIC_GENERATORS_AVAILABLE:
+            logger.warning("Generadores sintéticos no disponibles. Algunas funcionalidades estarán limitadas.")
+        else:
+            logger.info("Generadores sintéticos disponibles para todos los tipos de flujo.")
         
         logger.info(f"FluidDataGenerator inicializado: spatial_points={spatial_points}, time_points={time_points}")
         logger.info(f"Directorio de salida: {self.output_dir}")
+    
+    def generate_fluid_data(self, fluid_type, method='synthetic', params=None, visualize=True, 
+                           save=True, format='hdf5'):
+        """
+        Punto de entrada principal para generar datos de fluidos según el tipo especificado.
         
+        Args:
+            fluid_type (str): Tipo de fluido ('taylor_green', 'kovasznay', 'cavity_flow', 'burgers')
+            method (str): Método de generación ('synthetic', 'numerical')
+            params (dict): Parámetros específicos del fluido
+            visualize (bool): Si se generan visualizaciones
+            save (bool): Si se guardan los datos
+            format (str): Formato de guardado ('hdf5', 'npz', 'mat', 'csv')
+            
+        Returns:
+            dict: Datos generados (o ruta a los datos guardados si save=True)
+        """
+        logger.info(f"Generando datos para fluido: {fluid_type} usando método: {method}")
+        
+        # Establecer parámetros por defecto si no se proporcionan
+        if params is None:
+            params = {}
+        
+        # Directorio específico para este tipo de fluido
+        fluid_dir = self.fluid_dirs.get(fluid_type, self.output_dir)
+        os.makedirs(fluid_dir, exist_ok=True)
+        
+        # Subcarpeta para visualizaciones
+        vis_dir = os.path.join(fluid_dir, "visualizaciones")
+        if visualize:
+            os.makedirs(vis_dir, exist_ok=True)
+        
+        # Generar datos según el tipo de fluido y método
+        if method == 'synthetic' and SYNTHETIC_GENERATORS_AVAILABLE:
+            if fluid_type == 'taylor_green':
+                return self._generate_taylor_green_synthetic(params, fluid_dir, vis_dir, 
+                                                           visualize, save, format)
+            elif fluid_type == 'kovasznay':
+                return self._generate_kovasznay_synthetic(params, fluid_dir, vis_dir, 
+                                                        visualize, save, format)
+            elif fluid_type == 'cavity_flow':
+                return self._generate_cavity_flow_synthetic(params, fluid_dir, vis_dir, 
+                                                          visualize, save, format)
+            elif fluid_type == 'burgers':
+                return self.burgers_synthetic_solution(params.get('nu', 0.01/np.pi), save)
+            else:
+                logger.error(f"Tipo de fluido desconocido: {fluid_type}")
+                return None
+        elif method == 'numerical' and FENICS_AVAILABLE:
+            if fluid_type == 'taylor_green':
+                return self.generate_taylor_green_vortex(**params, save=save)
+            elif fluid_type == 'kovasznay':
+                return self.generate_kovasznay_flow(**params, save=save)
+            elif fluid_type == 'cavity_flow':
+                return self.generate_lid_driven_cavity(**params, save=save)
+            elif fluid_type == 'burgers':
+                return self.generate_burgers_data(**params, save=save)
+            else:
+                logger.error(f"Tipo de fluido desconocido: {fluid_type}")
+                return None
+        else:
+            if not SYNTHETIC_GENERATORS_AVAILABLE and method == 'synthetic':
+                logger.error("No se pueden generar datos sintéticos. Los generadores no están disponibles.")
+            elif not FENICS_AVAILABLE and method == 'numerical':
+                logger.error("No se pueden generar datos numéricos. FEniCS no está disponible.")
+            else:
+                logger.error(f"Método desconocido: {method}")
+            return None
+    
+    def _generate_taylor_green_synthetic(self, params, fluid_dir, vis_dir, visualize, save, format):
+        """Genera datos sintéticos para el flujo de Taylor-Green"""
+        nu = params.get('nu', 0.01)
+        nx = params.get('nx', self.spatial_points)
+        ny = params.get('ny', self.spatial_points)
+        nt = params.get('nt', self.time_points)
+        
+        # Crear generador
+        generator = TaylorGreenDataGenerator(nu=nu)
+        
+        # Generar datos
+        data = generator.generate_data(nx=nx, ny=ny, nt=nt)
+        
+        # Visualizar si se solicita
+        if visualize:
+            for t_idx in range(0, nt, max(1, nt//5)):  # 5 instantes de tiempo
+                generator.plot_data(data, vis_dir, t_idx)
+        
+        # Guardar datos
+        if save:
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            output_path = os.path.join(fluid_dir, f"taylor_green_nu{nu}_nx{nx}_ny{ny}_nt{nt}_{timestamp}.{format}")
+            generator.save_data(data, output_path, format=format)
+            
+            # Registrar simulación
+            self._log_simulation('taylor_green_synthetic', 
+                                params, 
+                                output_path,
+                                {'data_shape': f"{nx}x{ny}x{nt}"})
+            
+            return output_path
+        
+        return data
+    
+    def _generate_kovasznay_synthetic(self, params, fluid_dir, vis_dir, visualize, save, format):
+        """Genera datos sintéticos para el flujo de Kovasznay"""
+        re = params.get('re', 40)
+        nx = params.get('nx', self.spatial_points)
+        ny = params.get('ny', self.spatial_points)
+        
+        # Crear generador
+        generator = KovasznayDataGenerator(re=re)
+        
+        # Generar datos
+        data = generator.generate_data(nx=nx, ny=ny)
+        
+        # Visualizar si se solicita
+        if visualize:
+            generator.plot_data(data, vis_dir)
+        
+        # Guardar datos
+        if save:
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            output_path = os.path.join(fluid_dir, f"kovasznay_re{re}_nx{nx}_ny{ny}_{timestamp}.{format}")
+            generator.save_data(data, output_path, format=format)
+            
+            # Registrar simulación
+            self._log_simulation('kovasznay_synthetic', 
+                                params, 
+                                output_path,
+                                {'data_shape': f"{nx}x{ny}"})
+            
+            return output_path
+        
+        return data
+    
+    def _generate_cavity_flow_synthetic(self, params, fluid_dir, vis_dir, visualize, save, format):
+        """Genera datos sintéticos para el flujo en cavidad"""
+        re = params.get('re', 100)
+        n = params.get('n', self.spatial_points)
+        
+        # Crear generador
+        generator = CavityFlowDataGenerator(re=re)
+        
+        # Generar datos
+        data = generator.generate_data(n=n)
+        
+        # Visualizar si se solicita
+        if visualize:
+            generator.plot_data(data, vis_dir)
+        
+        # Guardar datos
+        if save:
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            output_path = os.path.join(fluid_dir, f"cavity_flow_re{re}_n{n}_{timestamp}.{format}")
+            generator.save_data(data, output_path, format=format)
+            
+            # Registrar simulación
+            self._log_simulation('cavity_flow_synthetic', 
+                                params, 
+                                output_path,
+                                {'data_shape': f"{n}x{n}"})
+            
+            return output_path
+        
+        return data
+
     def _log_simulation(self, simulation_type, parameters, output_file, metadata=None):
         """
         Registra información sobre una simulación generada.
@@ -143,6 +342,7 @@ class DataGenerator(DataLoader):
         logger.info(f"Total de simulaciones generadas: {len(self.generated_simulations)}")
         
         return report_file
+        
     def generate_burgers_data(self, nu=0.01/np.pi, nx=256, nt=100, save=True):
         """
         Genera datos para la ecuación de Burgers utilizando FEniCS.
@@ -830,35 +1030,54 @@ if __name__ == "__main__":
     console_handler.setFormatter(formatter)
     logger.addHandler(console_handler)
     
-    # Ejemplo de uso
+    # Ejemplo de uso actualizado
     generator = DataGenerator(spatial_points=256, time_points=100)
     
-    # Generar solución sintética de Burgers 1D
-    x, t, usol = generator.burgers_synthetic_solution(nu=0.01/np.pi)
-    logger.info(f"Solución de Burgers generada: {usol.shape}")
+    # Generar datos usando el nuevo método unificado
+    print("Generando datos para diferentes fluidos...")
     
-    # Intentar generar soluciones de FEniCS si está disponible
-    try:
-        if FENICS_AVAILABLE:
-            #Generar solución de Burgers
-            logger.info("Generando solución de Burgers con FEniCS...")
-            X, T, U = generator.generate_burgers_data(nu=0.01/np.pi, nx=256, nt=100)
-            logger.info(f"Solución de Burgers generada: {U.shape}")
-            
-            
-            # Generar solución de Kovasznay
-            logger.info("Generando flujo de Kovasznay...")
-            X, Y, UV, P = generator.generate_kovasznay_flow(Re=40, N=32)
-            logger.info(f"Solución de Kovasznay generada: {UV.shape}")
-            
-            # Generar solución de Taylor-Green
-            logger.info("Generando vórtice de Taylor-Green...")
-            X, Y, UV, P = generator.generate_taylor_green_vortex(nu=0.01, U0=1.0, Nx=32, Ny=32)
-            logger.info(f"Solución de Taylor-Green generada: {UV.shape}")
-            
-            # Generar solución de cavidad con tapa móvil
-            logger.info("Generando flujo en cavidad con tapa móvil...")
-            X, Y, UV, P = generator.generate_lid_driven_cavity(nu=0.01, U0=1.0, N=32)
-            logger.info(f"Solución de cavidad con tapa móvil generada: {UV.shape}")
-    except Exception as e:
-        print(f"Error al generar soluciones con FEniCS: {e}")
+    # Taylor-Green sintético
+    print("1. Generando datos de Taylor-Green (sintético)")
+    generator.generate_fluid_data(
+        fluid_type='taylor_green',
+        method='synthetic',
+        params={'nu': 0.01, 'nx': 50, 'ny': 50, 'nt': 10},
+        visualize=True,
+        format='hdf5'
+    )
+    
+    # Kovasznay sintético
+    print("2. Generando datos de Kovasznay (sintético)")
+    generator.generate_fluid_data(
+        fluid_type='kovasznay',
+        method='synthetic',
+        params={'re': 40, 'nx': 100, 'ny': 50},
+        visualize=True,
+        format='hdf5'
+    )
+    
+    # Cavity flow sintético
+    print("3. Generando datos de flujo en cavidad (sintético)")
+    generator.generate_fluid_data(
+        fluid_type='cavity_flow',
+        method='synthetic',
+        params={'re': 100, 'n': 50},
+        visualize=True,
+        format='hdf5'
+    )
+    
+    # Intentar generar soluciones numéricas si FEniCS está disponible
+    if FENICS_AVAILABLE:
+        print("4. Generando datos de Taylor-Green (numérico)")
+        generator.generate_fluid_data(
+            fluid_type='taylor_green',
+            method='numerical',
+            params={'nu': 0.01, 'Nx': 32, 'Ny': 32},
+            visualize=True
+        )
+    else:
+        print("FEniCS no disponible, se omiten simulaciones numéricas")
+    
+    # Guardar informe de generación
+    report_path = generator.save_generation_report()
+    print(f"Informe de generación guardado en: {report_path}")

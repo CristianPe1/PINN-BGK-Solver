@@ -159,7 +159,7 @@ def train_model(config):
     try:
         # Cargar los datos y verificar que son correctos
         input_tensor, output_tensor = data_manager.load_data_from_file(data_file)
-        print("Entro")
+        
         
         # Verificación adicional para asegurar que los tensores tienen dimensiones compatibles
         if input_tensor.shape[0] != output_tensor.shape[0]:

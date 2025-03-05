@@ -3,55 +3,61 @@ selected_model: "pinn_v1"  # Nombre del modelo a utilizar (debe estar en la secc
 selected_loss: "mse"       # Nombre de la función de pérdida (debe estar en la sección 'loss_functions')
 
 # Definiciones de modelos disponibles
+# Nota: Las dimensiones de entrada y salida (primera y última capa) son determinadas automáticamente
+# basadas en el tipo de problema físico. No es necesario incluirlas en la definición de capas.
 models:
+  # For standard models - input/output dimensions set by physics_type
   pinn_v1:
-    type: "mlp"                      # Tipo de modelo (mlp: perceptrón multicapa, mlp_residual: perceptrón multicapa residual)
-    layers: [2, 50, 50, 50, 50, 1]
+    type: "mlp"                      
+    layers: [50, 50, 50, 50]   # Hidden layers only - input/output are set by physics_type
     activation_function: "Tanh"
     learning_rate: 0.001
+    physics_type: "burgers"  # Determines input (2) and output (1) dimensions
     
   pinn_v2:
     type: "mlp_residual"
-    layers: [2, 64, 64, 64, 64, 1]
+    layers: [64, 64, 64, 64]
     activation_function: "Swish"
     learning_rate: 0.0005
+    physics_type: "burgers"  # Determines input (2) and output (1) dimensions
     
   pinn_small:
     type: "mlp"
-    layers: [2, 20, 20, 1]
+    layers: [20, 20]
     activation_function: "ReLU"
     learning_rate: 0.002
+    physics_type: "burgers"  # Determines input (2) and output (1) dimensions
 
-  # Modelos para física de fluidos
+  # For fluid models - input/output dimensions set by physics_type
   navier_stokes:
     type: "navier_stokes"
-    layers: [3, 64, 64, 64, 64, 3]
+    layers: [64, 64, 64, 64]   # Hidden layers only
     activation_function: "Tanh"
     learning_rate: 0.0005
-    physics_type: "navier_stokes"  # Especificar el tipo de física
+    physics_type: "navier_stokes"  # Determines input (3) and output (3) dimensions
     
   kovasznay:
     type: "kovasznay"
-    layers: [2, 40, 40, 40, 3]
+    layers: [40, 40, 40]       # Hidden layers only
     activation_function: "Tanh"
     learning_rate: 0.001
-    re: 40.0  # Parámetro específico para Kovasznay
-    physics_type: "kovasznay"  # Especificar el tipo de física
+    re: 40.0
+    physics_type: "kovasznay"  # Determines input (2) and output (3) dimensions
     
   taylor_green:
     type: "taylor_green"
-    layers: [3, 64, 64, 64, 64, 3]
+    layers: [64, 64, 64, 64]   # Hidden layers only
     activation_function: "Swish"
     learning_rate: 0.0008
-    nu: 0.01  # Viscosidad cinemática
-    physics_type: "taylor_green"  # Especificar el tipo de física
+    nu: 0.01
+    physics_type: "taylor_green"  # Determines input (3) and output (3) dimensions
     
   cavity_flow:
     type: "cavity_flow"
-    layers: [2, 50, 50, 50, 50, 3]
+    layers: [50, 50, 50, 50]   # Hidden layers only
     activation_function: "Tanh"
     learning_rate: 0.001
-    physics_type: "cavity_flow"  # Especificar el tipo de física
+    physics_type: "cavity_flow"  # Determines input (2) and output (3) dimensions
 
 # Definiciones de funciones de pérdida
 loss_functions:

@@ -1,0 +1,7 @@
+2025-03-05 10:55:40,495 - data_manager - WARNING - FEniCS no está disponible. Las simulaciones numéricas no funcionarán.
+2025-03-05 10:55:40,495 - data_manager - INFO - DataManager inicializado: spatial_points=256, time_points=100
+2025-03-05 10:55:40,496 - data_manager - INFO - Directorio de salida: d:\personal\area de trabajo\universidad\matriculas\novena\optimización y control en redes distribuidas\proyecto final\code\src\..\data\synthetic\data_20250305_105540
+2025-03-05 10:55:40,497 - data_manager - INFO - Generando solución sintética de Burgers con nu=0.01...
+2025-03-05 10:55:40,758 - data_manager - INFO - Datos guardados en d:\personal\area de trabajo\universidad\matriculas\novena\optimización y control en redes distribuidas\proyecto final\code\src\..\data\synthetic\data_20250305_105540\burgers_shock_nu_0.01000.mat
+2025-03-05 10:55:40,759 - data_manager - INFO - Datos sintéticos generados: Input:torch.Size([25600, 2]), Output:torch.Size([25600, 1])
+2025-03-05 10:55:40,759 - data_manager - WARNING - No hay simulaciones registradas para generar un informe.
