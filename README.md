@@ -176,6 +176,64 @@ evaluation:
   compare_with_analytical: false
 ```
 
+## Generación de Datos Sintéticos y Analíticos
+
+El framework permite generar datos para diversos escenarios de fluidos tanto de forma **sintética** (utilizando generadores analíticos que no requieren dependencias externas como FEniCS) como **numérica** (usando FEniCS, si está instalado). Las opciones disponibles son:
+
+- **taylor_green**:  
+  Genera datos para el vórtice de Taylor-Green.  
+  Parámetros recomendados:  
+  --nu (viscosidad), --nx, --ny (resolución espacial) y --nt (pasos temporales).  
+  Ejemplo:
+  ```bash
+  python src/utils/analytical_fluid_generators.py --problem taylor_green --nu 0.01 --nx 64 --ny 64 --nt 20
+  ```
+
+- **kovasznay**:  
+  Genera datos para el flujo de Kovasznay.  
+  Parámetros recomendados:  
+  --re (número de Reynolds), --nx y --ny (resolución de la malla).  
+  Ejemplo:
+  ```bash
+  python src/utils/analytical_fluid_generators.py --problem kovasznay --re 40 --nx 64 --ny 64
+  ```
+
+- **cavity_flow**:  
+  Genera datos para el flujo en cavidad (lid driven cavity).  
+  Parámetros recomendados:  
+  --re (Reynolds) y --n (resolución de la malla, equivalente a la dimensión espacial).  
+  Ejemplo:
+  ```bash
+  python src/utils/analytical_fluid_generators.py --problem cavity_flow --re 100 --n 64
+  ```
+
+- **burgers**:  
+  Genera la solución analítica para la ecuación de Burgers 1D.  
+  Parámetros recomendados:  
+  --nu (coeficiente de viscosidad), --nx (puntos espaciales) y --nt (puntos temporales).  
+  Ejemplo:
+  ```bash
+  python src/utils/analytical_fluid_generators.py --problem burgers --nu 0.01 --nx 256 --nt 100
+  ```
+
+Cada uno de estos comandos generará un archivo (por ejemplo, en formato .mat) con los datos resultantes y, si se solicita, visualizaciones automáticas de la solución. Los parámetros pueden ajustarse según sea necesario para experimentos o pruebas rápidas.
+
+## Generating Synthetic/Analytical Fluid Data
+
+To generate various fluid datasets (e.g., Taylor-Green, Kovasznay, etc.), run:
+
+```bash
+python src/utils/analytical_fluid_generators.py --problem taylor_green --nu 0.01 --nx 64 --ny 64 --nt 20
+```
+
+Available problems:
+- taylor_green
+- kovasznay
+- cavity_flow
+- burgers
+
+Use the arguments --nu, --re, --nx, --ny, --nt as needed.
+
 ## Logs y Resultados
 
 - Todos los modos generan logs detallados del proceso.
