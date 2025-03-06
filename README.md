@@ -234,6 +234,78 @@ Available problems:
 
 Use the arguments --nu, --re, --nx, --ny, --nt as needed.
 
+## Herramientas de Automatización
+
+El proyecto incluye varias herramientas para automatizar la ejecución de experimentos en diferentes entornos:
+
+### Makefile (Linux/macOS)
+
+Para usuarios de sistemas Unix, se proporciona un `Makefile` completo con opciones para entrenar distintos modelos, generar datos o ejecutar evaluaciones:
+
+```bash
+# Entrenar un modelo específico
+make train_burgers
+make train_kovasznay
+make train_taylor_green
+make train_cavity_flow
+
+# Entrenar todos los modelos secuencialmente
+make train_all
+
+# Generar datos
+make generate_burgers
+make generate_all
+
+# Ejecutar experimentos
+make experiment_batch_size
+make experiment_layers
+
+# Ver todas las opciones disponibles
+make help
+```
+
+### Script Batch (Windows)
+
+Para usuarios de Windows, se incluye `run_models.bat` que ofrece un menú interactivo para ejecutar diferentes tareas:
+
+```
+run_models.bat
+```
+
+El script permite seleccionar entre opciones como entrenar modelos específicos, generar datos o evaluar modelos mediante un menú fácil de usar.
+
+### Script SLURM (Clusters HPC)
+
+Para entornos de computación de alto rendimiento (HPC), se incluye `run_pinn.slurm` para enviar trabajos a gestores de colas basados en SLURM:
+
+```bash
+# Enviar un trabajo para todos los modelos
+sbatch run_pinn.slurm
+
+# Ejecutar un modelo específico (ej: kovasznay, índice 1)
+sbatch --array=1 run_pinn.slurm
+
+# Personalizar parámetros
+EPOCHS=200 LR=0.0005 BATCH_SIZE=64 sbatch run_pinn.slurm
+
+# Cambiar el modo de ejecución
+MODE=evaluate sbatch --array=0-3 run_pinn.slurm
+```
+
+### Scripts de Diagnóstico
+
+Además, se incluyen scripts auxiliares para verificar el entorno y los modelos:
+
+- **check_requirements.py**: Verifica que todas las dependencias estén instaladas correctamente y proporciona instrucciones de instalación para las faltantes.
+- **check_models.py**: Analiza la estructura y disponibilidad de los modelos en el sistema.
+
+Estos scripts se ejecutan automáticamente con algunos comandos, pero también pueden invocarse directamente:
+
+```bash
+python src/check_requirements.py
+python src/check_models.py
+```
+
 ## Logs y Resultados
 
 - Todos los modos generan logs detallados del proceso.

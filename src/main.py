@@ -518,10 +518,10 @@ def train_model(config):
     logger.info(f"Hiperparámetros de entrenamiento guardados en: {hyperparams_train_path}")
     
     # Para retrocompatibilidad, guardar la configuración completa en un archivo separado (opcional)
-    full_config_path = os.path.join(OUTPUT_TRAIN_DIR, "full_config.json")
-    with open(full_config_path, "w") as f:
-        json.dump(config, f, indent=4)
-    logger.info(f"Configuración completa guardada en: {full_config_path}")
+    # full_config_path = os.path.join(OUTPUT_TRAIN_DIR, "full_config.json")
+    # with open(full_config_path, "w") as f:
+    #     json.dump(config, f, indent=4)
+    # logger.info(f"Configuración completa guardada en: {full_config_path}")
 
     arch_path = os.path.join(MODEL_DIR, "model_architecture.txt")
     with open(arch_path, "w") as f:
