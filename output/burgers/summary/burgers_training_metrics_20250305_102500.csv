@@ -1,5 +1,0 @@
-model_name,epochs,learning_rate,final_loss,final_accuracy,training_time,MSE,R2
-pinn,small,1,0.0967,0.9801,0.8582,0.0203,0.9462
-pinn,v1,10,0.0016,0.9992,16.7185,0.0008,0.9979
-pinn,v1,1,0.0708,0.9774,1.1934,0.0231,0.9388
-pinn,v2,1,0.255,0.8019,1.5261,0.2471,0.3454

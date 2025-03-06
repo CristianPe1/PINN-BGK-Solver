@@ -1,8 +1,6 @@
 PINN_V1(
-  (activation): ReLU()
+  (activation): Tanh()
   (linear_layers): ModuleList(
-    (0): Linear(in_features=2, out_features=20, bias=True)
-    (1): Linear(in_features=20, out_features=20, bias=True)
-    (2): Linear(in_features=20, out_features=1, bias=True)
+    (0): Linear(in_features=2, out_features=1, bias=True)
   )
 )

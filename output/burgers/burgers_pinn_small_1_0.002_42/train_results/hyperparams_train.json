@@ -1,116 +1,20 @@
 {
-    "selected_model": "pinn_small",
-    "selected_loss": "mse",
-    "models": {
-        "pinn_v1": {
-            "type": "mlp",
-            "layers": [
-                2,
-                50,
-                50,
-                50,
-                50,
-                1
-            ],
-            "activation_function": "Tanh",
-            "learning_rate": 0.001
-        },
-        "pinn_v2": {
-            "type": "mlp_residual",
-            "layers": [
-                2,
-                64,
-                64,
-                64,
-                64,
-                1
-            ],
-            "activation_function": "Swish",
-            "learning_rate": 0.0005
-        },
-        "pinn_small": {
-            "type": "mlp",
-            "layers": [
-                2,
-                20,
-                20,
-                1
-            ],
-            "activation_function": "ReLU",
-            "learning_rate": 0.002
-        },
-        "navier_stokes": {
-            "type": "navier_stokes",
-            "layers": [
-                3,
-                64,
-                64,
-                64,
-                64,
-                3
-            ],
-            "activation_function": "Tanh",
-            "learning_rate": 0.0005,
-            "physics_type": "navier_stokes"
-        },
-        "kovasznay": {
-            "type": "kovasznay",
-            "layers": [
-                2,
-                40,
-                40,
-                40,
-                3
-            ],
-            "activation_function": "Tanh",
-            "learning_rate": 0.001,
-            "re": 40.0,
-            "physics_type": "kovasznay"
-        },
-        "taylor_green": {
-            "type": "taylor_green",
-            "layers": [
-                3,
-                64,
-                64,
-                64,
-                64,
-                3
-            ],
-            "activation_function": "Swish",
-            "learning_rate": 0.0008,
-            "nu": 0.01,
-            "physics_type": "taylor_green"
-        },
-        "cavity_flow": {
-            "type": "cavity_flow",
-            "layers": [
-                2,
-                50,
-                50,
-                50,
-                50,
-                3
-            ],
-            "activation_function": "Tanh",
-            "learning_rate": 0.001,
-            "physics_type": "cavity_flow"
-        }
+    "model_name": "pinn_small",
+    "model_config": {
+        "type": "mlp",
+        "layers": [
+            2,
+            1
+        ],
+        "activation_function": "Tanh",
+        "learning_rate": 0.002,
+        "physics_type": "burgers"
     },
-    "loss_functions": {
-        "mse": {
+    "loss_function": {
+        "name": "mse",
+        "config": {
             "type": "mean_squared_error",
             "weight": 1.0
-        },
-        "physics_informed": {
-            "type": "physics_informed_loss",
-            "data_weight": 1.0,
-            "physics_weight": 0.5
-        },
-        "weighted_mse": {
-            "type": "weighted_mse",
-            "interior_weight": 1.0,
-            "boundary_weight": 10.0
         }
     },
     "training": {
@@ -141,39 +45,17 @@
         "seed": 42,
         "memory_limit_gb": 4
     },
-    "physics": {
-        "nu": 0.01,
-        "boundary_type": "dirichlet",
-        "physics_type": "burgers"
-    },
-    "logging": {
-        "level": "INFO",
-        "output_folder": "output"
-    },
-    "data_generation": {
-        "type": "burgers",
-        "spatial_points": 256,
-        "time_points": 100,
-        "Re": 40,
-        "U0": 1.0,
-        "resolution": 32,
-        "Nx": 32,
-        "Ny": 32,
-        "T": 2.0,
-        "num_steps": 50
-    },
-    "evaluation": {
-        "model_path": "output/Model_mlp_1_0.001_42/model/weights_model.pth",
-        "data_path": "data/training/burgers_shock_mu_01_pi.mat",
-        "data_dir": "data/training",
-        "output_folder": "evaluation_results",
-        "metrics": [
-            "MAE",
-            "MSE",
-            "RMSE",
-            "R2"
+    "physics_type": "burgers",
+    "data_info": {
+        "data_file": "burgers_shock_mu_01_pi.mat",
+        "input_shape": [
+            25600,
+            2
         ],
-        "visualize": true,
-        "compare_with_analytical": false
-    }
+        "output_shape": [
+            25600,
+            1
+        ]
+    },
+    "timestamp": "2025-03-05 23:30:47"
 }

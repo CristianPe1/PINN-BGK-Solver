@@ -1,0 +1,4 @@
+2025-03-05 15:23:57,150 - data_manager - INFO - DataManager inicializado: spatial_points=256, time_points=100
+2025-03-05 15:23:57,152 - data_manager - ERROR - Error al procesar el archivo .mat: [Errno 2] No such file or directory: 'data/training/.mat'
+2025-03-05 15:23:57,497 - data_manager - INFO - Datos sintéticos generados: 25600 puntos.
+2025-03-05 15:23:57,497 - data_manager - INFO - Shape tensor entrada: torch.Size([25600, 2]), shape tensor salida: torch.Size([25600, 1])

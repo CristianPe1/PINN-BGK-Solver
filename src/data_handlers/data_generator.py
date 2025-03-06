@@ -6,21 +6,23 @@ import torch
 import matplotlib.pyplot as plt
 from scipy.io import loadmat, savemat
 from datetime import datetime
-import fenics as fe
-import mshr
-FENICS_AVAILABLE = True
-
-# try:
-#     import fenics as fe
-#     import mshr
-#     FENICS_AVAILABLE = True
-# except ImportError:
-#     print("FEniCS no está disponible. Algunas funcionalidades estarán limitadas.")
-#     FENICS_AVAILABLE = False
-
-from .data_loader import DataLoader
 import sys
 import importlib.util
+
+# Intentar importar FEniCS con manejo de errores
+FENICS_AVAILABLE = False
+try:
+    import fenics as fe
+    import mshr
+    FENICS_AVAILABLE = True
+except ImportError:
+    print("FEniCS no está disponible. Las simulaciones numéricas no funcionarán.")
+    print("Para instalar FEniCS, siga las instrucciones en: https://fenicsproject.org/download/")
+    print("Para Windows, se recomienda usar Docker o WSL2.")
+    fe = None
+    mshr = None
+
+from .data_loader import DataLoader
 
 # Verificar si el módulo fluid_data_generators está disponible e importarlo
 SYNTHETIC_GENERATORS_AVAILABLE = False
@@ -102,6 +104,7 @@ class DataGenerator(DataLoader):
         # Verificar disponibilidad de generadores
         if not FENICS_AVAILABLE:
             logger.warning("FEniCS no está disponible. Las simulaciones numéricas no funcionarán.")
+            logger.warning("Solo se podrán generar datos sintéticos.")
         else:
             logger.info("FEniCS disponible para simulaciones numéricas.")
             
@@ -160,7 +163,16 @@ class DataGenerator(DataLoader):
             else:
                 logger.error(f"Tipo de fluido desconocido: {fluid_type}")
                 return None
-        elif method == 'numerical' and FENICS_AVAILABLE:
+        elif method == 'numerical':
+            if not FENICS_AVAILABLE:
+                logger.error("No se pueden generar datos numéricos. FEniCS no está disponible.")
+                print("\n=== ERROR: FEniCS NO DISPONIBLE ===")
+                print("Para generar simulaciones numéricas, necesita instalar FEniCS:")
+                print("- Visite: https://fenicsproject.org/download/")
+                print("- O use un entorno Docker: docker run -ti -v $(pwd):/home/fenics/shared quay.io/fenicsproject/stable")
+                print("- En Windows, considere usar WSL2 o Docker Desktop\n")
+                return None
+                
             if fluid_type == 'taylor_green':
                 return self.generate_taylor_green_vortex(**params, save=save)
             elif fluid_type == 'kovasznay':
@@ -175,9 +187,7 @@ class DataGenerator(DataLoader):
         else:
             if not SYNTHETIC_GENERATORS_AVAILABLE and method == 'synthetic':
                 logger.error("No se pueden generar datos sintéticos. Los generadores no están disponibles.")
-            elif not FENICS_AVAILABLE and method == 'numerical':
-                logger.error("No se pueden generar datos numéricos. FEniCS no está disponible.")
-            else:
+            elif method not in ['synthetic', 'numerical']:
                 logger.error(f"Método desconocido: {method}")
             return None
     
@@ -600,10 +610,6 @@ class DataGenerator(DataLoader):
             T (float): Tiempo total de simulación
             num_steps (int): Número de pasos de tiempo
             save (bool): Si True, guarda los resultados
-            
-        Returns:
-            tuple: (X, T, U) donde X e T son mallas de coordenadas y U son
-                  los valores de velocidad y presión
         """
         if not FENICS_AVAILABLE:
             logger.error("Esta función requiere FEniCS instalado.")
@@ -797,10 +803,6 @@ class DataGenerator(DataLoader):
             T (float): Tiempo total
             num_steps (int): Número de pasos de tiempo
             save (bool): Si True, guarda los resultados
-            
-        Returns:
-            tuple: (X, T, U) donde X e T son mallas de coordenadas y U son
-                  los valores de velocidad y presión
         """
         if not FENICS_AVAILABLE:
             raise RuntimeError("Esta función requiere FEniCS instalado.")
@@ -1030,45 +1032,45 @@ if __name__ == "__main__":
     console_handler.setFormatter(formatter)
     logger.addHandler(console_handler)
     
-    # Ejemplo de uso actualizado
+    # Ejemplo de uso actualizado con manejo de errores mejorado
     generator = DataGenerator(spatial_points=256, time_points=100)
     
     # Generar datos usando el nuevo método unificado
     print("Generando datos para diferentes fluidos...")
     
-    # Taylor-Green sintético
-    print("1. Generando datos de Taylor-Green (sintético)")
-    generator.generate_fluid_data(
-        fluid_type='taylor_green',
-        method='synthetic',
-        params={'nu': 0.01, 'nx': 50, 'ny': 50, 'nt': 10},
-        visualize=True,
-        format='hdf5'
-    )
+    # Detectar automáticamente qué método usar basado en disponibilidad
+    method_to_use = 'synthetic' if SYNTHETIC_GENERATORS_AVAILABLE else ('numerical' if FENICS_AVAILABLE else None)
     
-    # Kovasznay sintético
-    print("2. Generando datos de Kovasznay (sintético)")
-    generator.generate_fluid_data(
-        fluid_type='kovasznay',
-        method='synthetic',
-        params={'re': 40, 'nx': 100, 'ny': 50},
-        visualize=True,
-        format='hdf5'
-    )
+    if method_to_use is None:
+        print("ERROR: No hay ningún método de generación disponible.")
+        print("- Para datos sintéticos: asegúrese de que utils/fluid_data_generators.py existe")
+        print("- Para simulaciones numéricas: instale FEniCS (https://fenicsproject.org/download/)")
+        sys.exit(1)
     
-    # Cavity flow sintético
-    print("3. Generando datos de flujo en cavidad (sintético)")
-    generator.generate_fluid_data(
-        fluid_type='cavity_flow',
-        method='synthetic',
-        params={'re': 100, 'n': 50},
-        visualize=True,
-        format='hdf5'
-    )
+    print(f"Usando método: {method_to_use}")
     
-    # Intentar generar soluciones numéricas si FEniCS está disponible
-    if FENICS_AVAILABLE:
-        print("4. Generando datos de Taylor-Green (numérico)")
+    # Taylor-Green 
+    if method_to_use == 'synthetic' and SYNTHETIC_GENERATORS_AVAILABLE:
+        print("1. Generando datos de Taylor-Green (sintético)")
+        generator.generate_fluid_data(
+            fluid_type='taylor_green',
+            method='synthetic',
+            params={'nu': 0.01, 'nx': 50, 'ny': 50, 'nt': 10},
+            visualize=True,
+            format='hdf5'
+        )
+        
+        # Kovasznay sintético
+        print("2. Generando datos de Kovasznay (sintético)")
+        generator.generate_fluid_data(
+            fluid_type='kovasznay',
+            method='synthetic',
+            params={'re': 40, 'nx': 100, 'ny': 50},
+            visualize=True,
+            format='hdf5'
+        )
+    elif FENICS_AVAILABLE:
+        print("1. Generando datos de Taylor-Green (numérico)")
         generator.generate_fluid_data(
             fluid_type='taylor_green',
             method='numerical',
@@ -1076,7 +1078,8 @@ if __name__ == "__main__":
             visualize=True
         )
     else:
-        print("FEniCS no disponible, se omiten simulaciones numéricas")
+        print("No se pueden generar datos: ni FEniCS ni los generadores sintéticos están disponibles")
+        sys.exit(1)
     
     # Guardar informe de generación
     report_path = generator.save_generation_report()

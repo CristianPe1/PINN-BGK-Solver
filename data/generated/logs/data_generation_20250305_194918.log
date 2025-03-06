@@ -1,0 +1,7 @@
+2025-03-05 19:49:18,028 - data_manager - INFO - DataManager inicializado: spatial_points=256, time_points=100
+2025-03-05 19:49:18,037 - data_manager - INFO - Archivo .mat cargado correctamente: data/training\taylor_green_nu0.01_nx64_ny64_nt20_date20250305_135446.mat
+2025-03-05 19:49:18,037 - data_manager - INFO - Cargando datos desde: data/training\taylor_green_nu0.01_nx64_ny64_nt20_date20250305_135446.mat
+2025-03-05 19:49:18,039 - data_manager - INFO - Detectado formato de fluidos 2D
+2025-03-05 19:49:18,040 - data_manager - INFO - Encontrado componente temporal: (20,)
+2025-03-05 19:49:18,047 - data_manager - INFO - Datos de fluido con presión: (81920, 3)
+2025-03-05 19:49:18,050 - data_manager - INFO - Datos procesados con éxito. Formas finales: Input:torch.Size([81920, 3]), Output:torch.Size([81920, 3])

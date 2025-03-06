@@ -80,12 +80,13 @@ class DataManager:
     
     # ============== MÉTODOS DE CARGA Y PREPARACIÓN DE DATOS ==============
         
-    def load_data_from_file(self, file_path):
+    def load_data_from_file(self, file_path, verbose=True):
         """
         Carga datos desde un archivo .mat y los devuelve como tensores de entrada y salida.
 
         Args:
             file_path (str): Ruta al archivo .mat
+            verbose (bool): Si es True, muestra información sobre el archivo cargado
 
         Returns:
             tuple: (input_tensor, output_tensor) donde:
@@ -99,13 +100,66 @@ class DataManager:
             data = loadmat(file_path)
             logger.info(f"Archivo .mat cargado correctamente: {file_path}")
             
-            # Intentar extraer las claves esperadas
-            x_data = None
-            t_data = None
-            u_data = None
+            # Mostrar claramente qué archivo se está cargando
+            if verbose:
+                logger.info(f"Cargando datos desde: {file_path}")
+                print(f"\n{'='*50}")
+                print(f"CARGANDO DATOS DE ARCHIVO: {os.path.basename(file_path)}")
+                print(f"Ruta completa: {file_path}")
+                print(f"{'='*50}\n")
             
-            if 'x' in data and 't' in data and 'usol' in data:
-                # Formato estándar con x, t, usol
+            # Intentar extraer las claves esperadas
+            # Verificar primero si es un archivo de datos de fluidos
+            if all(key in data for key in ['x', 'y', 'u', 'v']):
+                # Es un archivo de fluidos 2D - Con o sin presión
+                logger.info(f"Detectado formato de fluidos 2D")
+                
+                # Extraer coordenadas
+                x_data = np.array(data['x']).flatten()
+                y_data = np.array(data['y']).flatten()
+                
+                has_time = 't' in data
+                has_pressure = 'p' in data
+                
+                if has_time:
+                    t_data = np.array(data['t']).flatten()
+                    logger.info(f"Encontrado componente temporal: {t_data.shape}")
+                
+                # Extraer campos
+                u_data = np.array(data['u'])
+                v_data = np.array(data['v'])
+                p_data = np.array(data['p']) if has_pressure else None
+                
+                # Crear malla de coordenadas
+                if has_time:
+                    # Con tiempo: (x, y, t) -> (u, v, p)
+                    X, Y, T = np.meshgrid(x_data, y_data, t_data, indexing='ij')
+                    input_points = np.vstack([X.flatten(), Y.flatten(), T.flatten()]).T  # [n_points, 3]
+                else:
+                    # Sin tiempo: (x, y) -> (u, v, p)
+                    X, Y = np.meshgrid(x_data, y_data, indexing='ij')
+                    input_points = np.vstack([X.flatten(), Y.flatten()]).T  # [n_points, 2]
+                
+                # Preparar salidas
+                if has_pressure:
+                    # Con presión
+                    output_values = np.vstack([
+                        u_data.flatten(),
+                        v_data.flatten(),
+                        p_data.flatten()
+                    ]).T  # [n_points, 3]
+                    logger.info(f"Datos de fluido con presión: {output_values.shape}")
+                else:
+                    # Sin presión
+                    output_values = np.vstack([
+                        u_data.flatten(),
+                        v_data.flatten()
+                    ]).T  # [n_points, 2]
+                    logger.info(f"Datos de fluido sin presión: {output_values.shape}")
+                    
+            elif 'x' in data and 't' in data and 'usol' in data:
+                # Formato estándar con x, t, usol (Burgers)
+                logger.info(f"Detectado formato estándar Burgers")
                 x_data = np.array(data['x']).flatten()
                 t_data = np.array(data['t']).flatten()
                 u_data = np.array(data['usol'])
@@ -123,28 +177,34 @@ class DataManager:
                 available_keys = [k for k in data.keys() if not k.startswith('__')]
                 logger.warning(f"Formato estándar no detectado. Claves disponibles: {available_keys}")
                 
-                # Buscar cualquier matriz numérica y usarla como datos
-                matrices = []
-                for key in available_keys:
-                    if isinstance(data[key], np.ndarray) and data[key].size > 1:
-                        matrices.append((key, data[key]))
-                
-                if len(matrices) >= 2:
-                    # Usar la primera matriz como entrada y la segunda como salida
-                    input_key, input_data = matrices[0]
-                    output_key, output_data = matrices[1]
-                    
-                    logger.info(f"Usando matriz '{input_key}' como entrada y '{output_key}' como salida")
-                    
-                    # Asegurar que la forma es adecuada
-                    input_points = input_data.reshape(-1, input_data.shape[-1] if input_data.ndim > 1 else 1)
-                    output_values = output_data.reshape(-1, 1)
-                    
-                    # Si input_points tiene solo 1 dimensión, crear una segunda
-                    if input_points.shape[1] == 1:
-                        input_points = np.hstack([input_points, np.zeros_like(input_points)])
+                # Buscar inputs, outputs
+                if 'inputs' in data and 'outputs' in data:
+                    input_points = np.array(data['inputs'])
+                    output_values = np.array(data['outputs'])
+                    logger.info(f"Usando matriz 'inputs' como entrada y 'outputs' como salida")
                 else:
-                    raise ValueError("No se encontraron suficientes matrices numéricas en el archivo")
+                    # Buscar cualquier matriz numérica y usarla como datos
+                    matrices = []
+                    for key in available_keys:
+                        if isinstance(data[key], np.ndarray) and data[key].size > 1:
+                            matrices.append((key, data[key]))
+                    
+                    if len(matrices) >= 2:
+                        # Usar la primera matriz como entrada y la segunda como salida
+                        input_key, input_data = matrices[0]
+                        output_key, output_data = matrices[1]
+                        
+                        logger.info(f"Usando matriz '{input_key}' como entrada y '{output_key}' como salida")
+                        
+                        # Asegurar que la forma es adecuada
+                        input_points = input_data.reshape(-1, input_data.shape[-1] if input_data.ndim > 1 else 1)
+                        output_values = output_data.reshape(-1, 1)
+                        
+                        # Si input_points tiene solo 1 dimensión, crear una segunda
+                        if input_points.shape[1] == 1:
+                            input_points = np.hstack([input_points, np.zeros_like(input_points)])
+                    else:
+                        raise ValueError("No se encontraron suficientes matrices numéricas en el archivo")
             
             # Asegurarse de que ambos tensores tengan el mismo número de muestras (filas)
             n_samples = min(input_points.shape[0], output_values.shape[0])
@@ -205,7 +265,8 @@ class DataManager:
             x_tensor, solution_tensor = self.load_data_from_file(file_path)
         elif data_source == "synthetic":
             logger.info("Cargando datos sintéticos utilizando la función interna...")
-            x_tensor, solution_tensor = self.create_synthetic_data(nu)
+            # x_tensor, solution_tensor = self.create_synthetic_data(nu)
+            x_tensor, solution_tensor = self.load_data_from_file(file_path)
         else:
             raise ValueError("El parámetro data_source debe ser 'real' o 'synthetic'")
         
@@ -480,3 +541,5 @@ if __name__ == "__main__":
     # Cargar y procesar datos sintéticos
     X, T, U = data_manager.load_and_process_data(file_path="dummy_path.mat", data_source="synthetic", nu=0.01/np.pi)
     print(f"Datos procesados: X shape: {X.shape}, T shape: {T.shape}, U shape: {U.shape}")
+
+

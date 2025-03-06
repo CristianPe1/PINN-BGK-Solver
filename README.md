@@ -204,7 +204,7 @@ El framework permite generar datos para diversos escenarios de fluidos tanto de 
   --re (Reynolds) y --n (resolución de la malla, equivalente a la dimensión espacial).  
   Ejemplo:
   ```bash
-  python src/utils/analytical_fluid_generators.py --problem cavity_flow --re 100 --n 64
+  python src/utils/analytical_fluid_generators.py --problem cavity_flow --re 100 --nx 64
   ```
 
 - **burgers**:  

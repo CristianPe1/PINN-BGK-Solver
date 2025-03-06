@@ -17,24 +17,24 @@ models:
   pinn_v2:
     type: "mlp_residual"
     layers: [64, 64, 64, 64]
-    activation_function: "Swish"
+    activation_function: "Tanh"
     learning_rate: 0.0005
     physics_type: "burgers"  # Determines input (2) and output (1) dimensions
     
   pinn_small:
     type: "mlp"
     layers: [20, 20]
-    activation_function: "ReLU"
+    activation_function: "Tanh"
     learning_rate: 0.002
     physics_type: "burgers"  # Determines input (2) and output (1) dimensions
 
   # For fluid models - input/output dimensions set by physics_type
-  navier_stokes:
-    type: "navier_stokes"
-    layers: [64, 64, 64, 64]   # Hidden layers only
-    activation_function: "Tanh"
-    learning_rate: 0.0005
-    physics_type: "navier_stokes"  # Determines input (3) and output (3) dimensions
+  # navier_stokes:
+  #   type: "navier_stokes"
+  #   layers: [64, 64, 64, 64]   # Hidden layers only
+  #   activation_function: "Tanh"
+  #   learning_rate: 0.0005
+  #   physics_type: "navier_stokes"  # Determines input (3) and output (3) dimensions
     
   kovasznay:
     type: "kovasznay"
@@ -43,11 +43,12 @@ models:
     learning_rate: 0.001
     re: 40.0
     physics_type: "kovasznay"  # Determines input (2) and output (3) dimensions
+
     
   taylor_green:
     type: "taylor_green"
     layers: [64, 64, 64, 64]   # Hidden layers only
-    activation_function: "Swish"
+    activation_function: "Tanh"
     learning_rate: 0.0008
     nu: 0.01
     physics_type: "taylor_green"  # Determines input (3) and output (3) dimensions
@@ -58,6 +59,55 @@ models:
     activation_function: "Tanh"
     learning_rate: 0.001
     physics_type: "cavity_flow"  # Determines input (2) and output (3) dimensions
+
+  lbm_naive_kovasznay:
+    type: "lb_kovasznay"
+    variant: "naive"
+    layers: [9, 50, 50, 9]
+    activation_function: "Tanh"
+    learning_rate: 0.001
+    physics_type: "kovasznay"
+
+  lbm_naive_taylor_green:
+    type: "lb_taylor_green"
+    variant: "naive"
+    layers: [9, 50, 50, 9]
+    activation_function: "Tanh"
+    learning_rate: 0.001
+    physics_type: "taylor_green"
+
+
+  lbm_naive_cavity_flow:
+    type: "lb_cavity_flow"
+    variant: "naive"
+    layers: [9, 50, 50, 9]
+    activation_function: "Tanh"
+    learning_rate: 0.001
+    physics_type: "cavity_flow"
+    
+  # lbm_sym:
+  #   type: "lattice_boltzmann"
+  #   variant: "sym"
+  #   layers: [9, 50, 50, 9]
+  #   activation_function: "Tanh"
+  #   learning_rate: 0.001
+  #   physics_type: "lattice_boltzmann"
+    
+  # lbm_cons:
+  #   type: "lattice_boltzmann"
+  #   variant: "cons"
+  #   layers: [9, 50, 50, 9]
+  #   activation_function: "Tanh"
+  #   learning_rate: 0.0005
+  #   physics_type: "lattice_boltzmann"
+    
+  # lbm_symcons:
+  #   type: "lattice_boltzmann"
+  #   variant: "symcons"
+  #   layers: [9, 64, 64, 9]
+  #   activation_function: "Tanh"
+  #   learning_rate: 0.0005
+  #   physics_type: "lattice_boltzmann"
 
 # Definiciones de funciones de pérdida
 loss_functions:
@@ -97,10 +147,7 @@ training:
   seed: 42
   memory_limit_gb: 4
 
-physics:
-  nu: 0.01
-  boundary_type: "dirichlet"
-  physics_type: "burgers"  # Tipo de física: "burgers", "kovasznay", "taylor_green", "cavity_flow"
+
 
 logging:
   level: "INFO"
@@ -120,9 +167,47 @@ data_generation:
   T: 2.0             # Para Taylor-Green y cavidad
   num_steps: 50      # Para Taylor-Green y cavidad
 
+# Nueva sección para mapeo automático de datos
+data_mapping:
+  enabled: true  # Habilitar selección automática de datos
+  strict_compatibility: false  # Si true, detiene la ejecución si no hay datos compatibles
+  search_paths:
+    - "data/training"
+    - "data/generated"
+    - "data/synthetic"
+  mappings:
+    burgers:
+      - "burgers_*.mat"
+      - "burgers_shock*.mat"
+      - "data_burgers*.npz"
+    taylor_green:
+      - "taylor_green*.mat"
+      - "tg_vortex*.mat"
+    kovasznay:
+      - "kovasznay*.mat"
+      - "kovasznay_flow*.mat"
+    cavity_flow:
+      - "cavity_flow*.mat"
+      - "lid_driven*.mat"
+    navier_stokes:
+      - "navier_stokes*.mat"
+      - "ns_*.mat"
+    mlp:  # Tipo genérico para cualquier modelo MLP estándar
+      - "*.mat"  # Por defecto, cualquier archivo .mat
+
+# Añadir nueva sección de configuración para Lattice Boltzmann
+lattice_boltzmann:
+  lattice_type: "D2Q9"  # Tipo de modelo (D2Q9, D3Q19, etc.)
+  tau: 0.6              # Tiempo de relajación
+  omega: 1.7            # Factor de relajación (1/tau)
+  grid_size_x: 128      # Tamaño de malla en x
+  grid_size_y: 128      # Tamaño de malla en y
+  physics_type: "lattice_boltzmann"
+
 evaluation:
   model_path: "output/Model_mlp_1_0.001_42/model/weights_model.pth"  # Ruta al modelo entrenado
-  data_path: "data/training/burgers_shock_mu_01_pi.mat"  # Datos para evaluar
+  # data_path: "data/training/burgers_shock_mu_01_pi.mat"  # Datos para evaluar
+  data_path: "data/training/"
   data_dir: "data/training"  # Directorio donde buscar datos
   output_folder: "evaluation_results"  # Carpeta donde guardar resultados
   metrics: ["MAE", "MSE", "RMSE", "R2"]  # Métricas a calcular

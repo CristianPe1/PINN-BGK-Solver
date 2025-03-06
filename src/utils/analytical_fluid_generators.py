@@ -630,8 +630,11 @@ class AnalyticalFluidGenerator:
         contour = plt.contourf(X, Y, p, 50, cmap='coolwarm')
         plt.colorbar(contour, label='Pressure')
         
-        # Añadir líneas de corriente
-        plt.streamplot(X, Y, u, v, color='white', linewidth=0.7, density=1.5)
+        # REPLACEMENT: Use dense quiver plot instead of problematic streamplot
+        dense_stride = max(1, min(X.shape[0], X.shape[1]) // 30)
+        plt.quiver(X[::dense_stride,::dense_stride], Y[::dense_stride,::dense_stride], 
+                  u[::dense_stride,::dense_stride], v[::dense_stride,::dense_stride],
+                  color='white', scale=5, width=0.002, alpha=0.7, headwidth=3)
         
         plt.xlabel('x')
         plt.ylabel('y')
@@ -681,8 +684,11 @@ class AnalyticalFluidGenerator:
         contour = plt.contourf(X, Y, p, 50, cmap='coolwarm')
         plt.colorbar(contour, label='Pressure')
         
-        # Añadir líneas de corriente
-        plt.streamplot(X, Y, u, v, color='white', linewidth=0.7, density=1.5, arrowsize=0.8)
+        # REPLACEMENT: Use dense quiver plot instead of streamplot
+        dense_stride = max(1, min(X.shape[0], X.shape[1]) // 30)
+        plt.quiver(X[::dense_stride,::dense_stride], Y[::dense_stride,::dense_stride], 
+                  u[::dense_stride,::dense_stride], v[::dense_stride,::dense_stride],
+                  color='white', scale=5, width=0.002, alpha=0.7, headwidth=3)
         
         plt.xlabel('x')
         plt.ylabel('y')
@@ -707,8 +713,10 @@ class AnalyticalFluidGenerator:
         contour = plt.contourf(X, Y, vorticity, 50, cmap='RdBu_r')
         plt.colorbar(contour, label='Vorticity')
         
-        # Añadir líneas de corriente
-        plt.streamplot(X, Y, u, v, color='white', linewidth=0.7, density=1.5)
+        # REPLACEMENT: Use another quiver plot instead of streamplot
+        plt.quiver(X[::dense_stride,::dense_stride], Y[::dense_stride,::dense_stride], 
+                  u[::dense_stride,::dense_stride], v[::dense_stride,::dense_stride],
+                  color='white', scale=5, width=0.002, alpha=0.7, headwidth=3)
         
         plt.xlabel('x')
         plt.ylabel('y')
@@ -771,16 +779,16 @@ if __name__ == "__main__":
     # Generar datos según el tipo de problema
     if args.problem == 'taylor_green':
         data = generator.generate_taylor_green(nu=args.nu, nx=args.nx, ny=args.ny, nt=args.nt)
-        filename = f"taylor_green_nu{args.nu}_nx{args.nx}_ny{args.ny}_nt{args.nt}_{timestamp}.{args.format}"
+        filename = f"taylor_green_nu{args.nu}_nx{args.nx}_ny{args.ny}_nt{args.nt}_date{timestamp}.{args.format}"
     elif args.problem == 'kovasznay':
         data = generator.generate_kovasznay(re=args.re, nx=args.nx, ny=args.ny)
-        filename = f"kovasznay_re{args.re}_nx{args.nx}_ny{args.ny}_{timestamp}.{args.format}"
+        filename = f"kovasznay_re{args.re}_nx{args.nx}_ny{args.ny}_date{timestamp}.{args.format}"
     elif args.problem == 'cavity_flow':
         data = generator.generate_cavity_flow(re=args.re, n=args.nx)
-        filename = f"cavity_flow_re{args.re}_n{args.nx}_{timestamp}.{args.format}"
+        filename = f"cavity_flow_re{args.re}_n{args.nx}_date{timestamp}.{args.format}"
     elif args.problem == 'burgers':
         data = generator.generate_burgers(nu=args.nu, nx=args.nx, nt=args.nt)
-        filename = f"burgers_nu{args.nu}_nx{args.nx}_nt{args.nt}_{timestamp}.{args.format}"
+        filename = f"burgers_nu{args.nu}_nx{args.nx}_nt{args.nt}_date{timestamp}.{args.format}"
     
     # Guardar datos
     if args.output_dir:

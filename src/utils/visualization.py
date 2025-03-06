@@ -6,8 +6,8 @@ import os
 import matplotlib.pyplot as plt
 
 class Visualizer:
-    def __init__(self, output_train_dir, logger):
-        self.OUTPUT_TRAIN_DIR = output_train_dir
+    def __init__(self, output_dir, logger):
+        self.output_dir = output_dir
         self.logger = logger
 
     def plot_metrics(self, losses, accuracies, epoch_times, learning_rates=None):
@@ -78,7 +78,7 @@ class Visualizer:
             axs[1, 2].grid(True)
 
         plt.subplots_adjust(hspace=0.4, wspace=0.3)
-        plt.savefig(os.path.join(self.OUTPUT_TRAIN_DIR, "metrics_plot.png"))
+        plt.savefig(os.path.join(self.output_dir, "metrics_plot.png"))
         self.logger.info("Gráficas de métricas guardadas.")
         plt.close()
 
@@ -115,7 +115,7 @@ class Visualizer:
         plt.title("Solución exacta")
 
         plt.tight_layout()
-        plt.savefig(os.path.join(self.OUTPUT_TRAIN_DIR, filename))
+        plt.savefig(os.path.join(self.output_dir, filename))
         self.logger.info(f"Imagen de comparación guardada: {filename}")
         plt.close()
 
@@ -136,7 +136,7 @@ class Visualizer:
         plt.ylabel("x")
         plt.title("Mapa de calor del error")
         plt.tight_layout()
-        plt.savefig(os.path.join(self.OUTPUT_TRAIN_DIR, filename), dpi=300)
+        plt.savefig(os.path.join(self.output_dir, filename), dpi=300)
         self.logger.info(f"Gráfico de error guardado como {filename}")
         plt.close()
 
@@ -166,9 +166,244 @@ class Visualizer:
         
         # Guardar figura
         plt.tight_layout()
-        output_file = os.path.join(self.OUTPUT_TRAIN_DIR, filename)
+        output_file = os.path.join(self.output_dir, filename)
         plt.savefig(output_file, dpi=300)
         plt.close()
         
         self.logger.info(f"Gráfico de comparación guardado en: {output_file}")
         return output_file
+
+    def plot_fluid_solution(self, X, Y, u_pred, v_pred, p_pred=None, 
+                       u_true=None, v_true=None, p_true=None, 
+                       filename="fluid_solution.png"):
+        """
+        Visualiza la solución de un problema de fluidos 2D con manejo mejorado para las líneas de corriente.
+        
+        Args:
+            X, Y: Mallas de coordenadas
+            u_pred, v_pred, p_pred: Campos predichos (velocidad x, velocidad y, presión)
+            u_true, v_true, p_true: Campos reales (opcional)
+            filename: Nombre del archivo para guardar
+        """
+        self.logger.info("Generando visualización de fluido...")
+        
+        # Convertir tensores a numpy si es necesario
+        def to_numpy(tensor):
+            if isinstance(tensor, torch.Tensor):
+                return tensor.detach().cpu().numpy()
+            return tensor if tensor is not None else None
+        
+        X = to_numpy(X)
+        Y = to_numpy(Y)
+        u_pred = to_numpy(u_pred)
+        v_pred = to_numpy(v_pred)
+        p_pred = to_numpy(p_pred)
+        u_true = to_numpy(u_true)
+        v_true = to_numpy(v_true)
+        p_true = to_numpy(p_true)
+        
+        # Determinar el número de filas (1 si no hay ground truth, 2 si lo hay)
+        has_true = u_true is not None and v_true is not None
+        rows = 2 if has_true else 1
+        cols = 3 if p_pred is not None else 2  # Columnas: u, v, y opcionalmente p
+        
+        # Crear figura con tamaño proporcional al número de subplots
+        plt.figure(figsize=(cols * 5, rows * 5))
+        
+        # Preparar malla adecuada para streamplot
+        # Streamplot requiere que X varíe a lo largo de columnas e Y a lo largo de filas
+        # y que los valores de X en cada fila sean idénticos, y los de Y en cada columna sean idénticos
+        
+        # Extraer valores únicos de X e Y
+        try:
+            x_unique = np.unique(X.flatten())
+            y_unique = np.unique(Y.flatten())
+            X_grid, Y_grid = np.meshgrid(x_unique, y_unique)
+            
+            # Crear interpoladores para todos los campos
+            from scipy.interpolate import griddata
+            points = np.column_stack((X.flatten(), Y.flatten()))
+            
+            # Interpolar campos de predicción
+            u_pred_grid = griddata(points, u_pred.flatten(), (X_grid, Y_grid), method='linear')
+            v_pred_grid = griddata(points, v_pred.flatten(), (X_grid, Y_grid), method='linear')
+            
+            if p_pred is not None:
+                p_pred_grid = griddata(points, p_pred.flatten(), (X_grid, Y_grid), method='linear')
+            
+            # Interpolar campos reales si existen
+            if has_true:
+                u_true_grid = griddata(points, u_true.flatten(), (X_grid, Y_grid), method='linear')
+                v_true_grid = griddata(points, v_true.flatten(), (X_grid, Y_grid), method='linear')
+                if p_true is not None:
+                    p_true_grid = griddata(points, p_true.flatten(), (X_grid, Y_grid), method='linear')
+            
+            # Informar éxito
+            self.logger.info(f"Interpolación de malla exitosa, nueva forma: {X_grid.shape}")
+            
+        except Exception as e:
+            # Si la interpolación falla, usar los arrays originales
+            self.logger.warning(f"Error en la interpolación: {e}. Usando malla original.")
+            X_grid, Y_grid = X, Y
+            u_pred_grid, v_pred_grid = u_pred, v_pred
+            p_pred_grid = p_pred
+            if has_true:
+                u_true_grid, v_true_grid = u_true, v_true
+                p_true_grid = p_true if p_true is not None else None
+        
+        # Predicción - Velocidad U
+        plt.subplot(rows, cols, 1)
+        plt.pcolormesh(X_grid, Y_grid, u_pred_grid, cmap='viridis', shading='auto')
+        plt.colorbar(label='u')
+        plt.title('Velocidad U - Predicción')
+        plt.xlabel('x')
+        plt.ylabel('y')
+        
+        # Predicción - Velocidad V
+        plt.subplot(rows, cols, 2)
+        plt.pcolormesh(X_grid, Y_grid, v_pred_grid, cmap='viridis', shading='auto')
+        plt.colorbar(label='v')
+        plt.title('Velocidad V - Predicción')
+        plt.xlabel('x')
+        plt.ylabel('y')
+        
+        # Predicción - Presión P (si está disponible)
+        if p_pred is not None:
+            plt.subplot(rows, cols, 3)
+            plt.pcolormesh(X_grid, Y_grid, p_pred_grid, cmap='coolwarm', shading='auto')
+            plt.colorbar(label='p')
+            plt.title('Presión - Predicción')
+            plt.xlabel('x')
+            plt.ylabel('y')
+        
+        # Campo de velocidad combinado (predicción)
+        plt.subplot(rows, cols, cols)
+        
+        try:
+            # Verificar que no hay valores NaN
+            if np.isnan(u_pred_grid).any() or np.isnan(v_pred_grid).any():
+                raise ValueError("Hay valores NaN en los campos de velocidad")
+            
+            # Calcular magnitud para el fondo
+            speed = np.sqrt(u_pred_grid**2 + v_pred_grid**2)
+            
+            # Crear pcolormesh con la magnitud de velocidad
+            plt.pcolormesh(X_grid, Y_grid, speed, cmap='viridis', shading='auto')
+            plt.colorbar(label='|V|')
+            
+            # Añadir líneas de corriente
+            # Streamplot es muy sensible a la forma de los datos - usar skip para reducir densidad si hay errores
+            skip = max(1, min(X_grid.shape) // 25)  # Skip para reducir tamaño si la malla es muy densa
+            plt.streamplot(
+                X_grid[::skip, ::skip], 
+                Y_grid[::skip, ::skip], 
+                u_pred_grid[::skip, ::skip], 
+                v_pred_grid[::skip, ::skip], 
+                density=1.0, 
+                color='black', 
+                linewidth=1.0, 
+                arrowsize=1.0
+            )
+            
+        except Exception as e:
+            self.logger.warning(f"Error al generar streamplot: {e}. Usando quiver (flechas) como alternativa.")
+            # Usar quiver (flechas) como alternativa segura
+            skip = max(1, min(X_grid.shape) // 15)
+            plt.quiver(
+                X_grid[::skip, ::skip], 
+                Y_grid[::skip, ::skip],
+                u_pred_grid[::skip, ::skip], 
+                v_pred_grid[::skip, ::skip],
+                scale=25, 
+                color='black', 
+                width=0.002
+            )
+            # También mostrar la magnitud de velocidad
+            speed = np.sqrt(u_pred_grid**2 + v_pred_grid**2)
+            plt.pcolormesh(X_grid, Y_grid, speed, cmap='viridis', shading='auto')
+            plt.colorbar(label='|V|')
+        
+        plt.title('Campo de Velocidad - Predicción')
+        plt.xlabel('x')
+        plt.ylabel('y')
+        
+        # Si hay datos reales, graficarlos en la segunda fila
+        if has_true:
+            # Real - Velocidad U
+            plt.subplot(rows, cols, cols + 1)
+            plt.pcolormesh(X_grid, Y_grid, u_true_grid, cmap='viridis', shading='auto')
+            plt.colorbar(label='u')
+            plt.title('Velocidad U - Real')
+            plt.xlabel('x')
+            plt.ylabel('y')
+            
+            # Real - Velocidad V
+            plt.subplot(rows, cols, cols + 2)
+            plt.pcolormesh(X_grid, Y_grid, v_true_grid, cmap='viridis', shading='auto')
+            plt.colorbar(label='v')
+            plt.title('Velocidad V - Real')
+            plt.xlabel('x')
+            plt.ylabel('y')
+            
+            # Real - Presión P (si está disponible)
+            if p_true is not None and cols > 2:
+                plt.subplot(rows, cols, cols + 3)
+                plt.pcolormesh(X_grid, Y_grid, p_true_grid, cmap='coolwarm', shading='auto')
+                plt.colorbar(label='p')
+                plt.title('Presión - Real')
+                plt.xlabel('x')
+                plt.ylabel('y')
+            
+            # Campo de velocidad combinado (real)
+            plt.subplot(rows, cols, 2*cols)
+            try:
+                # Verificar que no hay valores NaN
+                if np.isnan(u_true_grid).any() or np.isnan(v_true_grid).any():
+                    raise ValueError("Hay valores NaN en los campos de velocidad reales")
+                
+                # Calcular magnitud para el fondo
+                speed_true = np.sqrt(u_true_grid**2 + v_true_grid**2)
+                plt.pcolormesh(X_grid, Y_grid, speed_true, cmap='viridis', shading='auto')
+                plt.colorbar(label='|V|')
+                
+                # Añadir líneas de corriente con misma configuración que en la predicción
+                skip = max(1, min(X_grid.shape) // 25)
+                plt.streamplot(
+                    X_grid[::skip, ::skip], 
+                    Y_grid[::skip, ::skip], 
+                    u_true_grid[::skip, ::skip], 
+                    v_true_grid[::skip, ::skip], 
+                    density=1.0, 
+                    color='black', 
+                    linewidth=1.0, 
+                    arrowsize=1.0
+                )
+                
+            except Exception as e:
+                self.logger.warning(f"Error al generar streamplot para datos reales: {e}. Usando quiver como alternativa.")
+                # Usar quiver como alternativa
+                skip = max(1, min(X_grid.shape) // 15)
+                plt.quiver(
+                    X_grid[::skip, ::skip], 
+                    Y_grid[::skip, ::skip],
+                    u_true_grid[::skip, ::skip], 
+                    v_true_grid[::skip, ::skip],
+                    scale=25, 
+                    color='black', 
+                    width=0.002
+                )
+                # También mostrar la magnitud de velocidad
+                speed_true = np.sqrt(u_true_grid**2 + v_true_grid**2)
+                plt.pcolormesh(X_grid, Y_grid, speed_true, cmap='viridis', shading='auto')
+                plt.colorbar(label='|V|')
+            
+            plt.title('Campo de Velocidad - Real')
+            plt.xlabel('x')
+            plt.ylabel('y')
+        
+        plt.tight_layout()
+        save_path = os.path.join(self.output_dir, filename)
+        plt.savefig(save_path, dpi=300)
+        plt.close()
+        
+        self.logger.info(f"Visualización de fluido guardada en: {save_path}")

@@ -1,8 +1,0 @@
-Fecha: 2025-03-05 10:22:54
-Directorio: d:\personal\area de trabajo\universidad\matriculas\novena\optimización y control en redes distribuidas\proyecto final\code\output\burgers\burgers_kovasznay_1_0.001_42
-Proyecto: d:\personal\area de trabajo\universidad\matriculas\novena\optimización y control en redes distribuidas\proyecto final\code
-
-Python: 3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]
-Sistema: Windows 10
-PyTorch: 2.0.1+cpu
-CUDA disponible: False

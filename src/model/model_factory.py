@@ -5,6 +5,7 @@ import logging
 from structure_model.pinn_structure_v1 import PINN_V1
 from structure_model.burguers_models.pinn_structure_v2 import PINN_V2
 from structure_model.pinn_small import PINN_Small
+from .model_data_mapping import suggest_data_path_for_model, verify_model_data_compatibility
 
 logger = logging.getLogger(__name__)
 
@@ -17,6 +18,15 @@ try:
     FLUID_MODELS_AVAILABLE = True
 except ImportError:
     logger.warning("Modelos de fluidos no disponibles. Algunas funcionalidades estarán limitadas.")
+
+# Importar el nuevo modelo de Lattice Boltzmann
+from structure_model.fluid_models.lattice_boltzmann_pinn import (
+    create_lattice_boltzmann_model,
+    NNNaivePINN, 
+    NNSymPINN, 
+    NNConsPINN, 
+    NNSymConsPINN
+)
 
 # Define physics problem dimensions
 PHYSICS_DIMENSIONS = {
@@ -65,6 +75,12 @@ class ResidualBlock(nn.Module):
 def create_model(config):
     """
     Crea un modelo según la configuración proporcionada.
+    
+    Args:
+        config (dict): Configuración del modelo
+        
+    Returns:
+        torch.nn.Module: Modelo configurado
     """
     # Extraer parámetros de configuración
     model_type = config.get("type", "mlp").lower()
@@ -127,6 +143,8 @@ def create_model(config):
                 activation_name=activation,
                 nu=config.get("nu", 0.01)
             )
+    elif model_type == "lattice_boltzmann" or physics_type == "lattice_boltzmann":
+        return create_lattice_boltzmann_model(config)
     else:
         # Default to PINN_V1 for non-fluid models
         # Also ensure proper dimensions for standard models
@@ -171,3 +189,29 @@ def get_model_by_name(name, config=None):
     activation = config.get("activation_function", "Tanh")
     
     return model_class(layers, activation)
+
+def get_recommended_data_for_model(model_type, config=None, base_dir=None):
+    """
+    Obtiene la ruta de datos recomendada para un modelo específico.
+    
+    Args:
+        model_type (str): Tipo de modelo
+        config (dict, optional): Configuración del modelo
+        base_dir (str, optional): Directorio base para buscar datos
+        
+    Returns:
+        str: Ruta recomendada al archivo de datos
+    """
+    # Obtener la ruta sugerida
+    physics_type = config.get("physics_type", model_type) if config else model_type
+    data_path = suggest_data_path_for_model(model_type, physics_type, config, base_dir)
+    
+    # Verificar compatibilidad
+    if data_path:
+        model_config = config or {"type": model_type}
+        compatible, message = verify_model_data_compatibility(model_config, data_path)
+        if not compatible:
+            logger.warning(f"Datos no compatibles: {message}")
+            logger.warning(f"Se usará la ruta de datos {data_path} pero podría no ser compatible.")
+    
+    return data_path

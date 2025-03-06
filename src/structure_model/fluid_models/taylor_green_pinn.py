@@ -7,17 +7,18 @@ class TaylorGreenPINN(BaseNeuralNetwork):
     Red neuronal para vórtice de Taylor-Green, un flujo ideal que decae con el tiempo.
     Usa una arquitectura con capas más anchas para capturar la evolución temporal.
     """
-    def __init__(self, layer_sizes=[3, 64, 64, 64, 64, 3], activation_name="Swish", nu=0.01):
+    def __init__(self, layer_sizes=[5, 64, 64, 64, 64, 3], activation_name="Swish", nu=0.01):
         """
         Inicializa la red para vórtice de Taylor-Green.
         
         Args:
             layer_sizes (list): Lista con tamaños de capas.
-                            Por defecto [3, 64, 64, 64, 64, 3]
-                            donde entrada es (x, y, t) y salida es (u, v, p)
+                            Por defecto [5, 64, 64, 64, 64, 3]
+                            donde entrada es (x, y, t, sin_x, cos_x) y salida es (u, v, p)
             activation_name (str): Nombre de la función de activación
             nu (float): Viscosidad cinemática
         """
+        # El cambio clave está aquí: la primera dimensión es ahora 5 en lugar de 3
         super(TaylorGreenPINN, self).__init__(
             layer_sizes=layer_sizes, 
             activation_name=activation_name,
@@ -30,28 +31,18 @@ class TaylorGreenPINN(BaseNeuralNetwork):
         
     def forward(self, x):
         """
-        Propagación hacia adelante con codificación periódica de las coordenadas.
+        Propagación hacia adelante.
         
         Args:
-            x (torch.Tensor): Tensor de entrada (x, y, t)
+            x (torch.Tensor): Tensor de entrada [batch_size, 5]
             
         Returns:
             torch.Tensor: Tensor de salida [batch_size, 3] donde cada fila es (u, v, p)
         """
-        # Extraer coordenadas
-        spatial_coords = x[:, :2]  # x, y
-        time_coords = x[:, 2:3]    # t
+        # El tensor de entrada ya tiene 5 características, así que lo usamos directamente
+        encoded_input = x
         
-        # Codificar coordenadas espaciales (para capturar periodicidad)
-        sin_x = torch.sin(self.freq_multiplier * spatial_coords[:, 0:1])
-        cos_x = torch.cos(self.freq_multiplier * spatial_coords[:, 0:1])
-        sin_y = torch.sin(self.freq_multiplier * spatial_coords[:, 1:2])
-        cos_y = torch.cos(self.freq_multiplier * spatial_coords[:, 1:2])
-        
-        # Concatenar codificación periódica con el tiempo
-        encoded_input = torch.cat([sin_x, cos_x, sin_y, cos_y, time_coords], dim=1)
-        
-        # Propagar a través de las primeras capas
+        # Propagar a través de las capas
         for i in range(len(self.linear_layers) - 1):
             encoded_input = self.activation(self.linear_layers[i](encoded_input))
         
@@ -69,7 +60,7 @@ class TaylorGreenPINN(BaseNeuralNetwork):
         Returns:
             torch.Tensor: Tensor con la solución analítica [batch_size, 3]
         """
-        # Extraer coordenadas
+        # Extraer coordenadas (asume que las primeras 3 componentes son x, y, t)
         x_coord = x[:, 0:1]
         y_coord = x[:, 1:2]
         t_coord = x[:, 2:3]

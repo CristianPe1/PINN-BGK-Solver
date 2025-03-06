@@ -14,6 +14,7 @@ from model.train import Trainer
 from model.model_finder import ModelFinder
 from utils.visualization import Visualizer
 
+
 from model.model_factory import create_model
 from model.model_selector import ModelSelector
 from utils.output_manager import OutputManager
@@ -21,8 +22,9 @@ from model.model_evaluator import ModelEvaluator
 from model.loss_functions import get_loss_function
 from model.model_comparator import ModelComparator
 from data_handlers.data_manager import DataManager
-
-
+# Añadir importación para la información del dispositivo
+from utils.device_info import log_device_info, get_complete_device_info
+from utils.debug_visualizer import DebugVisualizer  # Importar nuevo visualizador
 
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
@@ -67,6 +69,8 @@ def create_output_dir(model_name, physics_type, epochs, lr, seed, output_folder)
 
 ### --------------------- Funciones principales --------------------- ###
 
+
+
 def train_model(config):
     """Función principal para entrenar el modelo."""
     # Permitir selección interactiva de modelos
@@ -110,7 +114,6 @@ def train_model(config):
     model_cfg = config["models"][selected_model]
     loss_cfg = config["loss_functions"][selected_loss]
     train_cfg = config["training"]
-    physics_cfg = config["physics"]
     log_cfg = config["logging"]
     data_cfg = config.get("data_generation", {})  # Obtener configuración de datos
 
@@ -119,7 +122,8 @@ def train_model(config):
     lr = float(model_cfg.get("learning_rate", 0.001))
     seed = int(train_cfg.get("seed", 42))
     batch_size = int(train_cfg.get("batch_size", 32))
-    physics_type = physics_cfg.get("physics_type", "burgers")  # Obtener tipo de física
+    physics_type = model_cfg.get("physics_type")
+    print("physics_type", physics_type)
     early_stop_patience = int(train_cfg.get("epochs_no_improve", 20))
     min_loss_improvement = float(train_cfg.get("min_loss_improvement", 1e-5))
     enabled = train_cfg.get("early_stopping", True)
@@ -137,20 +141,34 @@ def train_model(config):
     # Obtener ruta del directorio de datos desde config o usar valor por defecto
     data_dir = eval_cfg.get("data_dir", os.path.join(PROJECT_ROOT, "..", "data", "training"))
     
+    # Buscar archivos en el directorio de datos
+    files = os.listdir(data_dir)
+    default_file = None
+    for data in files:
+        if data.startswith(physics_type):
+            print("Archivo coincidente encontrado:", data)
+            default_file = data
+    
     # Obtener ruta completa del archivo de datos desde config o usar valor por defecto
-    data_file_path = eval_cfg.get("data_path", "")
-    if not data_file_path or not os.path.exists(data_file_path):
-        # Si no se especificó en config o no existe, usar valor por defecto
-        default_file = "burgers_shock_mu_01_pi.mat"
-        data_file = os.path.join(data_dir, default_file)
-        logger.info(f"Usando archivo de datos por defecto: {data_file}")
-    else:
-        data_file = data_file_path
-        logger.info(f"Usando archivo de datos especificado en config: {data_file}")
+    # data_file_path = eval_cfg.get("data_path", "")
+    data_file = os.path.join(data_dir, default_file)
+    
+    # if not data_file_path or not os.path.exists(data_file_path):
+    #     # Si no se especificó en config o no existe, usar valor por defecto
+    #     # default_file = "burgers_shock_mu_01_pi.mat"
+        
+    #     data_file = os.path.join(data_dir, default_file)
+    #     logger.info(f"Usando archivo de datos por defecto: {data_file}")
+    # else:
+    #     data_file = data_file_path
+    #     logger.info(f"Usando archivo de datos especificado en config: {data_file}")
     
     # Obtener parámetros para el DataManager
-    spatial_points = data_cfg.get("spatial_points", 256)
+    
+    spatial_points = data_cfg.get("spatial_points", 56)
     time_points = data_cfg.get("time_points", 100)
+    
+    
     
     data_manager = DataManager(spatial_points, time_points)
     logger.info(f"DataManager inicializado con {spatial_points} puntos espaciales y {time_points} puntos temporales")
@@ -179,7 +197,7 @@ def train_model(config):
         logger.error(f"Error al cargar datos: {str(e)}")
         # Si no se pueden cargar los datos del archivo, generar datos sintéticos en su lugar
         logger.info("Intentando generar datos sintéticos como alternativa...")
-        nu = float(physics_cfg.get("nu", 0.01))
+        nu = 0.01
         input_tensor, output_tensor = data_manager.create_synthetic_data(nu)
     
     # Crear modelo según configuración
@@ -192,6 +210,12 @@ def train_model(config):
     
     # Configurar dispositivo (GPU/CPU)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    
+    # Obtener y registrar información detallada sobre el dispositivo
+    device_info = get_complete_device_info()
+    # Guardar la información del dispositivo en el directorio de entrenamiento
+    device_info = log_device_info(device_info, OUTPUT_TRAIN_DIR)
+    
     if torch.cuda.device_count() > 1:
         logger.info(f"Usando {torch.cuda.device_count()} GPUs con DataParallel.")
         model = torch.nn.DataParallel(model).to(device)
@@ -215,7 +239,7 @@ def train_model(config):
     # Configurar parámetros adicionales para la pérdida
     loss_kwargs = loss_cfg.copy()
     loss_kwargs["model"] = model  # Necesario para pérdidas physics-informed
-    loss_kwargs["nu"] = float(physics_cfg.get("nu", 0.01))
+    loss_kwargs["nu"] = 0.01  # Viscosidad cinemática por defecto
     
     # Inicializar trainer
     trainer = Trainer(
@@ -248,59 +272,212 @@ def train_model(config):
     
     y_true = output_tensor.detach().cpu().numpy()
     y_pred = y_pred.detach().cpu().numpy()
-
-    # Calcular métricas de regresión
+    
+    print("y_true", y_true.shape)
+    print("y_pred", y_pred.shape)
+    # print(y_true.shape, y_pred.shape)
+    
+    # NUEVO: Ajuste para casos donde y_true tiene solo 1 componente y y_pred tiene 3 
+    if y_true.shape[-1] == 1 and y_pred.shape[-1] >= 3:
+        logger.warning("y_true tiene solo la componente u; se usará la primera componente de y_pred para calcular métricas.")
+        y_pred = y_pred[:, 0:1]
+    
     PRECISION = 4
     training_stats = {
         "final_loss": round(float(losses[-1].item()) if hasattr(losses[-1], "item") else float(losses[-1]), PRECISION),
         "final_accuracy": round(float(accuracies[-1].item()) if hasattr(accuracies[-1], "item") else float(accuracies[-1]), PRECISION),
         "total_training_time_sec": round(float(total_training_time), PRECISION),
-        "MAE": round(float(mean_absolute_error(y_true, y_pred)), PRECISION),
-        "MSE": round(float(mean_squared_error(y_true, y_pred)), PRECISION),
-        "RMSE": round(float(np.sqrt(mean_squared_error(y_true, y_pred))), PRECISION),
-        "R2": round(float(r2_score(y_true, y_pred)), PRECISION),
         "losses": [round(float(l.item()) if hasattr(l, "item") else float(l), PRECISION) for l in losses],
         "accuracies": [round(float(a.item()) if hasattr(a, "item") else float(a), PRECISION) for a in accuracies],
         "epoch_times": [round(float(t.item()) if hasattr(t, "item") else float(t), PRECISION) for t in epoch_times]
     }
+    try:
+        # Ahora ambas formas tienen la misma dimensión y se calculan las métricas normalmente.
+        if y_true.shape[-1] == y_pred.shape[-1]:
+            training_stats.update({
+                "MAE": round(float(mean_absolute_error(y_true, y_pred)), PRECISION),
+                "MSE": round(float(mean_squared_error(y_true, y_pred)), PRECISION),
+                "RMSE": round(float(np.sqrt(mean_squared_error(y_true, y_pred))), PRECISION),
+                "R2": round(float(r2_score(y_true, y_pred)), PRECISION)
+            })
+        else:
+            logger.error("No se pueden calcular métricas: dimensiones incompatibles")
+            training_stats.update({
+                "y_true_shape": str(list(y_true.shape)),
+                "y_pred_shape": str(list(y_pred.shape))
+            })
+    except Exception as e:
+        logger.error(f"Error al calcular métricas: {str(e)}")
+        training_stats.update({
+            "metrics_error": str(e),
+            "y_true_shape": str(list(y_true.shape)),
+            "y_pred_shape": str(list(y_pred.shape))
+        })
 
+    # Añadir información del dispositivo a las estadísticas de entrenamiento
+    # training_stats["device_info"] = device_info
+    
+    # Guardar estadísticas ampliadas con info del dispositivo
     stats_path = os.path.join(OUTPUT_TRAIN_DIR, "training_stats.json")
     with open(stats_path, "w") as f:
         json.dump(training_stats, f, indent=4)
     logger.info(f"Training statistics saved to: {stats_path}")
 
-    # Graficar solución - Modificamos esta parte para extraer x, t de input_tensor
-    try:
-        # Extraer x, t de input_tensor
-        x_np = input_tensor[:, 0].detach().cpu().numpy()
-        t_np = input_tensor[:, 1].detach().cpu().numpy()
-       
-        # Obtener dimensiones originales
-        nx = 256    
-        nt = 100
+    # Extraer x, y de input_tensor para fluidos (se espera (N,2))
+    physics_type = model_cfg.get("physics_type")
+    if physics_type in ["kovasznay", "taylor_green", "cavity_flow"]:
+        print(input_tensor.shape)
+        print(input_tensor.shape[1])
+        if input_tensor.shape[1] == 2:
+            print("Entro a dos dimensiones")
+            x_np = input_tensor[:, 0].detach().cpu().numpy()
+            y_np = input_tensor[:, 1].detach().cpu().numpy()
+            n_points = len(x_np)
+            nx = int(np.sqrt(n_points))
+            ny = n_points // nx
+            if nx * ny != n_points:
+                # Si no es exacto, forzar factorización uniforme
+                nx = ny = int(np.sqrt(n_points))
+            logger.info(f"Visualización fluido: redimensionando a ({nx}, {ny})")
+            x_grid = x_np.reshape(nx, ny)
+            y_grid = y_np.reshape(nx, ny)
+            
+            # Caso normal para fluidos multidimensionales
+            if y_pred.shape[-1] >= 3:
+                u_pred = y_pred[:, 0].reshape(nx, ny)
+                v_pred = y_pred[:, 1].reshape(nx, ny)
+                p_pred = y_pred[:, 2].reshape(nx, ny)
+                if y_true.shape[-1] == 3:
+                    u_true = y_true[:, 0].reshape(nx, ny)
+                    v_true = y_true[:, 1].reshape(nx, ny)
+                    p_true = y_true[:, 2].reshape(nx, ny)
+                else:
+                    u_true = v_true = p_true = None
+                filename = f"{physics_type}_solution.png"
+                
+                visualizer.plot_fluid_solution(
+                    x_grid, y_grid,
+                    u_pred, v_pred, p_pred,
+                    u_true, v_true, p_true,
+                    filename=filename
+                )
+            logger.info(f"Gráfica de soluciones de fluidos generada y guardada en: {os.path.join(OUTPUT_TRAIN_DIR, filename)}")
         
-        # Remodelar para la visualización
-        x_grid = x_np.reshape(nx, nt)
-        t_grid = t_np.reshape(nx, nt)
-        u_pred_grid = y_pred.reshape(nx, nt)
-        y_true_grid = y_true.reshape(nx, nt)
-       
-        # Graficar
-        visualizer.plot_solution(
-            t_grid,
-            x_grid,
-            u_pred_grid,
-            y_true_grid,
-            filename="solution_comparison.png"
-        )
-    except Exception as e:
-        logger.error(f"Error al graficar la solución: {str(e)}")
+        elif input_tensor.shape[1] == 3:
+            print("Entro a tres dimensiones")
+            x_np = input_tensor[:, 0].detach().cpu().numpy()
+            y_np = input_tensor[:, 1].detach().cpu().numpy()
+            t_np = input_tensor[:, 2].detach().cpu().numpy()
+            n_points = len(x_np)
+            nx = 64
+            ny = 64
+            nt = 20
+            # if nx * ny != n_points:
+            #     # Si no es exacto, forzar factorización uniforme
+            #     nx = ny = int(np.sqrt(n_points))
+            logger.info(f"Visualización fluido: redimensionando a ({nx}, {ny})")
+            x_grid = x_np.reshape(nx, ny, nt)
+            y_grid = y_np.reshape(nx, ny, nt)
+            # t_grid = t_np.reshape(nx, ny)
+            
+            # Caso normal para fluidos multidimensionales
+            if y_pred.shape[-1] >= 3:
+                u_pred = y_pred[:, 0].reshape(nx, ny, nt)
+                v_pred = y_pred[:, 1].reshape(nx, ny, nt)
+                p_pred = y_pred[:, 2].reshape(nx, ny, nt)
+                if y_true.shape[-1] == 3:
+                    u_true = y_true[:, 0].reshape(nx, ny, nt)
+                    v_true = y_true[:, 1].reshape(nx, ny, nt)
+                    p_true = y_true[:, 2].reshape(nx, ny, nt)
+                else:
+                    u_true = v_true = p_true = None
+                filename = f"{physics_type}_solution.png"
+                
+                visualizer.plot_fluid_solution(
+                    x_grid[:,:,-1], y_grid[:,:,-1],
+                    u_pred[:,:,-1], v_pred[:,:,-1], p_pred[:,:,-1],
+                    u_true[:,:,-1], v_true[:,:,-1], p_true[:,:,-1],
+                    filename=filename
+                )
+            logger.info(f"Gráfica de soluciones de fluidos generada y guardada en: {os.path.join(OUTPUT_TRAIN_DIR, filename)}")
         
-        # Alternativa: graficar como scatter plot
-        # visualizer
-        visualizer.plot_prediction_vs_true(y_pred, y_true, 
-                                           filename="prediction_vs_true.png")
+        else:
+            logger.warning(f"Entrada inesperada para fluidos: {input_tensor.shape}")
+            filename = f"{physics_type}_prediction.png"
+            visualizer.plot_prediction_vs_true(y_pred, y_true, filename=filename)
+            logger.info(f"Gráfica de predicción vs. real generada y guardada en: {os.path.join(OUTPUT_TRAIN_DIR, filename)}")
 
+    # try:
+    #     print("Entro2")
+    #     # Extraer x, y de input_tensor para fluidos (se espera (N,2))
+    #     physics_type = model_cfg.get("physics_type")
+    #     if physics_type in ["kovasznay", "taylor_green", "cavity_flow"]:
+    #         if input_tensor.shape[1] == 2:
+    #             x_np = input_tensor[:, 0].detach().cpu().numpy()
+    #             y_np = input_tensor[:, 1].detach().cpu().numpy()
+    #             n_points = len(x_np)
+    #             nx = int(np.sqrt(n_points))
+    #             ny = n_points // nx
+    #             if nx * ny != n_points:
+    #                 # Si no es exacto, forzar factorización uniforme
+    #                 nx = ny = int(np.sqrt(n_points))
+    #             logger.info(f"Visualización fluido: redimensionando a ({nx}, {ny})")
+    #             x_grid = x_np.reshape(nx, ny)
+    #             y_grid = y_np.reshape(nx, ny)
+                
+    #             # Manejar caso en que y_true tenga solo una columna (solo u) y y_pred tiene 3 (u,v,p)
+    #             if y_pred.shape[-1] == 3 and y_true.shape[-1] == 1:
+    #                 logger.warning("y_true tiene solo la componente u; se usará solo la primera componente de y_pred para visualización.")
+    #                 u_pred_grid = y_pred[:, 0].reshape(nx, ny)
+    #                 u_true_grid = y_true.reshape(nx, ny)
+    #                 filename = f"{physics_type}_solution.png"
+    #                 visualizer.plot_solution(y_grid, x_grid, u_pred_grid, u_true_grid, filename=filename)
+    #                 logger.info(f"Gráfica generada y guardada en: {os.path.join(OUTPUT_TRAIN_DIR, filename)}")
+    #             else:
+    #                 # Caso normal para fluidos multidimensionales
+    #                 if y_pred.shape[-1] >= 3:
+    #                     u_pred = y_pred[:, 0].reshape(nx, ny)
+    #                     v_pred = y_pred[:, 1].reshape(nx, ny)
+    #                     p_pred = y_pred[:, 2].reshape(nx, ny)
+    #                     if y_true.shape[-1] == 3:
+    #                         u_true = y_true[:, 0].reshape(nx, ny)
+    #                         v_true = y_true[:, 1].reshape(nx, ny)
+    #                         p_true = y_true[:, 2].reshape(nx, ny)
+    #                     else:
+    #                         u_true = v_true = p_true = None
+    #                     filename = f"{physics_type}_solution.png"
+    #                     visualizer.plot_fluid_solution(
+    #                         x_grid, y_grid,
+    #                         u_pred, v_pred, p_pred,
+    #                         u_true, v_true, p_true,
+    #                         filename=filename
+    #                     )
+    #                     logger.info(f"Gráfica de soluciones de fluidos generada y guardada en: {os.path.join(OUTPUT_TRAIN_DIR, filename)}")
+    #                 else:
+    #                     filename = f"{physics_type}_prediction.png"
+    #                     visualizer.plot_prediction_vs_true(y_pred, y_true, filename=filename)
+    #                     logger.info(f"Gráfica de predicción vs. real generada y guardada en: {os.path.join(OUTPUT_TRAIN_DIR, filename)}")
+    #         else:
+    #             logger.warning(f"Entrada inesperada para fluidos: {input_tensor.shape}")
+    #             filename = f"{physics_type}_prediction.png"
+    #             visualizer.plot_prediction_vs_true(y_pred, y_true, filename=filename)
+    #             logger.info(f"Gráfica de predicción vs. real generada y guardada en: {os.path.join(OUTPUT_TRAIN_DIR, filename)}")
+    #     else:
+    #         # Para otros casos, usar método genérico
+    #         filename = "prediction_vs_true.png"
+    #         visualizer.plot_prediction_vs_true(y_pred, y_true, filename=filename)
+    #         logger.info(f"Gráfica de predicción vs. real generada y guardada en: {os.path.join(OUTPUT_TRAIN_DIR, filename)}")
+    # except Exception as e:
+    #     logger.error(f"Error al graficar la solución: {str(e)}")
+    #     # Alternativa final
+    #     try:
+    #         filename = "prediction_vs_true_fallback.png"
+    #         visualizer.plot_prediction_vs_true(y_pred, y_true, filename=filename)
+    #         logger.info(f"Gráfica alternativa generada y guardada en: {os.path.join(OUTPUT_TRAIN_DIR, filename)}")
+    #     except Exception as scatter_e:
+    #         logger.error(f"Error en scatter plot alternativo: {scatter_e}")
+
+        
     # Guardar modelo
     torch.save({
         'model_state_dict': model.state_dict(),
@@ -311,10 +488,40 @@ def train_model(config):
     }, os.path.join(MODEL_DIR, "weights_model.pth"))
     logger.info(f"Modelo guardado en: {MODEL_DIR}")
 
+    # Antes de guardar los hiperparámetros de entrenamiento, crear un diccionario reducido
+    # con solo la información relevante al modelo actual
+    reduced_config = {
+        "model_name": selected_model,
+        "model_config": model_cfg,
+        "loss_function": {
+            "name": selected_loss,
+            "config": loss_cfg
+        },
+        "training": train_cfg,
+        "physics_type": physics_type,
+        "data_info": {
+            "data_file": os.path.basename(data_file) if 'data_file' in locals() else None,
+            "input_shape": list(input_tensor.shape) if 'input_tensor' in locals() else None,
+            "output_shape": list(output_tensor.shape) if 'output_tensor' in locals() else None
+        },
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    }
+    
+    # También incluir la sección específica de física si está presente
+    if physics_type and physics_type in config:
+        reduced_config[physics_type] = config[physics_type]
+    
+    # Guardar solo la información relevante en hyperparams_train.json
     hyperparams_train_path = os.path.join(OUTPUT_TRAIN_DIR, "hyperparams_train.json")
     with open(hyperparams_train_path, "w") as f:
-        json.dump(config, f, indent=4)
+        json.dump(reduced_config, f, indent=4)
     logger.info(f"Hiperparámetros de entrenamiento guardados en: {hyperparams_train_path}")
+    
+    # Para retrocompatibilidad, guardar la configuración completa en un archivo separado (opcional)
+    full_config_path = os.path.join(OUTPUT_TRAIN_DIR, "full_config.json")
+    with open(full_config_path, "w") as f:
+        json.dump(config, f, indent=4)
+    logger.info(f"Configuración completa guardada en: {full_config_path}")
 
     arch_path = os.path.join(MODEL_DIR, "model_architecture.txt")
     with open(arch_path, "w") as f:
@@ -465,7 +672,7 @@ def evaluate_model(config):
         data_dir = os.path.join(PROJECT_ROOT, "..", "data", "training")
         data_files = glob.glob(os.path.join(data_dir, "*.mat"))
         
-        if data_files:
+        if (data_files):
             print("\n=== ARCHIVOS DE DATOS DISPONIBLES ===")
             for i, file_path in enumerate(data_files, 1):
                 print(f"{i}. {os.path.basename(file_path)}")
@@ -681,7 +888,7 @@ def main():
     args = parser.parse_args()
 
     # Cargar configuración
-    if args.config and os.path.exists(args.config):  # Corregido: '&&' a 'and'
+    if args.config and os.path.exists(args.config):  # Corregido: 'and' a 'and'
         with open(args.config, 'r') as f:
             config = yaml.safe_load(f)
         logger.info(f"Configuración cargada desde archivo personalizado: {args.config}")

@@ -1,0 +1,6 @@
+2025-03-05 16:06:57,105 - data_manager - INFO - DataManager inicializado: spatial_points=256, time_points=100
+2025-03-05 16:06:57,107 - data_manager - INFO - Archivo .mat cargado correctamente: data/training\kovasznay_re40.0_nx64_ny64_date20250305_135410.mat
+2025-03-05 16:06:57,108 - data_manager - INFO - Cargando datos desde: data/training\kovasznay_re40.0_nx64_ny64_date20250305_135410.mat
+2025-03-05 16:06:57,109 - data_manager - WARNING - Formato estándar no detectado. Claves disponibles: ['inputs', 'outputs', 'train_inputs', 'train_outputs', 'test_inputs', 'test_outputs', 'x', 'y', 'X', 'Y', 'u', 'v', 'p', 'params']
+2025-03-05 16:06:57,110 - data_manager - INFO - Usando matriz 'inputs' como entrada y 'outputs' como salida
+2025-03-05 16:06:57,111 - data_manager - INFO - Datos procesados con éxito. Formas finales: Input:torch.Size([4096, 2]), Output:torch.Size([4096, 1])

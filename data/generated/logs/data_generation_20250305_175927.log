@@ -1,0 +1,6 @@
+2025-03-05 17:59:27,454 - data_manager - INFO - DataManager inicializado: spatial_points=256, time_points=100
+2025-03-05 17:59:27,475 - data_manager - INFO - Archivo .mat cargado correctamente: data/training\kovasznay_re40.0_nx64_ny64_date20250305_135410.mat
+2025-03-05 17:59:27,475 - data_manager - INFO - Cargando datos desde: data/training\kovasznay_re40.0_nx64_ny64_date20250305_135410.mat
+2025-03-05 17:59:27,477 - data_manager - INFO - Detectado formato de fluidos 2D
+2025-03-05 17:59:27,478 - data_manager - INFO - Datos de fluido con presión: (4096, 3)
+2025-03-05 17:59:27,479 - data_manager - INFO - Datos procesados con éxito. Formas finales: Input:torch.Size([4096, 2]), Output:torch.Size([4096, 3])

@@ -1,0 +1,233 @@
+{
+    "selected_model": "pinn_small",
+    "selected_loss": "mse",
+    "models": {
+        "pinn_v1": {
+            "type": "mlp",
+            "layers": [
+                50,
+                50,
+                50,
+                50
+            ],
+            "activation_function": "Tanh",
+            "learning_rate": 0.001,
+            "physics_type": "burgers"
+        },
+        "pinn_v2": {
+            "type": "mlp_residual",
+            "layers": [
+                64,
+                64,
+                64,
+                64
+            ],
+            "activation_function": "Tanh",
+            "learning_rate": 0.0005,
+            "physics_type": "burgers"
+        },
+        "pinn_small": {
+            "type": "mlp",
+            "layers": [
+                2,
+                1
+            ],
+            "activation_function": "Tanh",
+            "learning_rate": 0.002,
+            "physics_type": "burgers"
+        },
+        "kovasznay": {
+            "type": "kovasznay",
+            "layers": [
+                40,
+                40,
+                40
+            ],
+            "activation_function": "Tanh",
+            "learning_rate": 0.001,
+            "re": 40.0,
+            "physics_type": "kovasznay"
+        },
+        "taylor_green": {
+            "type": "taylor_green",
+            "layers": [
+                64,
+                64,
+                64,
+                64
+            ],
+            "activation_function": "Tanh",
+            "learning_rate": 0.0008,
+            "nu": 0.01,
+            "physics_type": "taylor_green"
+        },
+        "cavity_flow": {
+            "type": "cavity_flow",
+            "layers": [
+                50,
+                50,
+                50,
+                50
+            ],
+            "activation_function": "Tanh",
+            "learning_rate": 0.001,
+            "physics_type": "cavity_flow"
+        },
+        "lbm_naive_kovasznay": {
+            "type": "lb_kovasznay",
+            "variant": "naive",
+            "layers": [
+                9,
+                50,
+                50,
+                9
+            ],
+            "activation_function": "Tanh",
+            "learning_rate": 0.001,
+            "physics_type": "kovasznay"
+        },
+        "lbm_naive_taylor_green": {
+            "type": "lb_taylor_green",
+            "variant": "naive",
+            "layers": [
+                9,
+                50,
+                50,
+                9
+            ],
+            "activation_function": "Tanh",
+            "learning_rate": 0.001,
+            "physics_type": "taylor_green"
+        },
+        "lbm_naive_cavity_flow": {
+            "type": "lb_cavity_flow",
+            "variant": "naive",
+            "layers": [
+                9,
+                50,
+                50,
+                9
+            ],
+            "activation_function": "Tanh",
+            "learning_rate": 0.001,
+            "physics_type": "cavity_flow"
+        }
+    },
+    "loss_functions": {
+        "mse": {
+            "type": "mean_squared_error",
+            "weight": 1.0
+        },
+        "physics_informed": {
+            "type": "physics_informed_loss",
+            "data_weight": 1.0,
+            "physics_weight": 0.5
+        },
+        "weighted_mse": {
+            "type": "weighted_mse",
+            "interior_weight": 1.0,
+            "boundary_weight": 10.0
+        }
+    },
+    "training": {
+        "epochs": 1,
+        "batch_size": 64,
+        "optimizer": "Adam",
+        "optimizer_params": {
+            "lr": 0.001,
+            "betas": [
+                0.9,
+                0.999
+            ],
+            "eps": "1e-8",
+            "weight_decay": 0.0
+        },
+        "scheduler": "ReduceLROnPlateau",
+        "scheduler_params": {
+            "factor": 0.5,
+            "patience": 10,
+            "threshold": "1e-4",
+            "min_lr": "1e-6"
+        },
+        "early_stopping": {
+            "enabled": true
+        },
+        "epochs_no_improve": 20,
+        "min_loss_improvement": "1e-4",
+        "seed": 42,
+        "memory_limit_gb": 4
+    },
+    "logging": {
+        "level": "INFO",
+        "output_folder": "output"
+    },
+    "data_generation": {
+        "type": "burgers",
+        "spatial_points": 256,
+        "time_points": 100,
+        "Re": 40,
+        "U0": 1.0,
+        "resolution": 32,
+        "Nx": 32,
+        "Ny": 32,
+        "T": 2.0,
+        "num_steps": 50
+    },
+    "data_mapping": {
+        "enabled": true,
+        "strict_compatibility": false,
+        "search_paths": [
+            "data/training",
+            "data/generated",
+            "data/synthetic"
+        ],
+        "mappings": {
+            "burgers": [
+                "burgers_*.mat",
+                "burgers_shock*.mat",
+                "data_burgers*.npz"
+            ],
+            "taylor_green": [
+                "taylor_green*.mat",
+                "tg_vortex*.mat"
+            ],
+            "kovasznay": [
+                "kovasznay*.mat",
+                "kovasznay_flow*.mat"
+            ],
+            "cavity_flow": [
+                "cavity_flow*.mat",
+                "lid_driven*.mat"
+            ],
+            "navier_stokes": [
+                "navier_stokes*.mat",
+                "ns_*.mat"
+            ],
+            "mlp": [
+                "*.mat"
+            ]
+        }
+    },
+    "lattice_boltzmann": {
+        "lattice_type": "D2Q9",
+        "tau": 0.6,
+        "omega": 1.7,
+        "grid_size_x": 128,
+        "grid_size_y": 128,
+        "physics_type": "lattice_boltzmann"
+    },
+    "evaluation": {
+        "model_path": "output/Model_mlp_1_0.001_42/model/weights_model.pth",
+        "data_path": "data/training/",
+        "data_dir": "data/training",
+        "output_folder": "evaluation_results",
+        "metrics": [
+            "MAE",
+            "MSE",
+            "RMSE",
+            "R2"
+        ],
+        "visualize": true,
+        "compare_with_analytical": false
+    }
+}

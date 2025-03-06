@@ -1,0 +1,6 @@
+2025-03-05 21:24:33,151 - data_manager - INFO - DataManager inicializado: spatial_points=256, time_points=100
+2025-03-05 21:24:33,154 - data_manager - INFO - Archivo .mat cargado correctamente: data/training\burgers_shock_mu_01_pi.mat
+2025-03-05 21:24:33,155 - data_manager - INFO - Cargando datos desde: data/training\burgers_shock_mu_01_pi.mat
+2025-03-05 21:24:33,156 - data_manager - INFO - Detectado formato estándar Burgers
+2025-03-05 21:24:33,156 - data_manager - INFO - Formato estándar detectado: x:(256,), t:(100,), usol:(256, 100)
+2025-03-05 21:24:33,159 - data_manager - INFO - Datos procesados con éxito. Formas finales: Input:torch.Size([25600, 2]), Output:torch.Size([25600, 1])

@@ -67,6 +67,9 @@ class OutputManager:
             physics_type = "other"
             logger.warning(f"Tipo de física '{physics_type}' no reconocido. Usando 'other'.")
         
+        print("physics_type", physics_type)
+        print("model_name", model_name)
+        
         # Crear nombre de directorio del modelo
         model_dirname = f"{physics_type}_{model_name}_{epochs}_{lr}_{seed}"
         output_dir = os.path.join(self.physics_dirs[physics_type], model_dirname)
