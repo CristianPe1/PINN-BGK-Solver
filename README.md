@@ -234,6 +234,71 @@ Available problems:
 
 Use the arguments --nu, --re, --nx, --ny, --nt as needed.
 
+## Gestión de Entorno con UV
+
+Este proyecto incluye soporte para [UV](https://github.com/astral-sh/uv), una herramienta moderna para la gestión de entornos virtuales y paquetes de Python escrita en Rust. UV ofrece una alternativa mucho más rápida a pip, venv y virtualenv.
+
+### Ventajas de UV
+
+- **Instalación más rápida**: Hasta 10-100x más rápido que pip, especialmente crítico para librerías científicas pesadas
+- **Resolución eficiente de dependencias**: Resuelve conflictos de dependencias de manera más inteligente
+- **Paralelismo**: Instala múltiples paquetes simultáneamente
+- **Totalmente compatible**: Funciona con requirements.txt y pyproject.toml
+- **Interfaz unificada**: Combina la gestión de entornos virtuales y la instalación de paquetes
+
+### Uso de UV con el Proyecto
+
+Hemos incluido un script `setup_uv.py` para facilitar la configuración del entorno:
+
+```bash
+# Ejecutar el script de configuración
+python setup_uv.py
+
+# Activar el entorno virtual (Windows)
+.venv\Scripts\activate
+
+# Activar el entorno virtual (Linux/macOS)
+source .venv/bin/activate
+```
+
+Este script:
+1. Instala UV si no está presente
+2. Crea un entorno virtual en la carpeta `.venv`
+3. Instala todas las dependencias del proyecto desde requirements.txt
+
+### Comandos UV Útiles
+
+Una vez instalado UV, puede usar estos comandos directamente:
+
+```bash
+# Instalar un nuevo paquete
+uv pip install nombre_paquete
+
+# Actualizar dependencias
+uv pip sync requirements.txt
+
+# Generar un lockfile para mejorar reproducibilidad
+uv pip compile requirements.txt -o requirements.lock
+
+# Ejecutar código en el entorno virtual
+uv run python src/main.py
+```
+
+### Comparación con Herramientas Tradicionales
+
+| Característica | UV | pip + venv | conda |
+|---------------|-----|------------|-------|
+| Velocidad de instalación | Muy rápida | Lenta | Media |
+| Manejo de entornos | Integrado | Separado (venv) | Integrado |
+| Resolución de dependencias | Avanzada | Básica | Avanzada |
+| Compatibilidad con C/C++ | ✓ | ✓ | ✓ |
+| Simplicidad | Alta | Media | Baja |
+| Tamaño en disco | Bajo | Bajo | Alto |
+
+### Compatibilidad
+
+UV es compatible con Python 3.7+ en todos los sistemas operativos principales (Windows, macOS, Linux).
+
 ## Herramientas de Automatización
 
 El proyecto incluye varias herramientas para automatizar la ejecución de experimentos en diferentes entornos:
