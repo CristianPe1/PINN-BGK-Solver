@@ -126,8 +126,8 @@ loss_functions:
     boundary_weight: 10.0
 
 training:
-  epochs: 1
-  batch_size: 64
+  epochs: 1000
+  batch_size: 1024
   optimizer: "Adam"
   optimizer_params:
     lr: 0.001
@@ -142,8 +142,8 @@ training:
     min_lr: 1e-6
   early_stopping:
     enabled: true
-  epochs_no_improve: 20
-  min_loss_improvement: 1e-4
+  epochs_no_improve: 50
+  min_loss_improvement: 1e-3
   seed: 42
   memory_limit_gb: 4
 
