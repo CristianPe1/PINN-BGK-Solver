@@ -1,0 +1,63 @@
+{
+    "model_name": "pinn_v1",
+    "model_config": {
+        "type": "mlp",
+        "layers": [
+            2,
+            50,
+            50,
+            1
+        ],
+        "activation_function": "Tanh",
+        "learning_rate": 0.001,
+        "physics_type": "burgers"
+    },
+    "loss_function": {
+        "name": "mse",
+        "config": {
+            "type": "mean_squared_error",
+            "weight": 1.0
+        }
+    },
+    "training": {
+        "epochs": 1000,
+        "batch_size": 1024,
+        "optimizer": "Adam",
+        "optimizer_params": {
+            "lr": 0.001,
+            "betas": [
+                0.9,
+                0.999
+            ],
+            "eps": "1e-8",
+            "weight_decay": 0.0
+        },
+        "scheduler": "ReduceLROnPlateau",
+        "scheduler_params": {
+            "factor": 0.5,
+            "patience": 10,
+            "threshold": "1e-4",
+            "min_lr": "1e-6"
+        },
+        "early_stopping": {
+            "enabled": true
+        },
+        "epochs_no_improve": 50,
+        "min_loss_improvement": "1e-3",
+        "seed": 42,
+        "memory_limit_gb": 4
+    },
+    "physics_type": "burgers",
+    "data_info": {
+        "data_file": "burgers_shock_mu_01_pi.mat",
+        "input_shape": [
+            25600,
+            2
+        ],
+        "output_shape": [
+            25600,
+            1
+        ]
+    },
+    "timestamp": "2025-04-21 21:00:55"
+}

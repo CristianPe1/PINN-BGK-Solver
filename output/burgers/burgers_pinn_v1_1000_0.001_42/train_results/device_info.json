@@ -1,0 +1,16 @@
+{
+    "timestamp": "2025-04-21 21:00:00",
+    "cuda_available": false,
+    "cpu_info": {
+        "platform": "Windows-10-10.0.19045-SP0",
+        "processor": "AMD64 Family 23 Model 17 Stepping 0, AuthenticAMD",
+        "architecture": "AMD64",
+        "cores_physical": 4,
+        "cores_logical": 8,
+        "cpu_freq_mhz": 3600.0,
+        "memory_total_gb": 15.94
+    },
+    "default_device": "cpu",
+    "gpu_count": 0,
+    "gpu_info": []
+}

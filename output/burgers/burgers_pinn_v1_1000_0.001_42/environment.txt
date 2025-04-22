@@ -1,0 +1,8 @@
+Fecha: 2025-04-21 20:59:59
+Directorio: D:\Personal\Area_de_Trabajo\Universidad\Matriculas\Novena\Optimización y Control en Redes Distribuidas\Proyecto Final\code\output\burgers\burgers_pinn_v1_1000_0.001_42
+Proyecto: D:\Personal\Area_de_Trabajo\Universidad\Matriculas\Novena\Optimización y Control en Redes Distribuidas\Proyecto Final\code
+
+Python: 3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]
+Sistema: Windows 10
+PyTorch: 2.0.1+cpu
+CUDA disponible: False
